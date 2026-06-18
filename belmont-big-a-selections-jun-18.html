@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrackSmart AI · Belmont at the Big A — Selections, Jun 18, 2026</title>
+<meta name="description" content="TrackSmart AI full-card selections for Belmont at the Big A, June 18, 2026 — AI confidence ranks, pace projections, and Top-3 win contenders for every race. Generated blind of the Morning Line.">
+<meta property="og:title" content="TrackSmart AI · Belmont at the Big A — Jun 18">
+<meta property="og:description" content="The Machine's full card: confidence ranks, pace shapes, and Top-3 contenders for all 8 races. Generated blind of the Morning Line.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%2313261c' stroke='%23C49A3F' stroke-width='2'/%3E%3Cpath d='M16 1 A15 15 0 0 1 16 31 Z' fill='%23823131'/%3E%3Cpath d='M16 1 A15 15 0 0 0 16 31 Z' fill='%23C49A3F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,700;6..96,900&family=Spline+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --felt:#13261c;--felt-2:#0e1d15;--paper:#F3EFE3;--paper-2:#EAE4D3;
+    --ink:#1c2620;--ink-soft:#566057;
+    --brass:#C49A3F;--brass-deep:#9a7526;
+    --win:#2E6B4A;--win-soft:#5E9070;--oxblood:#823131;
+    --line:rgba(196,154,63,.28);--line-paper:rgba(28,38,32,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--felt);color:var(--paper);font-family:"Spline Sans",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  .display{font-family:"Bodoni Moda",Georgia,serif;line-height:1.03;letter-spacing:-.01em}
+  .eyebrow{font-family:"Spline Sans Mono",monospace;text-transform:uppercase;letter-spacing:.3em;font-size:.66rem;font-weight:500}
+
+  /* header */
+  header{border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--felt-2),var(--felt))}
+  .topbar{display:flex;justify-content:space-between;align-items:center;padding:22px 0;gap:16px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:13px}
+  .silk{width:34px;height:34px;border-radius:50%;flex:0 0 auto;position:relative;overflow:hidden;border:1.5px solid var(--brass);box-shadow:0 0 0 3px rgba(196,154,63,.12)}
+  .silk::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,var(--oxblood) 0 50%,var(--brass) 50% 100%)}
+  .silk::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent 0 6px,rgba(255,255,255,.10) 6px 12px)}
+  .brand b{font-weight:700;letter-spacing:.02em;font-size:1.02rem}
+  .brand span{display:block;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);font-family:"Spline Sans Mono",monospace}
+  .topbar .meta{font-family:"Spline Sans Mono",monospace;font-size:.74rem;color:var(--win-soft);text-align:right}
+
+  /* hero */
+  .hero{padding:60px 0 40px}
+  .hero .eyebrow{color:var(--brass)}
+  .hero h1{margin:16px 0 0;font-weight:500;font-size:clamp(2.3rem,5.5vw,4rem)}
+  .hero .sub{margin-top:14px;font-family:"Spline Sans Mono",monospace;font-size:.82rem;letter-spacing:.04em;color:#cdd6cd;display:flex;gap:10px;flex-wrap:wrap}
+  .hero .sub .dot{color:var(--brass)}
+  .machine{margin-top:30px;max-width:680px;color:#cdd6cd;font-size:1.05rem}
+  .machine strong{color:var(--paper);font-weight:600}
+  .creed{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
+  .creed span{font-family:"Spline Sans Mono",monospace;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:#f0d9a0;background:rgba(196,154,63,.12);border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+
+  /* hero stat row */
+  .hstats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:38px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--felt-2)}
+  .hstats div{padding:18px 16px;border-right:1px solid var(--line)}
+  .hstats div:last-child{border-right:0}
+  .hstats .v{font-family:"Bodoni Moda",serif;font-size:2rem;font-weight:500;line-height:1}
+  .hstats .k{font-family:"Spline Sans Mono",monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--win-soft);margin-top:8px}
+
+  /* confidence board */
+  .board-sec{padding:54px 0}
+  .board-sec h2{font-family:"Bodoni Moda",serif;font-weight:500;font-size:clamp(1.5rem,3.2vw,2.1rem);margin:10px 0 6px}
+  .board-sec .intro{color:#aab6ab;max-width:620px;font-size:.98rem}
+  .cboard{margin-top:26px;display:flex;flex-direction:column;gap:7px}
+  .crow{display:grid;grid-template-columns:42px 70px 1fr 120px;gap:14px;align-items:center;
+    background:var(--felt-2);border:1px solid var(--line);border-radius:9px;padding:11px 16px;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s}
+  .crow:hover{border-color:var(--brass);transform:translateX(3px)}
+  .crow.lead{border-color:var(--brass);box-shadow:0 0 0 1px var(--brass)}
+  .crow .cr{font-family:"Bodoni Moda",serif;font-size:1.3rem;color:var(--brass);text-align:center;line-height:1}
+  .crow .rc{font-family:"Spline Sans Mono",monospace;font-size:.74rem;color:#cdd6cd}
+  .crow .rc b{color:var(--paper);font-size:.92rem;display:block}
+  .crow .shape{justify-self:start}
+  .crow .cmb{text-align:right;font-family:"Spline Sans Mono",monospace}
+  .crow .cmb b{font-family:"Bodoni Moda",serif;font-size:1.3rem;color:var(--paper);font-weight:500}
+  .crow .cmb span{font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--win-soft);display:block}
+
+  .pill{font-family:"Spline Sans Mono",monospace;font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;white-space:nowrap;font-weight:500}
+  .shape-honest{background:rgba(46,107,74,.2);color:#86c4a0}
+  .shape-duel{background:rgba(196,154,63,.18);color:#e2bd6e}
+  .shape-melt{background:rgba(130,49,49,.28);color:#e8a59a}
+
+  /* sticky race nav */
+  .racenav{position:sticky;top:0;z-index:20;background:rgba(14,29,21,.92);backdrop-filter:blur(8px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .racenav .inner{display:flex;gap:7px;overflow-x:auto;padding:12px 24px;max-width:1040px;margin:0 auto;scrollbar-width:none}
+  .racenav .inner::-webkit-scrollbar{display:none}
+  .racenav a{flex:0 0 auto;font-family:"Spline Sans Mono",monospace;font-size:.72rem;letter-spacing:.06em;text-decoration:none;color:#aab6ab;border:1px solid var(--line);border-radius:8px;padding:6px 12px;transition:all .2s}
+  .racenav a:hover{color:var(--paper);border-color:var(--brass)}
+  .racenav a.active{background:var(--brass);color:#1a1305;border-color:var(--brass)}
+
+  /* body / races */
+  .body{background:var(--paper);color:var(--ink)}
+  .race{padding:48px 0;border-bottom:1px solid var(--line-paper);scroll-margin-top:60px}
+  .rhead{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .rhead .rno{font-family:"Spline Sans Mono",monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass-deep)}
+  .rhead h2{font-family:"Bodoni Moda",serif;font-weight:500;font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1.08;margin:6px 0 8px}
+  .rhead .cond{font-family:"Spline Sans Mono",monospace;font-size:.78rem;color:var(--ink-soft);display:flex;gap:8px;flex-wrap:wrap}
+  .rhead .cond .dot{color:var(--brass)}
+  .rmeta{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .conf{text-align:right;font-family:"Spline Sans Mono",monospace}
+  .conf b{font-family:"Bodoni Moda",serif;font-size:1.5rem;color:var(--ink);font-weight:500;display:block;line-height:1}
+  .conf span{font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+
+  /* win prob bar */
+  .winbar-wrap{margin-top:22px}
+  .winbar-top{display:flex;justify-content:space-between;font-family:"Spline Sans Mono",monospace;font-size:.7rem;color:var(--ink-soft);margin-bottom:7px}
+  .winbar{display:flex;height:30px;border-radius:7px;overflow:hidden;border:1px solid var(--line-paper)}
+  .winbar i{display:flex;align-items:center;justify-content:center;font-family:"Spline Sans Mono",monospace;font-size:.66rem;font-weight:600;color:#1a1305;min-width:0;width:0;transition:width 1s cubic-bezier(.2,.7,.2,1)}
+  .winbar .w1{background:var(--brass)} .winbar .w2{background:#D8B868} .winbar .w3{background:var(--win);color:#eafff2}
+  .winbar .wr{background:var(--paper-2);color:var(--ink-soft)}
+
+  /* flow */
+  .flow{margin-top:22px;background:#fff;border:1px solid var(--line-paper);border-left:3px solid var(--brass);border-radius:8px;padding:16px 20px}
+  .flow .fl{font-family:"Spline Sans Mono",monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brass-deep);margin-bottom:5px}
+  .flow p{font-size:.98rem;color:#33403a}
+  .flow .hl{background:rgba(196,154,63,.22);padding:1px 4px;border-radius:3px;font-weight:600;color:var(--ink)}
+
+  /* selections */
+  .picks{margin-top:18px;display:grid;grid-template-columns:1fr;gap:10px}
+  .pick{background:#fff;border:1px solid var(--line-paper);border-radius:10px;padding:16px 18px;display:grid;grid-template-columns:46px 1fr;gap:16px}
+  .pick.p1{border-color:var(--brass);box-shadow:0 0 0 1px var(--brass)}
+  .saddle{width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:"Spline Sans Mono",monospace;font-weight:600;font-size:1.1rem;border:1px solid rgba(0,0,0,.12);align-self:start}
+  .pbody .ptop{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .pbody .nm{font-family:"Bodoni Moda",serif;font-size:1.3rem;font-weight:500;line-height:1}
+  .pbody .alert{font-family:"Spline Sans Mono",monospace;font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;background:var(--brass);color:#2a200a;padding:2px 9px;border-radius:5px}
+  .pick.p1 .alert{background:var(--brass)} 
+  .pbody .nums{margin-left:auto;display:flex;gap:18px;text-align:right}
+  .pbody .nums .nv{font-family:"Spline Sans Mono",monospace}
+  .pbody .nums .nv b{font-family:"Bodoni Moda",serif;font-size:1.2rem;color:var(--ink);font-weight:500;display:block;line-height:1}
+  .pbody .nums .nv span{font-size:.54rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+  .tpnmini{margin-top:10px}
+  .tpnmini .tb{height:5px;background:var(--paper-2);border-radius:3px;overflow:hidden}
+  .tpnmini .tb i{display:block;height:100%;background:var(--win);width:0;border-radius:3px;transition:width .9s cubic-bezier(.2,.7,.2,1)}
+  .pick.p1 .tpnmini .tb i{background:var(--brass)}
+  .pdesc{margin-top:11px;font-size:.92rem;color:var(--ink-soft);display:grid;gap:4px}
+  .pdesc b{color:var(--ink);font-family:"Spline Sans Mono",monospace;font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;margin-right:6px}
+
+  /* final + alt */
+  .rfoot{margin-top:18px;display:grid;grid-template-columns:1.6fr 1fr;gap:14px}
+  .final{background:var(--felt);color:var(--paper);border-radius:10px;padding:18px 20px}
+  .final .fl{font-family:"Spline Sans Mono",monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);margin-bottom:6px}
+  .final p{font-size:.96rem;color:#dfe6df}
+  .final strong{color:var(--brass)}
+  .alt{background:#fff;border:1px dashed var(--brass-deep);border-radius:10px;padding:18px 20px}
+  .alt .al{font-family:"Spline Sans Mono",monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brass-deep);margin-bottom:8px}
+  .alt .arow{display:flex;align-items:center;gap:10px}
+  .alt .arow .saddle{width:34px;height:34px;font-size:.95rem}
+  .alt .arow .nm{font-family:"Bodoni Moda",serif;font-size:1.1rem;font-weight:500}
+  .alt p{font-size:.86rem;color:var(--ink-soft);margin-top:9px}
+  .alt .rule{margin-top:8px;font-family:"Spline Sans Mono",monospace;font-size:.66rem;color:var(--brass-deep)}
+
+  /* footer */
+  footer{background:var(--felt);color:var(--win-soft);padding:46px 0}
+  .partners{text-align:center;margin-bottom:26px}
+  .partners .lbl{font-family:"Spline Sans Mono",monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:12px}
+  .partners .names{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .partners .names span{font-family:"Bodoni Moda",serif;font-size:1.1rem;color:var(--paper)}
+  .partners .names .sep{color:var(--brass);font-family:"Spline Sans Mono",monospace}
+  .tagline{text-align:center;font-family:"Bodoni Moda",serif;font-style:italic;font-size:1.15rem;color:var(--brass);margin-bottom:24px}
+  .ftbar{border-top:1px solid var(--line);padding-top:22px;font-family:"Spline Sans Mono",monospace;font-size:.68rem;line-height:1.7;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .ftbar a{color:var(--brass);text-decoration:none}
+  .disc{max-width:660px;margin:0 auto 18px;text-align:center;font-family:"Spline Sans Mono",monospace;font-size:.66rem;color:var(--win-soft);line-height:1.7}
+
+  a:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+  @media(max-width:760px){
+    .hstats{grid-template-columns:repeat(2,1fr)} .hstats div:nth-child(2){border-right:0}
+    .crow{grid-template-columns:34px 1fr auto;gap:10px} .crow .shape{display:none}
+    .rfoot{grid-template-columns:1fr}
+    .pbody .nums{margin-left:0;width:100%;justify-content:flex-start;margin-top:8px}
+    .pbody .ptop{gap:8px}
+  }
+  @media(prefers-reduced-motion:reduce){.winbar i,.tpnmini .tb i{transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap topbar">
+    <div class="brand">
+      <div class="silk" aria-hidden="true"></div>
+      <div><b>TrackSmart&nbsp;AI</b><span>The Only AI That Thinks Like a Handicapper</span></div>
+    </div>
+    <div class="meta" id="hdr-meta"></div>
+  </div>
+</header>
+
+<div class="wrap hero">
+  <p class="eyebrow" id="hero-eyebrow"></p>
+  <h1 class="display" id="hero-title"></h1>
+  <div class="sub" id="hero-sub"></div>
+  <p class="machine">The Machine operates <strong>independently of the Morning Line</strong>. Unlike models that lean on public sentiment or oddsmaker predictions, TrackSmart AI generates its figures blind — before the Morning Line is even released. Every selection is derived 100% from performance data, pace mechanics, and class algorithms. The Machine does not know who the "favorite" is supposed to be.</p>
+  <div class="creed">
+    <span>Generated Blind of the M/L</span>
+    <span>Pure Fundamental Analysis</span>
+    <span>Pace · Class · Speed</span>
+  </div>
+  <div class="hstats" id="hero-stats"></div>
+</div>
+
+<!-- CONFIDENCE BOARD -->
+<div class="wrap board-sec">
+  <p class="eyebrow" style="color:var(--brass)">Where The Machine Is Surest</p>
+  <h2>Confidence board</h2>
+  <p class="intro">All eight races ranked by the engine's own confidence. If you're picking your spots, start at the top.</p>
+  <div class="cboard" id="cboard"></div>
+</div>
+
+<!-- STICKY NAV -->
+<nav class="racenav"><div class="inner" id="racenav"></div></nav>
+
+<!-- RACES -->
+<div class="body" id="races"></div>
+
+<footer>
+  <div class="wrap">
+    <div class="partners">
+      <div class="lbl">Distributed Exclusively Via</div>
+      <div class="names" id="partners"></div>
+    </div>
+    <div class="tagline">Smarter Picks. Sharper Insights. More Fun at the Races.</div>
+    <div class="disc">TrackSmart AI is an analytical handicapping tool. All projections, rankings, and win probabilities are model-generated for informational purposes and do not guarantee results. Please play responsibly. If gambling is a problem, call 1-877-8-HOPENY.</div>
+    <div class="wrap ftbar">
+      <span>Powered by TrackSmart AI · The Only AI That Thinks Like a Handicapper</span>
+      <span><a href="https://www.tracksmartracing.com">tracksmartracing.com</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================================
+   TRACKSMART AI — FULL-CARD SELECTIONS TEMPLATE
+   To make a new card, edit the CARD object below (and the <title>/<meta> tags).
+   Each race: 3 picks + an alternate. Win probabilities should sum with the
+   "rest of field" to 100. Pace shapes: "honest" | "duel" | "meltdown".
+   ============================================================================ */
+const CARD = {
+  headerMeta: "Full-Card Selections<br>Generated blind of the M/L",
+  eyebrow: "Belmont at the Big A · Full Card",
+  title: "The Machine's Card",
+  sub: ["Wednesday, June 18, 2026", "8 Races", "NYRA"],
+  partners: ["SaratogaBets","BataviaBets","EmpireCityBets","Capital OTB"],
+  races: [
+    {no:1, name:"Maiden $85K", cond:["1 Mile","Dirt"], shape:"honest", conf:2, combined:82,
+     flow:'With <span class="hl">#4 Phantom Blue</span> showing a strong need for the lead, he projects to set the early fractions stretching out. But <span class="hl">#5 Long Term Market</span> sits in the garden spot to track off the pace, using a superior TSE2 and TSLP to assert dominance late in the mile.',
+     picks:[
+      {n:5,nm:"Long Term Market",tpn:100,win:45,alert:"Elite Intent",setup:"Debuting for elite connections with massive smart-money signals validating his readiness.",edge:"Holds the TPN Prime #1 overall ranking (raw 101) with an ideal tactical profile to get first jump on the tiring speed."},
+      {n:4,nm:"Phantom Blue",tpn:93,win:25,alert:"Controlling Speed",setup:"Drops in class from a $120k maiden and stretches out to a route.",edge:"Field-best TS Speed figure of 91, and the distinct advantage of being the controlling speed on the engine."},
+      {n:3,nm:"Jadorlinija",tpn:91,win:12,alert:"Live Overlay",setup:"Returns from an extreme layoff for a sharp barn with excellent morning readiness.",edge:"Trouble-failsafe upgrade off his lone start, with value backed by a tightly grouped series of morning drills."},
+     ],
+     final:'The Machine expects <strong>#4 Phantom Blue</strong> to dictate the TSE1 fractions on a lone lead, but the heavy smart money and elite connections around <strong>#5 Long Term Market</strong> dictate he\'ll be fully cranked to run down the pacesetter in the final furlong.',
+     alt:{n:2,nm:"Dr Glick",tpn:75,win:5,angle:"Freshened and switching to dirt for a high-percentage barn."}},
+
+    {no:2, name:"Maiden $85K", cond:["5½ Furlongs","Turf"], shape:"duel", conf:4, combined:75,
+     flow:'Multiple first-time starters are primed to flash early speed in a highly contested sprint. <span class="hl">#9 Arctic Wolf and #6 Zodiac Warrior</span> both own blazing morning-speed metrics and will duel for the TSE1 advantage right from the bell.',
+     picks:[
+      {n:6,nm:"Zodiac Warrior",tpn:100,win:40,alert:"Live FTS",setup:"First-time starter with an elite pedigree and a massive auction price tag.",edge:"Significant sire power plus a sharp gate drill, earning the top normalized TPN Prime of 100 in a wide-open juvenile dash."},
+      {n:9,nm:"Arctic Wolf",tpn:94,win:25,alert:"Elite Morning Speed",setup:"Ships in after firing a massive morning gate drill at Keeneland.",edge:"Projects as a severe front-end threat using sharp early velocity to command position from the outside draw."},
+      {n:3,nm:"Nodin",tpn:85,win:10,alert:"Massive Value",setup:"Ignored on the Morning Line but flashing significant morning readiness.",edge:"Tremendous intrinsic value via a blazing morning drill that defies his trainer's standard debut metrics."},
+     ],
+     final:'In a juvenile turf sprint reliant on speed and pedigree, <strong>#6 Zodiac Warrior</strong> holds the mathematical edge with elite sire genetics and sharp gate mechanics. <strong>#9 Arctic Wolf</strong> ensures a rapid tempo, but the outside draw and pedigree power of the top pick should prevail.',
+     alt:{n:7,nm:"Berta's Stitch",tpn:85,win:8,angle:"Solid gate drill and an outside draw that give a clean debut foundation."}},
+
+    {no:3, name:"Optional Claiming $100K (N1X)", cond:["1 Mile","Dirt"], shape:"honest", conf:3, combined:85,
+     flow:'A compact field that projects to play out fairly, with <span class="hl">#2 Concurrently</span> looking to enforce an honest tempo alongside #6 Hand Over Heart. The top contenders should control the TSE1/TSE2 fractions, leaving little room for deep closers.',
+     picks:[
+      {n:2,nm:"Concurrently",tpn:100,win:45,alert:"Massive Class Drop",setup:"Drops significantly in class out of a Grade 2 while returning from an extreme layoff.",edge:"Dominating TS Speed profile (best 89) and the TPN Prime #1 ranking, validated by strong morning drills."},
+      {n:6,nm:"Hand Over Heart",tpn:96,win:28,alert:"Trouble-Trip Rebound",setup:"Steps up into an allowance condition after a sharp debut win despite trouble.",edge:"A massive class-capacity edge backed by a top-tier TS Speed figure of 87 from his lone start."},
+      {n:1,nm:"Hot Gossip",tpn:87,win:12,alert:"Phantom Figure Upgrade",setup:"Fresh off a 60-day break, seeking a ground-saving rail trip.",edge:"Triggers an internal phantom-figure upgrade, suggesting her form cycle is sharper than recent raw figures show."},
+     ],
+     final:'The heavy class drop from graded company makes <strong>#2 Concurrently</strong> formidable on paper. His ability to control the pace while returning fully cranked gives him a distinct edge over unexposed stablemate <strong>#6 Hand Over Heart</strong>.',
+     alt:{n:4,nm:"People Watching",tpn:86,win:10,angle:"Fired an elite morning drill and ships from a hyper-elite barn showing immense intent."}},
+
+    {no:4, name:"Maiden $85K", cond:["5½ Furlongs","Turf"], shape:"duel", conf:5, combined:72,
+     flow:'Expect a blazing early tempo. <span class="hl">#9 Golden Athaliah and #5 Wildest Dreams</span> both own exceptional sire-driven early speed and project to lock horns, maximizing TSE1 output and setting a rapid structure.',
+     picks:[
+      {n:9,nm:"Golden Athaliah",tpn:100,win:35,alert:"Live FTS",setup:"First-time starter drawing a favorable outside post with an elite turf-sprint pedigree.",edge:"Sired by Golden Pal, commands a dominant raw TPN Prime of 102 with forward morning education from the gate."},
+      {n:5,nm:"Wildest Dreams",tpn:96,win:25,alert:"Elite Sire Speed",setup:"First-time starter debuting for a solid barn with sharp morning prep.",edge:"Strong sire bonuses for early speed and a very sharp gate breeze to ensure early position."},
+      {n:4,nm:"Legacy Lady",tpn:86,win:12,alert:"Trainer Intent",setup:"Debuts for an elite-percentage trainer, looking to sit just off the early dash.",edge:"An encouraging gate drill signals she's fit enough to stalk the leaders and use her tactical position."},
+     ],
+     final:'Golden Pal\'s progeny are devastating in early dashes, and <strong>#9 Golden Athaliah</strong> profiles perfectly to clear the field from her outside draw. <strong>#5 Wildest Dreams</strong> has the pedigree to contest, but the post advantage secures the top ranking for the 9.',
+     alt:{n:6,nm:"Blessednotbothered",tpn:85,win:8,angle:"A long stamina-building breeze could let her pick up the pieces if a meltdown occurs."}},
+
+    {no:5, name:"Optional Claiming $80K (N2X)", cond:["1⅛ Miles","Turf"], shape:"honest", conf:4, combined:78,
+     flow:'With early pace friction heavily discounted, <span class="hl">#8 Mayor of Midnight</span> projects to sit the garden spot and conserve, while #1 Harrow secures a ground-saving inside trip. The race sets up as a stretch duel decided by the superior TSLP.',
+     picks:[
+      {n:8,nm:"Mayor of Midnight",tpn:100,win:42,alert:"Best Late Kick",setup:"Returns from a layoff with steady prep and a distinct back-class advantage.",edge:"Owns the field's highest TS Speed at 96 and a devastating late turn-of-foot that matches the projected shape."},
+      {n:1,nm:"Harrow",tpn:96,win:22,alert:"Class Drop",setup:"Drops in class out of graded company and draws the perfect inside post.",edge:"Commands the TPN Prime #1 ranking with consistent high-level TS Speed figures — lethal at this level."},
+      {n:4,nm:"Emergence",tpn:93,win:14,alert:"Elite Barn Intent",setup:"Plunging down the class ladder for a dominant trainer, returning from a layoff.",edge:"A massive class-capacity edge plus a sharp recent workout to ensure fitness off the bench."},
+     ],
+     final:'The Machine flags this turf route as a prime spot for a devastating late closer. <strong>#8 Mayor of Midnight</strong> projects to stalk comfortably and unleash a field-best TSLP, exploiting a shape that protects superior turn-of-foot.',
+     alt:{n:3,nm:"End of Romance",tpn:91,win:8,angle:"Projects a perfect tactical tracking trip while peaking in his third start off the cycle."}},
+
+    {no:6, name:"Starter/Maiden Claiming $35K", cond:["6 Furlongs","Dirt"], shape:"honest", conf:8, combined:68,
+     flow:'A bottom-level sprint mixing unexposed rookies with exposed claimers. The first-time starters inject raw speed into the TSE1 fractions, forcing the experienced <span class="hl">#6 Kaz Farm Girl</span> to stalk and rely on her foundational conditioning to take over late.',
+     picks:[
+      {n:6,nm:"Kaz Farm Girl",tpn:100,win:32,alert:"Aggressive Class Drop",setup:"Executes an aggressive drop from maiden special weight into basement claiming ranks.",edge:"Tops the field with a normalized TPN Prime of 100 and a massive TS Speed advantage (best 75) over a suspect group."},
+      {n:3,nm:"Coco d'Oro",tpn:96,win:20,alert:"Live FTS",setup:"First-time starter debuting in a soft spot with forward morning readiness.",edge:"Earns a strong 96 normalized score via elite sire bonuses and solid dam production."},
+      {n:7,nm:"Luckbeourlady",tpn:95,win:16,alert:"Outside Advantage",setup:"Another unexposed juvenile debuting with strong foundation work for a hot barn.",edge:"Clear outside-air advantage plus high-volume sender bonuses — prime to strike if the pace collapses."},
+     ],
+     final:'A chaotic low-level sprint, but the massive class drop gives <strong>#6 Kaz Farm Girl</strong> the foundational TS Speed to overwhelm. If she avoids regression, her proven baseline handles the unexposed first-timers.',
+     alt:{n:5,nm:"Camille's Legacy",tpn:92,win:10,angle:"Class drop after a troubled debut (shied at the start); projects major second-start improvement."}},
+
+    {no:7, name:"Optional Claiming $75K", cond:["7 Furlongs","Dirt"], shape:"meltdown", conf:1, combined:80,
+     flow:'The pace physics map perfectly for a total front-end collapse. With multiple front-runners ensuring suicidal TSE1/TSE2 fractions, the dynamic heavily favors tactical stalkers — and <span class="hl">#5 Lady Rose</span> sits in the absolute catbird seat to inherit the lead as the pacesetters fade.',
+     picks:[
+      {n:5,nm:"Lady Rose",tpn:100,win:45,alert:"Meltdown Beneficiary",setup:"Peaking in her second start off the bench and perfectly drawn outside the main speed.",edge:"A massive 12-point normalized TPN advantage that fits the meltdown-survivor profile, armed with a strong closing TSLP."},
+      {n:4,nm:"Gracie's Delight",tpn:88,win:20,alert:"Dangerous Speed",setup:"Newly acquired speedster stepping up in class for a high-percentage barn.",edge:"Flashed a massive TS Speed of 82 last out — the most dangerous early-speed horse if she can clear the pack."},
+      {n:8,nm:"L'Eclair",tpn:86,win:15,alert:"Promoted Closer",setup:"A tactical stalker drawing a perfect outside post to avoid the internal speed duel.",edge:"Specifically promoted by the AI on pace physics — perfectly equipped to pick up the pieces late off a solid stamina base."},
+     ],
+     final:'TrackSmart AI has flagged this as the most confident race shape on the card. The suicidal early fractions will destroy the inside speed, allowing <strong>#5 Lady Rose</strong> to sit a textbook tracking trip and dominate the stretch run.',
+     alt:{n:1,nm:"Sparkling Mama",tpn:84,win:8,angle:"Owns the TPN Prime #2 ranking but faces a severe pace penalty drawn on the rail inside a heavy speed duel."}},
+
+    {no:8, name:"Claiming $30K (N2L)", cond:["1 Mile","Turf"], shape:"honest", conf:6, combined:75,
+     flow:'In this bottom-level turf route, early speed is a heavy liability — the best late kick prevails. <span class="hl">#6 Roagna</span> projects to unleash a massive TSLP, while #8 Leslie\'s Star uses tactical positional speed to get first run turning for home.',
+     picks:[
+      {n:8,nm:"Leslie's Star",tpn:100,win:38,alert:"Major Class Drop",setup:"Takes a massive class plunge in her second start off the layoff for an elite barn.",edge:"The class of the field — holds the TPN Prime #1 shield with solid TS Speed figures that tower over this level."},
+      {n:6,nm:"Roagna",tpn:97,win:25,alert:"Best Late Pace",setup:"Returns from a layoff with steady morning works, ready to deploy her late kick.",edge:"Dominates with a massive TSLP advantage and the highest recent TS Speed figure of 79 in the group."},
+      {n:9,nm:"Bossy Dish",tpn:92,win:12,alert:"Class Relief",setup:"Drops into easier company after failing as the favorite last out.",edge:"Functional tactical speed that fits the level, with back-to-back competitive TS Speed figures."},
+     ],
+     final:'A sharp class drop makes <strong>#8 Leslie\'s Star</strong> the most likely winner on paper. Her tactical edge lets her stalk just off the pace before accelerating, neutralizing the deep closing threat of <strong>#6 Roagna</strong> in the final sixteenth.',
+     alt:{n:1,nm:"Smiling Rosie",tpn:89,win:10,angle:"A favorable ground-saving inside trip plus a class drop create a strong high-percentage exotic profile."}},
+  ],
+};
+
+/* ===== render engine ====================================================== */
+const silks={1:["#C8102E","#fff"],2:["#FFFFFF","#111"],3:["#0B5FA5","#fff"],4:["#FFD400","#111"],5:["#1E7A45","#fff"],6:["#1a1a1a","#fff"],7:["#FF6A13","#111"],8:["#F48FB1","#3a1020"],9:["#17B8BE","#06363a"],10:["#6A2C8F","#fff"],11:["#9aa0a6","#111"],12:["#9ccc3a","#111"]};
+const saddle=n=>{const c=silks[n]||["#9aa0a6","#111"];return `<div class="saddle" style="background:${c[0]};color:${c[1]}">${n}</div>`;};
+const shapeMap={honest:["shape-honest","Honest Pace"],duel:["shape-duel","Contested Duel"],meltdown:["shape-melt","Pace Meltdown"]};
+const $=id=>document.getElementById(id);
+const tpnW=t=>Math.max(8,Math.min(100,Math.round((t-70)/30*100)));
+
+$("hdr-meta").innerHTML=CARD.headerMeta;
+$("hero-eyebrow").textContent=CARD.eyebrow;
+$("hero-title").textContent=CARD.title;
+$("hero-sub").innerHTML=CARD.sub.map((s,i)=>(i?'<span class="dot">•</span>':'')+`<span>${s}</span>`).join('');
+
+const avg=Math.round(CARD.races.reduce((a,r)=>a+r.combined,0)/CARD.races.length);
+const best=CARD.races.reduce((a,r)=>r.conf<a.conf?r:a);
+$("hero-stats").innerHTML=`
+  <div><div class="v">${CARD.races.length}</div><div class="k">Races Analyzed</div></div>
+  <div><div class="v">${avg}%</div><div class="k">Avg Top-3 Win %</div></div>
+  <div><div class="v">R${best.no}</div><div class="k">Top Confidence Spot</div></div>
+  <div><div class="v">${Math.max(...CARD.races.flatMap(r=>r.picks.map(p=>p.win)))}%</div><div class="k">Highest Single Pick</div></div>`;
+
+// confidence board (sorted by conf rank)
+const sorted=[...CARD.races].sort((a,b)=>a.conf-b.conf);
+$("cboard").innerHTML=sorted.map((r,i)=>{
+  const sh=shapeMap[r.shape];
+  return `<a class="crow${i===0?' lead':''}" href="#race-${r.no}">
+    <div class="cr">#${r.conf}</div>
+    <div class="rc"><b>Race ${r.no}</b>${r.cond.join(' · ')}</div>
+    <div class="shape"><span class="pill ${sh[0]}">${sh[1]}</span></div>
+    <div class="cmb"><b>${r.combined}%</b><span>Top-3 Win</span></div>
+  </a>`;}).join('');
+
+// sticky nav
+$("racenav").innerHTML=CARD.races.map(r=>`<a href="#race-${r.no}" data-r="${r.no}">R${r.no}</a>`).join('');
+
+// races
+$("races").innerHTML=CARD.races.map(r=>{
+  const sh=shapeMap[r.shape];
+  const winbar=`<div class="winbar">
+     ${r.picks.map((p,i)=>`<i class="w${i+1}" data-w="${p.win}">${p.win}%</i>`).join('')}
+     <i class="wr" data-w="${100-r.picks.reduce((a,p)=>a+p.win,0)}">Field</i></div>`;
+  const picks=r.picks.map((p,i)=>`
+    <div class="pick p${i+1}">${saddle(p.n)}
+      <div class="pbody">
+        <div class="ptop"><span class="nm">${p.nm}</span><span class="alert">${p.alert}</span>
+          <div class="nums"><div class="nv"><b>${p.tpn}</b><span>TPN Prime</span></div><div class="nv"><b>${p.win}%</b><span>Win Prob</span></div></div></div>
+        <div class="tpnmini"><div class="tb"><i data-w="${tpnW(p.tpn)}"></i></div></div>
+        <div class="pdesc"><div><b>Setup</b>${p.setup}</div><div><b>Edge</b>${p.edge}</div></div>
+      </div>
+    </div>`).join('');
+  return `<section class="race" id="race-${r.no}">
+    <div class="wrap">
+      <div class="rhead">
+        <div><div class="rno">Race ${r.no}</div><h2>${r.name}</h2>
+          <div class="cond"><span>${r.cond.join('</span><span class="dot">•</span><span>')}</span></div></div>
+        <div class="rmeta"><span class="pill ${sh[0]}">${sh[1]}</span>
+          <div class="conf"><b>#${r.conf}</b><span>Confidence</span></div></div>
+      </div>
+      <div class="winbar-wrap"><div class="winbar-top"><span>Top-3 combined win probability</span><span>${r.combined}%</span></div>${winbar}</div>
+      <div class="flow"><div class="fl">Pace Projection · ${sh[1]}</div><p>${r.flow}</p></div>
+      <div class="picks">${picks}</div>
+      <div class="rfoot">
+        <div class="final"><div class="fl">The Machine's Final Analysis</div><p>${r.final}</p></div>
+        <div class="alt"><div class="al">Scratch Protection</div>
+          <div class="arow">${saddle(r.alt.n)}<div><div class="nm">${r.alt.nm}</div></div></div>
+          <p>${r.alt.angle}</p>
+          <div class="rule">↳ Moves into the #3 slot if any Top-3 pick is scratched. (TPN ${r.alt.tpn} · ${r.alt.win}%)</div>
+        </div>
+      </div>
+    </div>
+  </section>`;}).join('');
+
+// partners
+$("partners").innerHTML=CARD.partners.map((p,i)=>(i?'<span class="sep">·</span>':'')+`<span>${p}</span>`).join('');
+
+// animate bars
+const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fill=()=>document.querySelectorAll('.winbar i,.tpnmini .tb i').forEach(b=>b.style.width=b.dataset.w+'%');
+if(reduce){fill();}else{requestAnimationFrame(()=>setTimeout(fill,200));}
+
+// scrollspy for sticky nav
+const navlinks=[...document.querySelectorAll('.racenav a')];
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  const id=e.target.id.split('-')[1];
+  navlinks.forEach(a=>a.classList.toggle('active',a.dataset.r===id));}});},{rootMargin:"-45% 0px -50% 0px"});
+document.querySelectorAll('.race').forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
