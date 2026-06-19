@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrackSmart AI — Partnership Overview</title>
+<meta property="og:title" content="TrackSmart AI — Partnership Overview">
+<meta property="og:description" content="The only AI that thinks like a handicapper. Real-time AI handicapping for Thoroughbred and Standardbred racing.">
+<style>
+  :root{
+    --felt:#0d2818;
+    --felt-deep:#081a10;
+    --parchment:#f7f3e8;
+    --parchment-dim:#efe9d8;
+    --brass:#b8860b;
+    --brass-bright:#d4a017;
+    --navy:#16314f;
+    --ink:#262220;
+    --ink-soft:#52473c;
+    --rule:#cdbf9a;
+  }
+
+  *{box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.04), transparent 55%),
+      linear-gradient(180deg, var(--felt) 0%, var(--felt-deep) 100%);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:"Spline Sans","Segoe UI",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding:48px 20px 80px;
+  }
+
+  .sheet{
+    max-width:880px;
+    margin:0 auto;
+    background:
+      linear-gradient(180deg, var(--parchment) 0%, var(--parchment-dim) 100%);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.5) inset,
+      0 30px 60px -20px rgba(0,0,0,0.55),
+      0 0 0 1px rgba(0,0,0,0.08);
+    position:relative;
+  }
+
+  .sheet::before{
+    content:"";
+    position:absolute;
+    inset:14px;
+    border:1px solid rgba(184,134,11,0.35);
+    pointer-events:none;
+  }
+
+  /* ===== MASTHEAD ===== */
+  .masthead{
+    padding:46px 56px 30px;
+    text-align:center;
+    border-bottom:3px double var(--brass);
+    margin:14px 14px 0;
+  }
+
+  .eyebrow{
+    font-family:"Spline Sans",sans-serif;
+    font-size:11px;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--brass);
+    font-weight:600;
+    margin:0 0 14px;
+  }
+
+  .wordmark{
+    font-family:"Bodoni MT","Didot","Bodoni Moda",Georgia,"Times New Roman",serif;
+    font-weight:700;
+    font-size:clamp(40px,6vw,58px);
+    letter-spacing:0.01em;
+    color:var(--navy);
+    margin:0;
+    line-height:1;
+  }
+
+  .wordmark em{
+    font-style:italic;
+    color:var(--brass);
+  }
+
+  .tagline{
+    font-family:"Bodoni MT","Didot",Georgia,serif;
+    font-style:italic;
+    font-weight:700;
+    font-size:19px;
+    color:var(--brass);
+    margin:16px 0 0;
+    letter-spacing:0.01em;
+  }
+
+  .tagline-sub{
+    font-family:"Bodoni MT","Didot",Georgia,serif;
+    font-style:italic;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    margin:6px 0 0;
+    letter-spacing:0.01em;
+  }
+
+  .byline{
+    font-size:11.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:16px 0 0;
+    font-weight:500;
+  }
+
+  .byline span{color:var(--brass); margin:0 8px;}
+
+  /* ===== SCOPE STRIP ===== */
+  .scope{
+    display:flex;
+    justify-content:center;
+    gap:0;
+    margin:22px 14px 0;
+    flex-wrap:wrap;
+  }
+  .scope-item{
+    font-size:10.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--navy);
+    padding:7px 18px;
+    border-right:1px solid var(--rule);
+  }
+  .scope-item:last-child{border-right:none;}
+
+  @media (max-width:480px){
+    .scope-item{padding:5px 10px; font-size:9.5px; letter-spacing:0.1em;}
+  }
+
+  /* ===== BODY ===== */
+  .body-wrap{padding:8px 56px 10px;}
+
+  section{margin:38px 0;}
+
+  .sec-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin:0 0 16px;
+  }
+
+  .sec-head h2{
+    font-family:"Spline Sans",sans-serif;
+    font-size:13.5px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--navy);
+    font-weight:700;
+    margin:0;
+    white-space:nowrap;
+  }
+
+  .sec-rule{
+    flex:1;
+    height:1px;
+    background:linear-gradient(90deg, var(--brass) 0%, var(--rule) 70%, transparent 100%);
+  }
+
+  p{
+    font-size:15px;
+    line-height:1.65;
+    color:var(--ink);
+    margin:0 0 12px;
+  }
+
+  .lede{
+    font-family:"Bodoni MT","Didot",Georgia,serif;
+    font-style:italic;
+    font-size:18px;
+    line-height:1.55;
+    color:var(--navy);
+    background:rgba(184,134,11,0.08);
+    border-left:3px solid var(--brass);
+    padding:18px 24px;
+    margin:18px 0 0;
+  }
+
+  /* ===== JUDGMENT PANEL ===== */
+  .judgment{
+    margin:20px 0 0;
+    padding:24px 28px;
+    background:var(--parchment);
+    border-top:1px solid var(--brass);
+    border-bottom:1px solid var(--brass);
+    position:relative;
+  }
+  .judgment-claim{
+    font-family:"Spline Sans",sans-serif;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--brass);
+    margin:0 0 10px;
+  }
+  .judgment p{
+    margin:0 0 10px;
+    font-size:14.5px;
+  }
+  .judgment p:last-child{margin-bottom:0;}
+  .judgment-runs{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:8px;
+    margin:16px 0 14px;
+  }
+  .run-card{
+    background:var(--navy);
+    padding:10px 6px;
+    text-align:center;
+  }
+  .run-card .run-label{
+    font-size:9px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:#8fa6c2;
+    margin-bottom:6px;
+  }
+  .run-card .run-order{
+    font-family:"Spline Sans",sans-serif;
+    font-weight:700;
+    font-size:14px;
+    color:#f4e6c3;
+    letter-spacing:0.02em;
+    white-space:nowrap;
+  }
+
+  @media (max-width:560px){
+    .judgment-runs{grid-template-columns:repeat(2, 1fr);}
+    .run-card .run-order{font-size:15px;}
+  }
+
+  /* ===== TOTE BOARD ===== */
+  .tote{
+    background:var(--navy);
+    border:1px solid #0a1f35;
+    border-radius:2px;
+    padding:26px 10px;
+    margin:18px 0 0;
+    box-shadow:0 12px 28px -14px rgba(0,0,0,0.5);
+    position:relative;
+    overflow:hidden;
+  }
+  .tote::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:4px;
+    background:repeating-linear-gradient(90deg, var(--brass) 0 14px, transparent 14px 22px);
+  }
+  .tote-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:0;
+  }
+  .tote-cell{
+    text-align:center;
+    padding:8px 12px;
+    border-right:1px solid rgba(255,255,255,0.12);
+  }
+  .tote-cell:last-child{border-right:none;}
+  .tote-num{
+    font-family:"Spline Sans",sans-serif;
+    font-weight:700;
+    font-size:clamp(26px,3.4vw,34px);
+    color:#f4e6c3;
+    letter-spacing:0.01em;
+    font-variant-numeric:tabular-nums;
+    line-height:1;
+  }
+  .tote-label{
+    font-size:10.5px;
+    color:#a9bdd4;
+    letter-spacing:0.04em;
+    margin-top:9px;
+    line-height:1.4;
+  }
+
+  /* ===== TWO COLUMN ===== */
+  .cols{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+    margin-top:18px;
+  }
+  .col-title{
+    font-family:"Bodoni MT","Didot",Georgia,serif;
+    font-weight:700;
+    font-size:16px;
+    color:var(--navy);
+    margin:0 0 12px;
+    padding-bottom:8px;
+    border-bottom:1.5px solid var(--brass);
+  }
+  ul.plain{list-style:none; margin:0; padding:0;}
+  ul.plain li{
+    position:relative;
+    padding-left:18px;
+    margin-bottom:10px;
+    font-size:14px;
+    line-height:1.55;
+    color:var(--ink);
+  }
+  ul.plain li::before{
+    content:"";
+    position:absolute;
+    left:0; top:7px;
+    width:6px; height:6px;
+    background:var(--brass);
+    border-radius:50%;
+  }
+
+  /* ===== ASK LIST ===== */
+  .ask{
+    counter-reset:ask;
+    margin-top:18px;
+  }
+  .ask-item{
+    display:grid;
+    grid-template-columns:48px 1fr;
+    gap:16px;
+    padding:16px 0;
+    border-bottom:1px solid var(--rule);
+  }
+  .ask-item:last-child{border-bottom:none;}
+  .ask-num{
+    counter-increment:ask;
+    font-family:"Bodoni MT","Didot",Georgia,serif;
+    font-size:30px;
+    font-weight:700;
+    color:var(--brass);
+    line-height:1;
+  }
+  .ask-num::before{content: counter(ask, decimal-leading-zero);}
+  .ask-title{
+    font-weight:700;
+    color:var(--navy);
+    font-size:15px;
+    margin:0 0 4px;
+    letter-spacing:0.01em;
+  }
+  .ask-body{font-size:14.5px; color:var(--ink); line-height:1.6;}
+
+  /* ===== QUOTE ===== */
+  .quote-block{
+    margin-top:22px;
+    padding:26px 30px;
+    background:var(--felt);
+    color:#e9e2cf;
+    position:relative;
+    border-left:4px solid var(--brass);
+  }
+  .quote-block p{
+    color:#e9e2cf;
+    font-family:"Bodoni MT","Didot",Georgia,serif;
+    font-style:italic;
+    font-size:17px;
+    line-height:1.6;
+    margin:0 0 10px;
+  }
+  .quote-attr{
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--brass-bright);
+    font-weight:600;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer{
+    margin:0 14px 14px;
+    padding:18px 42px;
+    background:var(--navy);
+    text-align:center;
+  }
+  .footer p{
+    margin:0;
+    color:#b9c8da;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+  .footer span{color:var(--brass-bright); margin:0 10px;}
+
+  /* ===== SPEED BANNER ===== */
+  .speed-banner{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin:14px 0 0;
+    padding:16px 24px;
+    background:var(--brass);
+    color:var(--felt-deep);
+  }
+  .speed-banner .speed-num{
+    font-family:"Bodoni MT","Didot",Georgia,serif;
+    font-weight:700;
+    font-size:30px;
+    line-height:1;
+    white-space:nowrap;
+  }
+  .speed-banner .speed-text{
+    font-size:13.5px;
+    line-height:1.45;
+    font-weight:500;
+  }
+
+  /* ===== VISION SECTION ===== */
+  .vision{
+    background:var(--felt);
+    margin:20px 0 0;
+    padding:30px 32px;
+    position:relative;
+  }
+  .vision::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:3px;
+    background:var(--brass);
+  }
+  .vision-eyebrow{
+    font-size:11px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--brass-bright);
+    font-weight:700;
+    margin:0 0 10px;
+  }
+  .vision h3{
+    font-family:"Bodoni MT","Didot",Georgia,serif;
+    font-size:22px;
+    color:#f4ecd8;
+    margin:0 0 14px;
+    line-height:1.3;
+  }
+  .vision p{
+    color:#cdd9c9;
+    font-size:14.5px;
+    line-height:1.65;
+    margin:0 0 12px;
+  }
+  .vision p:last-child{margin-bottom:0;}
+  .vision strong{color:#f4e6c3;}
+
+  @media (max-width:680px){
+    body{padding:0;}
+    .sheet{box-shadow:none;}
+    .masthead{padding:34px 24px 24px;}
+    .body-wrap{padding:6px 24px 10px;}
+    .cols{grid-template-columns:1fr; gap:24px;}
+    .tote-grid{grid-template-columns:1fr 1fr;}
+    .tote-cell{border-right:none; border-bottom:1px solid rgba(255,255,255,0.12); padding:16px 12px;}
+    .scope-item{border-right:none; padding:5px 12px;}
+    .sec-head h2{font-size:12px;}
+  }
+
+  @media print{
+    body{background:var(--parchment); padding:0;}
+    .sheet{box-shadow:none; max-width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="masthead">
+    <p class="eyebrow">Confidential &nbsp;·&nbsp; For Discussion Purposes</p>
+    <h1 class="wordmark">TRACK<em>SMART</em> AI</h1>
+    <p class="tagline">&ldquo;The Only AI That Thinks Like a Handicapper&rdquo;</p>
+    <p class="tagline-sub">Real-Time AI Handicapping, Built for the Modern Racing Fan</p>
+    <p class="byline">Developed by David S. Lowry, CPA <span>&middot;</span> TrackSmart AI</p>
+  </div>
+
+  <div class="scope">
+    <span class="scope-item">Thoroughbred</span>
+    <span class="scope-item">Standardbred</span>
+    <span class="scope-item">Domestic</span>
+    <span class="scope-item">International</span>
+  </div>
+
+  <div class="body-wrap">
+
+    <section>
+      <div class="sec-head"><h2>The Opportunity</h2><div class="sec-rule"></div></div>
+      <p>Racing faces a generational challenge: attracting and retaining younger fans. The missing ingredient is not better marketing — it is a better product experience. Today's sports fan expects instant, intelligent, data-driven insight. TrackSmart AI delivers exactly that, built for Thoroughbred and Standardbred racing, on tracks across North America and internationally.</p>
+      <p class="lede">Imagine a fan clicking any race on Equibase.com and watching AI generate a real-time race report — pace projections, speed figures, trip notes, and race flow analysis — in seconds. That is TrackSmart AI.</p>
+    </section>
+
+    <section>
+      <div class="sec-head"><h2>What Is TrackSmart AI</h2><div class="sec-rule"></div></div>
+      <p>TrackSmart AI is a working, tested AI handicapping engine that parses Thoroughbred and Standardbred racing data — domestic and international — and produces structured race analysis reports with consistent reliability. It is not a concept or a prototype. It produces results today.</p>
+
+      <div class="judgment">
+        <p class="judgment-claim">Built to Think, Not Just Calculate</p>
+        <p>Run the same race through TrackSmart AI five times and the top contenders stay consistent — but the exact order can shift. That is not noise. That is exactly what happens when five world-class handicappers study the same race independently: they tend to agree on who belongs, and disagree on the order.</p>
+        <div class="judgment-runs">
+          <div class="run-card"><div class="run-label">Run 1</div><div class="run-order">3 · 7 · 1 · 5</div></div>
+          <div class="run-card"><div class="run-label">Run 2</div><div class="run-order">3 · 1 · 7 · 5</div></div>
+          <div class="run-card"><div class="run-label">Run 3</div><div class="run-order">7 · 3 · 5 · 1</div></div>
+          <div class="run-card"><div class="run-label">Run 4</div><div class="run-order">3 · 7 · 5 · 1</div></div>
+          <div class="run-card"><div class="run-label">Run 5</div><div class="run-order">7 · 1 · 3 · 5</div></div>
+        </div>
+        <p>That is the signature of real handicapping judgment, not a lookup table. And every report explains its reasoning — the why and the why-not behind each ranking.</p>
+      </div>
+
+      <div class="tote">
+        <div class="tote-grid">
+          <div class="tote-cell">
+            <div class="tote-num">80.1%</div>
+            <div class="tote-label">Thoroughbred Top&nbsp;4<br>strike rate &nbsp;·&nbsp; 2,936 races</div>
+          </div>
+          <div class="tote-cell">
+            <div class="tote-num">82.4%</div>
+            <div class="tote-label">Standardbred (TrackMaster data)<br>strike rate &nbsp;·&nbsp; 507 races</div>
+          </div>
+          <div class="tote-cell">
+            <div class="tote-num">3,443</div>
+            <div class="tote-label">Combined races tracked<br>across both breeds</div>
+          </div>
+          <div class="tote-cell">
+            <div class="tote-num">~$8.00</div>
+            <div class="tote-label">Blended average payout<br>on AI hits</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="speed-banner">
+        <div class="speed-num">&lt;2:00</div>
+        <div class="speed-text">A complete race report — rankings, pace projection, and reasoning — generated in under two minutes from a standing start.</div>
+      </div>
+
+      <div class="cols">
+        <div>
+          <h3 class="col-title">Current Capabilities</h3>
+          <ul class="plain">
+            <li>Reliably parses past performance PDFs into structured data — models built for DRF, Brisnet, Equibase, and TrackMaster (harness)</li>
+            <li>Generates full race reports including pace projections and race flow</li>
+            <li>Speed figure analysis and trip note integration</li>
+            <li>Identifies pace scenarios: wire-to-wire, stalker, closer setups</li>
+            <li>Grounded in structured handicapping logic, not freeform generation</li>
+            <li>Validated across 3,400+ real races (Thoroughbred &amp; Standardbred) at an 80%+ Top&nbsp;4 strike rate</li>
+            <li>Built and tested across domestic and international racing jurisdictions</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="col-title">With Equibase Data Feed</h3>
+          <ul class="plain">
+            <li>Replace PDF parsing with direct JSON/structured data stream</li>
+            <li>Enable true real-time race report generation</li>
+            <li>Scale to every race on every North American track daily</li>
+            <li>Power fan-facing tools: web, mobile, and a planned native iOS app for trackside use</li>
+            <li>Fuel beginner-friendly AI explanations to grow new audiences</li>
+            <li>Foundation for next-generation wagering intelligence products</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><h2>Why This, Why Now</h2><div class="sec-rule"></div></div>
+      <p>The Jockey Club has publicly committed to fan engagement and growing the sport with younger audiences. TrackSmart AI is built for exactly that mission. The technology exists. The data infrastructure exists at Equibase. What has been missing is the AI layer that connects them into a consumer product.</p>
+      <p>TrackSmart AI bridges that gap — today, with a working system across two breeds and both domestic and international cards — not a roadmap.</p>
+    </section>
+
+    <section>
+      <div class="vision">
+        <p class="vision-eyebrow">The Vision</p>
+        <h3>25,000 fans at Keeneland. 25,000 phones in their pockets.</h3>
+        <p>The plan has always been an iOS app. A fan walks into Keeneland, opens TrackSmart AI, taps the upcoming race, and watches the AI handicap it live — rankings, pace shape, and the reasoning behind them, delivered in <strong>under two minutes</strong>.</p>
+        <p>Their friend two seats over runs the same race and gets a slightly different order on the same short list of contenders. That is not a bug — it is what makes the experience feel real. It is the same conversation that happens in the grandstand every single day, just generated instantly and explained clearly, for a fan who may have never picked up a Form before.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><h2>The Partnership Proposal</h2><div class="sec-rule"></div></div>
+      <p>David Lowry is looking to partner with the right institutional player to take TrackSmart AI to full-scale backend development. He does not have the infrastructure to build it alone — and he does not need to. Equibase and The Jockey Club do.</p>
+
+      <div class="cols">
+        <div>
+          <h3 class="col-title">What TrackSmart AI Brings</h3>
+          <ul class="plain">
+            <li>Proven, working AI handicapping engine — Thoroughbred and Standardbred</li>
+            <li>Proprietary prompt architecture and logic system</li>
+            <li>Deep domain expertise — decades of horse racing knowledge</li>
+            <li>Brand: TrackSmart AI (retained in any partnership)</li>
+            <li>Open to the structure that makes sense — partnership, licensing, or acquisition</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="col-title">What the Partner Brings</h3>
+          <ul class="plain">
+            <li>Equibase structured data feed (JSON or equivalent)</li>
+            <li>Backend development and engineering resources</li>
+            <li>Distribution: Equibase, NYRA, ADW platforms, mobile</li>
+            <li>Industry relationships and regulatory access</li>
+            <li>Scale to make this the standard fan tool in racing</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><h2>The Ask</h2><div class="sec-rule"></div></div>
+      <p><strong>Three things would make this partnership work:</strong></p>
+
+      <div class="ask">
+        <div class="ask-item">
+          <div class="ask-num"></div>
+          <div>
+            <p class="ask-title">Explore Data Access</p>
+            <p class="ask-body">A structured data feed from Equibase would replace PDF parsing and unlock real-time output — worth discussing what a pilot could look like.</p>
+          </div>
+        </div>
+        <div class="ask-item">
+          <div class="ask-num"></div>
+          <div>
+            <p class="ask-title">Brand Continuity</p>
+            <p class="ask-body">Ideally TrackSmart AI remains the visible name on the consumer-facing product — open to discussing how that works in practice.</p>
+          </div>
+        </div>
+        <div class="ask-item">
+          <div class="ask-num"></div>
+          <div>
+            <p class="ask-title">Path Forward</p>
+            <p class="ask-body">Structure — whether partnership, revenue-share, or something else — is a conversation for down the road. Right now the goal is finding the right way to work together.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <p>"I built this with one hand tied behind my back — parsing a PDF because that is what is publicly available. Give me the Equibase data feed and this becomes something the industry has never seen."</p>
+        <p class="quote-attr">— David S. Lowry</p>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="footer">
+    <p>TrackSmart AI <span>&middot;</span> David S. Lowry, CPA <span>&middot;</span> Confidential — For Discussion Purposes</p>
+  </div>
+
+</div>
+
+</body>
+</html>
