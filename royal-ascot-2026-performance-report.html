@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrackSmart AI — Royal Ascot 2026 Performance Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;0,6..96,900;1,6..96,500&family=Spline+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --felt-dark:#070f0a;
+    --felt:#0c2117;
+    --felt-light:#11301f;
+    --panel:#0f2a1b;
+    --panel-line:#23492f;
+    --brass:#c9a455;
+    --brass-bright:#ecd49b;
+    --brass-dim:#7d6536;
+    --cream:#f2ecd9;
+    --cream-dim:#a9b6a2;
+    --win:#d8b34a;
+    --win-soft:#3a3018;
+    --place:#9aa98a;
+    --place-soft:#1f2c1d;
+    --miss-line:#3a5443;
+    --maroon:#7a3a3a;
+    --rule: rgba(201,164,85,0.28);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 18% 0%, rgba(201,164,85,0.07), transparent 38%),
+      radial-gradient(circle at 85% 15%, rgba(201,164,85,0.05), transparent 45%),
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 3px),
+      var(--felt-dark);
+    color:var(--cream);
+    font-family:'Spline Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{max-width:980px; margin:0 auto; padding:0 24px;}
+
+  a{color:var(--brass-bright);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:72px 0 48px;
+    border-bottom:1px solid var(--rule);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:-40% -10% auto -10%;
+    height:140%;
+    background: radial-gradient(ellipse at 50% 0%, rgba(216,179,74,0.10), transparent 60%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family:'Spline Sans Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--brass);
+    margin:0 0 18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px; background:var(--brass-dim);
+    display:inline-block;
+  }
+  h1.title{
+    font-family:'Bodoni Moda', Georgia, serif;
+    font-weight:800;
+    font-size:clamp(2.6rem, 7vw, 4.6rem);
+    line-height:0.96;
+    margin:0;
+    letter-spacing:-0.01em;
+    color:var(--cream);
+  }
+  h1.title em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--brass-bright);
+    display:block;
+    font-size:0.42em;
+    margin-top:10px;
+    letter-spacing:0.01em;
+  }
+  .dek{
+    font-size:1.02rem;
+    color:var(--cream-dim);
+    max-width:560px;
+    margin:22px 0 0;
+  }
+  .dek strong{color:var(--cream); font-weight:600;}
+
+  /* ---------- STAT STRIP ---------- */
+  .stats-strip{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--rule);
+    border:1px solid var(--rule);
+    margin:44px 0 0;
+  }
+  .stat{
+    background:var(--panel);
+    padding:28px 22px;
+    text-align:left;
+  }
+  .stat .num{
+    font-family:'Bodoni Moda', serif;
+    font-weight:700;
+    font-size:clamp(2.1rem, 5vw, 2.9rem);
+    color:var(--brass-bright);
+    line-height:1;
+  }
+  .stat .num small{
+    font-family:'Spline Sans Mono', monospace;
+    font-size:1rem;
+    color:var(--cream-dim);
+    font-weight:400;
+    margin-left:6px;
+  }
+  .stat .label{
+    font-family:'Spline Sans Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--cream-dim);
+    margin-top:10px;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:64px 0;}
+  section + section{border-top:1px solid var(--rule);}
+  .kicker{
+    font-family:'Spline Sans Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--brass);
+    margin:0 0 10px;
+  }
+  h2{
+    font-family:'Bodoni Moda', serif;
+    font-weight:600;
+    font-size:clamp(1.5rem, 3.4vw, 2.05rem);
+    margin:0 0 14px;
+    color:var(--cream);
+  }
+  .lede{
+    color:var(--cream-dim);
+    max-width:640px;
+    font-size:0.96rem;
+    margin:0 0 32px;
+  }
+
+  /* ---------- LEDGER (signature element) ---------- */
+  .ledger{margin-top:8px;}
+  .ledger-row{
+    display:grid;
+    grid-template-columns:96px repeat(7, 1fr);
+    align-items:center;
+    gap:10px;
+    padding:11px 0;
+    border-bottom:1px solid rgba(201,164,85,0.12);
+  }
+  .ledger-row:first-of-type{border-top:1px solid rgba(201,164,85,0.12);}
+  .ledger-daylabel{
+    font-family:'Spline Sans Mono', monospace;
+    font-size:0.74rem;
+    color:var(--cream-dim);
+    letter-spacing:0.04em;
+  }
+  .ledger-daylabel b{color:var(--brass-bright); display:block; font-size:0.92rem; font-weight:600;}
+  .chip{
+    aspect-ratio:1/1;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Spline Sans Mono', monospace;
+    font-size:0.66rem;
+    font-weight:500;
+    border:1.4px solid var(--miss-line);
+    color:var(--cream-dim);
+    background:transparent;
+    transition:transform 0.15s ease;
+  }
+  .chip:hover{transform:scale(1.12);}
+  .chip.win{
+    background:radial-gradient(circle at 32% 28%, var(--win-soft), var(--win) 130%);
+    border-color:var(--win);
+    color:#241c08;
+    font-weight:700;
+  }
+  .chip.place{
+    background:var(--place-soft);
+    border-color:var(--place);
+    color:var(--place);
+  }
+  .ledger-legend{
+    display:flex; flex-wrap:wrap; gap:26px;
+    margin-top:26px;
+    font-family:'Spline Sans Mono', monospace;
+    font-size:0.74rem;
+    color:var(--cream-dim);
+  }
+  .ledger-legend span{display:flex; align-items:center; gap:8px;}
+  .dot{width:13px; height:13px; border-radius:50%; display:inline-block;}
+  .dot.win{background:var(--win); border:1px solid var(--win);}
+  .dot.place{background:var(--place-soft); border:1.4px solid var(--place);}
+  .dot.miss{background:transparent; border:1.4px solid var(--miss-line);}
+
+  /* ---------- TABLES ---------- */
+  table{width:100%; border-collapse:collapse; font-size:0.88rem;}
+  thead th{
+    text-align:left;
+    font-family:'Spline Sans Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--brass);
+    padding:0 12px 10px;
+    border-bottom:1px solid var(--rule);
+    font-weight:500;
+  }
+  tbody td{
+    padding:11px 12px;
+    border-bottom:1px solid rgba(201,164,85,0.10);
+    color:var(--cream-dim);
+  }
+  tbody tr:hover td{color:var(--cream); background:rgba(201,164,85,0.035);}
+  td.num, th.num{font-family:'Spline Sans Mono', monospace;}
+  td.strong{color:var(--cream); font-weight:600;}
+  .tag{
+    font-family:'Spline Sans Mono', monospace;
+    font-size:0.68rem;
+    padding:3px 8px;
+    border-radius:3px;
+    letter-spacing:0.04em;
+    display:inline-block;
+  }
+  .tag.exact{background:var(--win-soft); color:var(--brass-bright); border:1px solid var(--brass-dim);}
+  .tag.combined{background:rgba(154,169,138,0.14); color:var(--place); border:1px solid var(--place);}
+
+  /* ---------- FIELD SIZE SPLIT ---------- */
+  .split{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--rule);
+    border:1px solid var(--rule);
+  }
+  .split-block{background:var(--panel); padding:30px 26px;}
+  .split-block .pct{
+    font-family:'Bodoni Moda', serif;
+    font-weight:700;
+    font-size:2.6rem;
+    color:var(--brass-bright);
+  }
+  .split-block .sub{
+    font-family:'Spline Sans Mono', monospace;
+    font-size:0.74rem;
+    color:var(--cream-dim);
+    margin-top:6px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+  .split-block p{font-size:0.88rem; color:var(--cream-dim); margin:14px 0 0;}
+  .bar{height:6px; background:rgba(255,255,255,0.06); margin-top:16px; border-radius:3px; overflow:hidden;}
+  .bar i{display:block; height:100%; background:linear-gradient(90deg, var(--brass-dim), var(--brass-bright));}
+
+  /* ---------- STANDOUTS ---------- */
+  .standouts{display:grid; grid-template-columns:1fr 1fr; gap:36px;}
+  .standout-col h3{
+    font-family:'Spline Sans Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    margin:0 0 18px;
+  }
+  .standout-col.best h3{color:var(--win);}
+  .standout-col.worst h3{color:var(--maroon);}
+  .standout-item{margin-bottom:20px; padding-left:16px; border-left:2px solid var(--miss-line);}
+  .standout-col.best .standout-item{border-left-color:var(--brass-dim);}
+  .standout-col.worst .standout-item{border-left-color:var(--maroon);}
+  .standout-item .race{font-weight:600; color:var(--cream); font-size:0.95rem;}
+  .standout-item .desc{font-size:0.86rem; color:var(--cream-dim); margin-top:4px;}
+
+  /* ---------- APPENDIX ---------- */
+  .appendix-table{font-size:0.8rem;}
+  .appendix-table td, .appendix-table th{padding:8px 10px;}
+  .result-pill{
+    font-family:'Spline Sans Mono', monospace;
+    font-size:0.66rem;
+    padding:2px 7px;
+    border-radius:3px;
+    letter-spacing:0.03em;
+  }
+  .result-pill.WIN{background:var(--win-soft); color:var(--brass-bright); border:1px solid var(--brass-dim);}
+  .result-pill.PLACE{background:var(--place-soft); color:var(--place); border:1px solid var(--place);}
+  .result-pill.MISS{background:transparent; color:var(--cream-dim); border:1px solid var(--miss-line);}
+
+  details{margin-top:6px;}
+  summary{
+    cursor:pointer;
+    font-family:'Spline Sans Mono', monospace;
+    font-size:0.78rem;
+    color:var(--brass);
+    letter-spacing:0.05em;
+    padding:10px 0;
+    list-style:none;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::before{content:"+ "; color:var(--brass-dim);}
+  details[open] summary::before{content:"– ";}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:48px 0 60px;
+    border-top:1px solid var(--rule);
+  }
+  .footer-grid{
+    display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px;
+  }
+  .footer-mark{
+    font-family:'Bodoni Moda', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:1.1rem;
+    color:var(--brass-bright);
+  }
+  .footer-meta{
+    font-family:'Spline Sans Mono', monospace;
+    font-size:0.7rem;
+    color:var(--cream-dim);
+    text-align:right;
+    line-height:1.7;
+  }
+
+  @media (max-width:760px){
+    .stats-strip{grid-template-columns:1fr;}
+    .split, .standouts{grid-template-columns:1fr;}
+    .ledger-row{grid-template-columns:60px repeat(7, 1fr); gap:6px;}
+    .chip{font-size:0.58rem;}
+    .ledger-daylabel{font-size:0.66rem;}
+    .ledger-daylabel b{font-size:0.8rem;}
+    table{font-size:0.78rem;}
+    thead th, tbody td{padding:8px 6px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <p class="eyebrow">TrackSmart AI · TPN Prime</p>
+    <h1 class="title">Royal Ascot<em>Five-Day Festival Report</em></h1>
+    <p class="dek">A full accounting of every selection across all <strong>35 races</strong> of the 2026 Royal Ascot meet — June 16 through June 20 — measured against the actual result, race by race, day by day.</p>
+  </header>
+
+  <!-- STATS -->
+  <div class="stats-strip">
+    <div class="stat">
+      <div class="num">51.4<small>%</small></div>
+      <div class="label">Winner landed in Top 4 — 18 / 35</div>
+    </div>
+    <div class="stat">
+      <div class="num">74.3<small>%</small></div>
+      <div class="label">Top 4 captured the win or the place — 26 / 35</div>
+    </div>
+    <div class="stat">
+      <div class="num">19</div>
+      <div class="label">Exact-position hits across the meet</div>
+    </div>
+  </div>
+
+  <!-- LEDGER -->
+  <section id="ledger">
+    <p class="kicker">The Ledger</p>
+    <h2>All 35 races, one board</h2>
+    <p class="lede">Every race of the meet, grouped by day. A filled gold circle means TrackSmart's top 4 contained the actual winner. A hollow brass ring means the top 4 missed the win but still caught the runner-up. An open ring means neither landed.</p>
+
+    <div class="ledger">
+      <div class="ledger-row">
+        <div class="ledger-daylabel"><b>Day 1</b>Jun 16</div>
+        <div class="chip place" title="R1 Queen Anne — Place">R1</div>
+        <div class="chip win" title="R2 Coventry — Win">R2</div>
+        <div class="chip win" title="R3 King Charles III — Win (exact)">R3</div>
+        <div class="chip win" title="R4 St James's Palace — Win">R4</div>
+        <div class="chip" title="R5 Ascot Stakes — Miss">R5</div>
+        <div class="chip win" title="R6 Wolferton — Win (exact)">R6</div>
+        <div class="chip place" title="R7 Copper Horse — Place">R7</div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-daylabel"><b>Day 2</b>Jun 17</div>
+        <div class="chip win" title="R1 Queen Mary — Win (exact)">R1</div>
+        <div class="chip place" title="R2 Queen's Vase — Place">R2</div>
+        <div class="chip win" title="R3 Duke of Cambridge — Win">R3</div>
+        <div class="chip win" title="R4 Prince of Wales's — Win">R4</div>
+        <div class="chip" title="R5 Royal Hunt Cup — Miss">R5</div>
+        <div class="chip" title="R6 Kensington Palace — Miss">R6</div>
+        <div class="chip" title="R7 Windsor Castle — Miss">R7</div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-daylabel"><b>Day 3</b>Jun 18</div>
+        <div class="chip" title="R1 Chesham — Miss">R1</div>
+        <div class="chip" title="R2 King George V — Miss">R2</div>
+        <div class="chip win" title="R3 Ribblesdale — Win">R3</div>
+        <div class="chip win" title="R4 Gold Cup — Win (exact)">R4</div>
+        <div class="chip" title="R5 Britannia — Miss">R5</div>
+        <div class="chip place" title="R6 Hampton Court — Place">R6</div>
+        <div class="chip" title="R7 Buckingham Palace — Miss">R7</div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-daylabel"><b>Day 4</b>Jun 19</div>
+        <div class="chip place" title="R1 Albany — Place">R1</div>
+        <div class="chip win" title="R2 Commonwealth Cup — Win">R2</div>
+        <div class="chip win" title="R3 Duke Of Edinburgh — Win (exact)">R3</div>
+        <div class="chip win" title="R4 Coronation — Win (exact)">R4</div>
+        <div class="chip win" title="R5 Sandringham — Win">R5</div>
+        <div class="chip win" title="R6 King Edward VII — Win (exact)">R6</div>
+        <div class="chip win" title="R7 Palace Of Holyroodhouse — Win (exact)">R7</div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-daylabel"><b>Day 5</b>Jun 20</div>
+        <div class="chip place" title="R1 Norfolk — Place (exact)">R1</div>
+        <div class="chip place" title="R2 Hardwicke — Place">R2</div>
+        <div class="chip place" title="R3 Queen Elizabeth II Jubilee — Place">R3</div>
+        <div class="chip" title="R4 Jersey — Miss">R4</div>
+        <div class="chip win" title="R5 Wokingham — Win (exact)">R5</div>
+        <div class="chip win" title="R6 Golden Gates — Win">R6</div>
+        <div class="chip win" title="R7 Queen Alexandra — Win (exact)">R7</div>
+      </div>
+    </div>
+
+    <div class="ledger-legend">
+      <span><i class="dot win"></i> Win — 18 races</span>
+      <span><i class="dot place"></i> Place — 8 races</span>
+      <span><i class="dot miss"></i> Miss — 9 races</span>
+    </div>
+  </section>
+
+  <!-- DAY BY DAY -->
+  <section id="day-by-day">
+    <p class="kicker">Day by Day</p>
+    <h2>Performance across the meet</h2>
+    <p class="lede">Day 4 was the standout of the festival; Day 3 was the toughest. The swings track field size and pace-meltdown volatility more than any single methodology issue.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th class="num">Winner in Top 4</th>
+          <th class="num">Avg Field</th>
+          <th class="num">Exact Hits</th>
+          <th class="num">Win / Place / Miss</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="strong">Day 1 — Jun 16</td><td class="num">4 / 7 (57.1%)</td><td class="num">16.9</td><td class="num">3</td><td class="num">4 / 2 / 1</td></tr>
+        <tr><td class="strong">Day 2 — Jun 17</td><td class="num">3 / 7 (42.9%)</td><td class="num">20.1</td><td class="num">3</td><td class="num">3 / 1 / 3</td></tr>
+        <tr><td class="strong">Day 3 — Jun 18</td><td class="num">2 / 7 (28.6%)</td><td class="num">19.3</td><td class="num">3</td><td class="num">2 / 1 / 4</td></tr>
+        <tr><td class="strong">Day 4 — Jun 19</td><td class="num">6 / 7 (85.7%)</td><td class="num">20.7</td><td class="num">5</td><td class="num">6 / 1 / 0</td></tr>
+        <tr><td class="strong">Day 5 — Jun 20</td><td class="num">3 / 7 (42.9%)</td><td class="num">18.0</td><td class="num">5</td><td class="num">3 / 3 / 1</td></tr>
+        <tr style="border-top:1.5px solid var(--rule);"><td class="strong" style="color:var(--brass-bright);">5-Day Total</td><td class="num strong" style="color:var(--brass-bright);">18 / 35 (51.4%)</td><td class="num strong" style="color:var(--brass-bright);">19.0</td><td class="num strong" style="color:var(--brass-bright);">19</td><td class="num strong" style="color:var(--brass-bright);">18 / 8 / 9</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- FIELD SIZE -->
+  <section id="field-size">
+    <p class="kicker">Field Size</p>
+    <h2>Smaller fields, sharper picks</h2>
+    <p class="lede">The edge held across all five days, though it narrowed considerably once Day 4 broke hard in TrackSmart's favor even in massive fields.</p>
+
+    <div class="split">
+      <div class="split-block">
+        <div class="pct">55.6%</div>
+        <div class="sub">Fields under 20 runners — 10 / 18</div>
+        <div class="bar"><i style="width:55.6%"></i></div>
+        <p>The model's natural comfort zone. Smaller fields mean less crowding around the pace and fewer longshot disruptors.</p>
+      </div>
+      <div class="split-block">
+        <div class="pct">47.1%</div>
+        <div class="sub">Fields of 20+ runners — 8 / 17</div>
+        <div class="bar"><i style="width:47.1%"></i></div>
+        <p>Still nearly a coin flip even in the biggest cavalry charges of the meet — including exact wins in 22-, 26-, and 31-horse fields.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELECTIONS THAT PLACED -->
+  <section id="placed">
+    <p class="kicker">Selections That Finished 2nd</p>
+    <h2>16 selections, 5 exact</h2>
+    <p class="lede">Beyond the headline win rate, this is where the top 4 picked up ground even when the winner slipped through. Five of these were exact-position calls — TrackSmart's runner-up pick finishing exactly 2nd.</p>
+
+    <table>
+      <thead>
+        <tr><th>Day</th><th>Race</th><th>Horse</th><th>Predicted Rank</th><th>Actual Finish</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="num">1</td><td>Queen Anne</td><td class="strong">#5 More Thunder</td><td>3rd pick</td><td>2nd</td></tr>
+        <tr><td class="num">1</td><td>St James's Palace</td><td class="strong">#2 Gstaad</td><td>1st pick</td><td>2nd</td></tr>
+        <tr><td class="num">1</td><td>Copper Horse</td><td class="strong">#8 Gamrai</td><td>2nd pick</td><td><span class="tag exact">2nd · exact</span></td></tr>
+        <tr><td class="num">2</td><td>Queen's Vase</td><td class="strong">#2 Del Maro</td><td>3rd pick</td><td>2nd</td></tr>
+        <tr><td class="num">2</td><td>Prince of Wales's</td><td class="strong">#7 Minnie Hauk</td><td>3rd pick</td><td>2nd</td></tr>
+        <tr><td class="num">3</td><td>Gold Cup</td><td class="strong">#6 Trawlerman</td><td>2nd pick</td><td><span class="tag exact">2nd · exact</span></td></tr>
+        <tr><td class="num">3</td><td>Hampton Court</td><td class="strong">#3 Endorsement</td><td>3rd pick</td><td>2nd</td></tr>
+        <tr><td class="num">4</td><td>Albany</td><td class="strong">#21 Sun Goddess</td><td>1st pick</td><td>2nd</td></tr>
+        <tr><td class="num">4</td><td>Duke Of Edinburgh</td><td class="strong">#4 Warrant Holder</td><td>2nd pick</td><td><span class="tag exact">2nd · exact</span></td></tr>
+        <tr><td class="num">4</td><td>King Edward VII</td><td class="strong">#1 Ancient Egypt</td><td>3rd pick</td><td>2nd</td></tr>
+        <tr><td class="num">4</td><td>Palace Of Holyroodhouse</td><td class="strong">#7 Sandal's Song</td><td>4th pick</td><td>2nd</td></tr>
+        <tr><td class="num">5</td><td>Norfolk</td><td class="strong">#3 Carry The Flag</td><td>2nd pick</td><td><span class="tag exact">2nd · exact</span></td></tr>
+        <tr><td class="num">5</td><td>Hardwicke</td><td class="strong">#11 Kalpana</td><td>4th pick</td><td>2nd</td></tr>
+        <tr><td class="num">5</td><td>Queen Elizabeth II Jubilee</td><td class="strong">#14 Satono Reve</td><td>1st pick</td><td>2nd</td></tr>
+        <tr><td class="num">5</td><td>Golden Gates</td><td class="strong">#11 Amadeus Mozart</td><td>1st pick</td><td>2nd</td></tr>
+        <tr><td class="num">5</td><td>Queen Alexandra</td><td class="strong">#6 French Master</td><td>2nd pick</td><td><span class="tag exact">2nd · exact</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- STANDOUTS -->
+  <section id="standouts">
+    <p class="kicker">Standout Performances</p>
+    <h2>The best calls — and the worst</h2>
+
+    <div class="standouts">
+      <div class="standout-col best">
+        <h3>Best of the Meet</h3>
+        <div class="standout-item">
+          <div class="race">Day 3 — Gold Cup (11 horses)</div>
+          <div class="desc">Predicted top 3 landed in exact 1-2-3 order: Scandinavia, Trawlerman, Sweet William. The cleanest call of the festival.</div>
+        </div>
+        <div class="standout-item">
+          <div class="race">Day 4 — King Edward VII (6 horses)</div>
+          <div class="desc">All four top picks finished as the actual top four, just reshuffled — and Causeway nailed the win outright on top of it.</div>
+        </div>
+        <div class="standout-item">
+          <div class="race">Day 5 — Queen Alexandra (13 horses)</div>
+          <div class="desc">Illinois won exactly as predicted, with French Master right behind him in the exact 2nd slot — a double exact-position hit.</div>
+        </div>
+        <div class="standout-item">
+          <div class="race">Day 1 — King Charles III (26 horses)</div>
+          <div class="desc">An exact win in the largest field of opening day, when big fields were still the model's weak spot.</div>
+        </div>
+      </div>
+      <div class="standout-col worst">
+        <h3>Worst of the Meet</h3>
+        <div class="standout-item">
+          <div class="race">Day 3 — Britannia &amp; Buckingham Palace (33 &amp; 32 horses)</div>
+          <div class="desc">Back-to-back total wipeouts. Every actual finisher in both races came from horses the engine had flatly rated "Toss."</div>
+        </div>
+        <div class="standout-item">
+          <div class="race">Day 2 — Royal Hunt Cup, Kensington Palace, Windsor Castle</div>
+          <div class="desc">Three straight complete misses to close Day 2, all in fields of 25 runners or more.</div>
+        </div>
+        <div class="standout-item">
+          <div class="race">Day 5 — Jersey Stakes (17 horses)</div>
+          <div class="desc">The most surprising miss of the meet — a modest 17-horse field, yet zero overlap between the top 4 and the actual top 4.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPENDIX -->
+  <section id="appendix">
+    <p class="kicker">Full Race Index</p>
+    <h2>Every race, in detail</h2>
+    <details>
+      <summary>Show all 35 races</summary>
+      <table class="appendix-table">
+        <thead>
+          <tr><th>Day</th><th>Race</th><th class="num">Field</th><th>Result</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="num">1</td><td>Queen Anne (G1)</td><td class="num">9</td><td><span class="result-pill PLACE">PLACE</span></td></tr>
+          <tr><td class="num">1</td><td>Coventry (G2)</td><td class="num">22</td><td><span class="result-pill WIN">WIN</span></td></tr>
+          <tr><td class="num">1</td><td>King Charles III (G1)</td><td class="num">26</td><td><span class="result-pill WIN">WIN · exact</span></td></tr>
+          <tr><td class="num">1</td><td>St James's Palace (G1)</td><td class="num">6</td><td><span class="result-pill WIN">WIN</span></td></tr>
+          <tr><td class="num">1</td><td>Ascot Stakes (Hcp)</td><td class="num">20</td><td><span class="result-pill MISS">MISS</span></td></tr>
+          <tr><td class="num">1</td><td>Wolferton (Listed)</td><td class="num">16</td><td><span class="result-pill WIN">WIN · exact</span></td></tr>
+          <tr><td class="num">1</td><td>Copper Horse (Hcp)</td><td class="num">19</td><td><span class="result-pill PLACE">PLACE</span></td></tr>
+
+          <tr><td class="num">2</td><td>Queen Mary (G2)</td><td class="num">27</td><td><span class="result-pill WIN">WIN · exact</span></td></tr>
+          <tr><td class="num">2</td><td>Queen's Vase (G2)</td><td class="num">11</td><td><span class="result-pill PLACE">PLACE</span></td></tr>
+          <tr><td class="num">2</td><td>Duke of Cambridge (G2)</td><td class="num">15</td><td><span class="result-pill WIN">WIN</span></td></tr>
+          <tr><td class="num">2</td><td>Prince of Wales's (G1)</td><td class="num">8</td><td><span class="result-pill WIN">WIN</span></td></tr>
+          <tr><td class="num">2</td><td>Royal Hunt Cup (Hcp)</td><td class="num">30</td><td><span class="result-pill MISS">MISS</span></td></tr>
+          <tr><td class="num">2</td><td>Kensington Palace (Hcp)</td><td class="num">25</td><td><span class="result-pill MISS">MISS</span></td></tr>
+          <tr><td class="num">2</td><td>Windsor Castle (Listed)</td><td class="num">25</td><td><span class="result-pill MISS">MISS</span></td></tr>
+
+          <tr><td class="num">3</td><td>Chesham (Listed)</td><td class="num">15</td><td><span class="result-pill MISS">MISS</span></td></tr>
+          <tr><td class="num">3</td><td>King George V (Hcp)</td><td class="num">22</td><td><span class="result-pill MISS">MISS</span></td></tr>
+          <tr><td class="num">3</td><td>Ribblesdale (G2)</td><td class="num">12</td><td><span class="result-pill WIN">WIN</span></td></tr>
+          <tr><td class="num">3</td><td>Gold Cup (G1)</td><td class="num">11</td><td><span class="result-pill WIN">WIN · exact</span></td></tr>
+          <tr><td class="num">3</td><td>Britannia (Hcp)</td><td class="num">33</td><td><span class="result-pill MISS">MISS</span></td></tr>
+          <tr><td class="num">3</td><td>Hampton Court (G3)</td><td class="num">10</td><td><span class="result-pill PLACE">PLACE</span></td></tr>
+          <tr><td class="num">3</td><td>Buckingham Palace (Hcp)</td><td class="num">32</td><td><span class="result-pill MISS">MISS</span></td></tr>
+
+          <tr><td class="num">4</td><td>Albany (G3)</td><td class="num">25</td><td><span class="result-pill PLACE">PLACE</span></td></tr>
+          <tr><td class="num">4</td><td>Commonwealth Cup (G1)</td><td class="num">22</td><td><span class="result-pill WIN">WIN</span></td></tr>
+          <tr><td class="num">4</td><td>Duke Of Edinburgh (Hcp)</td><td class="num">22</td><td><span class="result-pill WIN">WIN · exact</span></td></tr>
+          <tr><td class="num">4</td><td>Coronation (G1)</td><td class="num">9</td><td><span class="result-pill WIN">WIN · exact</span></td></tr>
+          <tr><td class="num">4</td><td>Sandringham (Hcp)</td><td class="num">30</td><td><span class="result-pill WIN">WIN</span></td></tr>
+          <tr><td class="num">4</td><td>King Edward VII (G2)</td><td class="num">6</td><td><span class="result-pill WIN">WIN · exact</span></td></tr>
+          <tr><td class="num">4</td><td>Palace Of Holyroodhouse (Hcp)</td><td class="num">31</td><td><span class="result-pill WIN">WIN · exact</span></td></tr>
+
+          <tr><td class="num">5</td><td>Norfolk (G2)</td><td class="num">21</td><td><span class="result-pill PLACE">PLACE · exact</span></td></tr>
+          <tr><td class="num">5</td><td>Hardwicke (G2)</td><td class="num">12</td><td><span class="result-pill PLACE">PLACE</span></td></tr>
+          <tr><td class="num">5</td><td>Queen Elizabeth II Jubilee (G1)</td><td class="num">19</td><td><span class="result-pill PLACE">PLACE</span></td></tr>
+          <tr><td class="num">5</td><td>Jersey (G3)</td><td class="num">17</td><td><span class="result-pill MISS">MISS</span></td></tr>
+          <tr><td class="num">5</td><td>Wokingham (Hcp)</td><td class="num">28</td><td><span class="result-pill WIN">WIN · exact</span></td></tr>
+          <tr><td class="num">5</td><td>Golden Gates (Hcp)</td><td class="num">16</td><td><span class="result-pill WIN">WIN</span></td></tr>
+          <tr><td class="num">5</td><td>Queen Alexandra (Marathon)</td><td class="num">13</td><td><span class="result-pill WIN">WIN · exact</span></td></tr>
+        </tbody>
+      </table>
+    </details>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-mark">TrackSmart AI — TPN Prime</div>
+      <div class="footer-meta">
+        Royal Ascot 2026 · June 16–20<br>
+        35 races analyzed · Winner-in-Top-4 methodology<br>
+        Compiled from daily TrackSmart AI race reports
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
