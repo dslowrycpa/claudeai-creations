@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<meta name="description" content="Pay for your TrackSmart AI race card in Bitcoin. Send this form and we'll email you a Lightning payment link to complete your order." />
+<title>Pay with Bitcoin · TrackSmart AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#04101b;
+    --panel:#0a1b2a;
+    --panel-2:#0e2336;
+    --line:rgba(255,255,255,.09);
+    --line-strong:rgba(255,255,255,.16);
+    --cyan:#28d6f5;
+    --btc:#f7931a;
+    --ink:#eaf4fb;
+    --muted:#93a9bd;
+    --ok:#3ee0a8;
+    --err:#ff7a8a;
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1100px 520px at 50% -8%, rgba(40,214,245,.10), transparent 60%),
+      radial-gradient(700px 380px at 88% 6%, rgba(247,147,26,.08), transparent 55%),
+      var(--navy);
+    color:var(--ink);
+    font-family:"Hanken Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.55;
+    min-height:100vh;
+    padding:clamp(20px,5vw,64px) 18px;
+  }
+  .wrap{max-width:660px;margin:0 auto}
+
+  /* Eyebrow */
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:"JetBrains Mono",monospace;
+    font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--cyan);
+    margin:0 0 18px;
+  }
+  .bolt{color:var(--btc);font-size:14px;line-height:1}
+
+  h1{
+    font-family:"Sora",sans-serif;
+    font-weight:800;
+    font-size:clamp(28px,6vw,42px);
+    line-height:1.08;
+    letter-spacing:-.02em;
+    margin:0 0 14px;
+  }
+  h1 .accent{
+    background:linear-gradient(92deg,var(--cyan),var(--btc));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .lede{color:var(--muted);font-size:clamp(15px,2.4vw,17px);margin:0 0 30px;max-width:54ch}
+
+  /* How it works */
+  .steps{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+    margin:0 0 28px;padding:0;list-style:none;
+  }
+  .steps li{
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:14px 14px 16px;
+  }
+  .steps .n{
+    font-family:"JetBrains Mono",monospace;font-weight:600;font-size:12px;
+    color:var(--btc);letter-spacing:.1em;display:block;margin-bottom:8px;
+  }
+  .steps .t{font-family:"Sora",sans-serif;font-weight:600;font-size:13.5px;line-height:1.35}
+  @media(max-width:560px){
+    .steps{grid-template-columns:1fr}
+    .steps li{display:flex;align-items:baseline;gap:12px;padding:12px 14px}
+    .steps .n{margin-bottom:0}
+  }
+
+  /* Card */
+  .card{
+    background:linear-gradient(180deg,var(--panel),#081521);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:clamp(20px,4vw,30px);
+    box-shadow:0 24px 60px -34px rgba(0,0,0,.8);
+  }
+  .field{margin-bottom:18px}
+  label{display:block;font-family:"Sora",sans-serif;font-weight:600;font-size:14px;margin-bottom:7px}
+  label .req{color:var(--btc);margin-left:2px}
+  label .opt{color:var(--muted);font-weight:500;font-family:"Hanken Grotesk";font-size:12px;margin-left:6px}
+  .hint{color:var(--muted);font-size:12.5px;margin:6px 0 0}
+
+  input,select,textarea{
+    width:100%;
+    background:var(--panel-2);
+    color:var(--ink);
+    border:1px solid var(--line-strong);
+    border-radius:10px;
+    padding:12px 13px;
+    font-family:inherit;font-size:15px;
+    transition:border-color .15s ease, box-shadow .15s ease;
+  }
+  textarea{min-height:92px;resize:vertical}
+  select{appearance:none;-webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2393a9bd' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 13px center;padding-right:38px;cursor:pointer;
+  }
+  input::placeholder,textarea::placeholder{color:#5d7488}
+  input:focus,select:focus,textarea:focus{
+    outline:none;border-color:var(--cyan);
+    box-shadow:0 0 0 3px rgba(40,214,245,.22);
+  }
+
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:520px){.row{grid-template-columns:1fr}}
+
+  /* Checkbox ack */
+  .ack{
+    display:flex;gap:11px;align-items:flex-start;
+    background:rgba(247,147,26,.07);border:1px solid rgba(247,147,26,.22);
+    border-radius:10px;padding:13px 14px;margin:4px 0 22px;
+  }
+  .ack input{width:18px;height:18px;flex:0 0 auto;margin-top:2px;accent-color:var(--btc)}
+  .ack label{font-weight:500;font-family:"Hanken Grotesk";font-size:13.5px;margin:0;color:var(--ink)}
+
+  /* Honeypot */
+  .hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+
+  button[type=submit]{
+    width:100%;
+    border:0;border-radius:11px;cursor:pointer;
+    font-family:"Sora",sans-serif;font-weight:700;font-size:15.5px;letter-spacing:.01em;
+    color:#04121c;
+    background:linear-gradient(92deg,var(--cyan),#5fe6ff);
+    padding:14px 16px;
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    transition:transform .12s ease, filter .15s ease;
+  }
+  button[type=submit]:hover{filter:brightness(1.06)}
+  button[type=submit]:active{transform:translateY(1px)}
+  button[type=submit]:disabled{opacity:.6;cursor:progress}
+  button .b{color:var(--btc);font-size:16px}
+
+  .finetext{color:var(--muted);font-size:12.5px;margin:14px 0 0;text-align:center}
+
+  /* Status / success */
+  .status{margin-top:14px;font-size:14px;display:none}
+  .status.err{display:block;color:var(--err)}
+  .success{display:none;text-align:center;padding:8px 4px 4px}
+  .success .ring{
+    width:54px;height:54px;border-radius:50%;margin:0 auto 16px;
+    display:grid;place-items:center;
+    background:rgba(62,224,168,.12);border:1px solid rgba(62,224,168,.4);
+    color:var(--ok);font-size:26px;
+  }
+  .success h2{font-family:"Sora";font-weight:700;font-size:22px;margin:0 0 8px}
+  .success p{color:var(--muted);margin:0 auto;max-width:46ch}
+  .success .em{color:var(--ink);font-weight:600}
+
+  /* Footer */
+  .disclaimer{
+    color:var(--muted);font-size:12px;line-height:1.6;
+    margin:26px auto 0;max-width:58ch;text-align:center;
+  }
+  .foot{
+    margin-top:22px;padding-top:18px;border-top:1px solid var(--line);
+    color:var(--muted);font-size:12.5px;text-align:center;
+  }
+  .foot a{color:var(--cyan);text-decoration:none}
+  .foot a:hover{text-decoration:underline}
+
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="eyebrow"><span class="bolt">⚡</span> TrackSmart AI · Pay with Bitcoin</p>
+    <h1>Pay in Bitcoin — <span class="accent">request your invoice.</span></h1>
+    <p class="lede">Tell us what you'd like and where to reach you. We'll email you a Lightning payment link tied to our Strike account — pay in Bitcoin and your order is confirmed.</p>
+
+    <ol class="steps">
+      <li><span class="n">STEP 01</span><span class="t">Send this form</span></li>
+      <li><span class="n">STEP 02</span><span class="t">We email your Lightning link</span></li>
+      <li><span class="n">STEP 03</span><span class="t">Pay in Bitcoin — instant &amp; final</span></li>
+    </ol>
+
+    <div class="card">
+      <form id="btc-form" novalidate>
+        <!-- ============================================================= -->
+        <!-- PASTE YOUR WEB3FORMS ACCESS KEY BELOW (same key as order-details.html) -->
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+        <!-- ============================================================= -->
+        <input type="hidden" name="subject" value="New Bitcoin invoice request — TrackSmart AI" />
+        <input type="hidden" name="from_name" value="TrackSmart AI · Bitcoin Order Form" />
+        <!-- Honeypot: bots fill this, humans never see it -->
+        <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" />
+
+        <div class="field">
+          <label for="name">Your name <span class="req">*</span></label>
+          <input id="name" name="name" type="text" required autocomplete="name" placeholder="First and last name" />
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="email">Email for your payment link <span class="req">*</span></label>
+            <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@email.com" />
+            <p class="hint">This is where your Lightning payment link is sent.</p>
+          </div>
+          <div class="field">
+            <label for="phone">Phone <span class="opt">optional</span></label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(___) ___-____" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="product">What would you like to order? <span class="req">*</span></label>
+          <select id="product" name="product" required>
+            <option value="" disabled selected>Select a product…</option>
+            <option>TrackSmart AI – Sky Racing Global Edition — $79</option>
+            <option>TrackSmart AI International Lite Handicapping Engine — $79</option>
+            <option>TrackSmart AI Equibase Handicapping Engine — $149</option>
+            <option>TrackSmart AI Greyhound Racing Handicapping Engine — $149</option>
+            <option>TrackSmart AI Prompt 16: The Neural Physics Engine (v8.1) — $99</option>
+            <option>TrackSmart AI Harness Handicapping Engine — $149</option>
+            <option>TrackSmart AI Brisnet Handicapping Engine — $149</option>
+            <option>TrackSmart AI DRF Handicapping Engine — $149</option>
+            <option>1 Complete Race Card — $10</option>
+            <option>2 Complete Race Cards — $20</option>
+            <option>3 Complete Race Cards — $30</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="details">Order details <span class="req">*</span></label>
+          <textarea id="details" name="order_details" required placeholder="e.g. 3 race cards — Saratoga, Aug 1–3. Or describe what you'd like."></textarea>
+          <p class="hint">Tell us quantity, track/date, or anything we need to price it.</p>
+        </div>
+
+        <div class="field">
+          <label for="total">Estimated total in USD <span class="opt">optional</span></label>
+          <input id="total" name="estimated_total_usd" type="text" inputmode="decimal" placeholder="Leave blank and we'll confirm the total" />
+          <p class="hint">We invoice in Bitcoin at the live rate when the link is sent.</p>
+        </div>
+
+        <div class="ack">
+          <input id="ack" name="acknowledgement" type="checkbox" required value="Yes — understands Lightning link by email; Bitcoin payments are final" />
+          <label for="ack">I understand I'll receive a Bitcoin (Lightning) payment link by email, and that Bitcoin payments are final and can't be reversed.</label>
+        </div>
+
+        <button type="submit" id="submitBtn"><span class="b">⚡</span> Request my Bitcoin invoice</button>
+        <p class="finetext">No payment is taken here. You'll pay from your own Lightning wallet using the link we send.</p>
+        <p class="status" id="status"></p>
+      </form>
+
+      <div class="success" id="success" aria-live="polite">
+        <div class="ring">✓</div>
+        <h2>Request received.</h2>
+        <p>Check your inbox at <span class="em" id="echo-email">your email</span> — we'll send your Lightning payment link shortly. Once you pay in Bitcoin, your order is confirmed.</p>
+      </div>
+    </div>
+
+    <p class="disclaimer">For informational and entertainment purposes only. Nothing here guarantees any outcome, and past performance does not guarantee future results. You must be of legal age to wager in your jurisdiction. Please play responsibly — if gambling stops being fun, step away and seek help.</p>
+
+    <div class="foot">TrackSmart AI © 2026 TrackSmart AI · <a href="https://www.tracksmartracing.com">tracksmartracing.com</a></div>
+  </main>
+
+<script>
+  (function(){
+    var form = document.getElementById('btc-form');
+    var btn = document.getElementById('submitBtn');
+    var status = document.getElementById('status');
+    var success = document.getElementById('success');
+
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      status.className = 'status';
+      status.textContent = '';
+
+      if(!form.checkValidity()){
+        form.reportValidity();
+        return;
+      }
+
+      btn.disabled = true;
+      var original = btn.innerHTML;
+      btn.innerHTML = 'Sending…';
+
+      var data = Object.fromEntries(new FormData(form).entries());
+
+      try{
+        var res = await fetch('https://api.web3forms.com/submit', {
+          method:'POST',
+          headers:{'Content-Type':'application/json', 'Accept':'application/json'},
+          body: JSON.stringify(data)
+        });
+        var out = await res.json();
+        if(out.success){
+          document.getElementById('echo-email').textContent = data.email || 'your email';
+          form.style.display = 'none';
+          success.style.display = 'block';
+          success.scrollIntoView({behavior:'smooth', block:'center'});
+        }else{
+          throw new Error(out.message || 'Submission failed');
+        }
+      }catch(err){
+        status.className = 'status err';
+        status.textContent = "Something went wrong sending your request. Please try again, or email orders directly to david@tracksmartracing.com.";
+        btn.disabled = false;
+        btn.innerHTML = original;
+      }
+    });
+  })();
+</script>
+</body>
+</html>
