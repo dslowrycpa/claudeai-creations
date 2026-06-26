@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Form in My Hands — David Lowry</title>
+<meta name="description" content="The sport that raised me looks like it's fading on paper. Stand in the paddock at Keeneland on a Saturday and you'll know better.">
+<meta property="og:title" content="The Form in My Hands">
+<meta property="og:description" content="A 50-year lover of the sport on the crowds in the grandstand, the horses who give their hearts, and the bridge we still haven't built to the next generation.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,400;1,6..96,500&family=Spline+Sans:wght@300;400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --felt:#0e2a20;
+    --felt-deep:#0a201810;
+    --paper:#f4efe1;
+    --paper-edge:#e9e1cd;
+    --ink:#1c1813;
+    --ink-soft:#4a4338;
+    --ink-faint:#857a66;
+    --brass:#b48a3c;
+    --brass-bright:#cfa94f;
+    --rule:#d8cdb0;
+    --green-accent:#1f6b4a;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(120% 80% at 50% -10%, #16382b 0%, transparent 60%),
+      radial-gradient(140% 90% at 50% 110%, #08191300 0%, transparent 55%),
+      #0e2a20;
+    background-color:#0e2a20;
+    color:var(--ink);
+    font-family:'Spline Sans',system-ui,-apple-system,sans-serif;
+    line-height:1.68;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  /* felt texture */
+  body::before{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(255,255,255,.018) 0 1px, transparent 1px),
+      radial-gradient(circle at 70% 60%, rgba(0,0,0,.05) 0 1px, transparent 1px),
+      radial-gradient(circle at 45% 85%, rgba(255,255,255,.015) 0 1px, transparent 1px);
+    background-size:7px 7px, 9px 9px, 11px 11px;
+    opacity:.7;
+  }
+
+  .wrap{position:relative; z-index:1; max-width:760px; margin:0 auto; padding:clamp(20px,5vw,64px) clamp(16px,5vw,40px) 90px;}
+
+  /* eyebrow above the paper */
+  .masthead{
+    text-align:center;
+    margin:8px 0 22px;
+    color:var(--brass-bright);
+    font-family:'Spline Sans Mono',monospace;
+    font-size:11px;
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    font-weight:500;
+  }
+  .masthead .dot{opacity:.55; margin:0 .7em;}
+
+  /* the form / paper card */
+  .paper{
+    background:
+      linear-gradient(180deg, #f7f2e6 0%, var(--paper) 12%, var(--paper) 88%, #efe8d6 100%);
+    border:1px solid #00000022;
+    border-radius:3px;
+    box-shadow:
+      0 1px 0 #ffffff80 inset,
+      0 40px 80px -40px rgba(0,0,0,.7),
+      0 8px 24px -12px rgba(0,0,0,.45);
+    padding:clamp(28px,6vw,72px) clamp(22px,6vw,76px) clamp(40px,7vw,80px);
+    position:relative;
+  }
+  /* torn-edge hint at top */
+  .paper::before{
+    content:"";
+    position:absolute; left:0; right:0; top:0; height:6px;
+    background:repeating-linear-gradient(90deg,#0e2a2000 0 6px,#0e2a2010 6px 7px);
+    opacity:.4;
+  }
+
+  .kicker{
+    font-family:'Spline Sans Mono',monospace;
+    font-size:11px; letter-spacing:.34em; text-transform:uppercase;
+    color:var(--green-accent); font-weight:600;
+    text-align:center; margin:0 0 18px;
+  }
+
+  h1{
+    font-family:'Bodoni Moda',Georgia,serif;
+    font-weight:700;
+    font-size:clamp(38px,8vw,68px);
+    line-height:1.02;
+    letter-spacing:-.01em;
+    margin:0 0 18px;
+    text-align:center;
+    color:var(--ink);
+  }
+  h1 em{font-style:italic; font-weight:500;}
+
+  .dek{
+    font-family:'Bodoni Moda',Georgia,serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(17px,2.4vw,21px);
+    line-height:1.45;
+    color:var(--ink-soft);
+    text-align:center;
+    max-width:30em; margin:0 auto 30px;
+  }
+
+  .byline{
+    text-align:center;
+    font-family:'Spline Sans Mono',monospace;
+    font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--ink-faint);
+    border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+    padding:12px 0; margin:0 auto 8px; max-width:32em;
+  }
+  .byline b{color:var(--ink); font-weight:600;}
+
+  /* the signature: a faded past-performance form line */
+  .formline{
+    font-family:'Spline Sans Mono',monospace;
+    font-size:11px;
+    color:var(--ink-faint);
+    letter-spacing:.04em;
+    text-align:center;
+    margin:18px auto 38px;
+    padding:9px 14px;
+    border-top:1px dashed #c7bb9c;
+    border-bottom:1px dashed #c7bb9c;
+    overflow-x:auto;
+    white-space:nowrap;
+    opacity:.85;
+  }
+  .formline span{color:var(--brass); font-weight:600;}
+
+  article p{
+    font-size:clamp(16.5px,2.1vw,18.5px);
+    margin:0 0 1.35em;
+    color:var(--ink);
+  }
+
+  /* drop cap on first paragraph */
+  article > p.lead:first-of-type::first-letter{
+    font-family:'Bodoni Moda',Georgia,serif;
+    font-weight:700;
+    float:left;
+    font-size:4.4em;
+    line-height:.78;
+    padding:6px 12px 0 0;
+    color:var(--green-accent);
+  }
+
+  .pivot{
+    font-family:'Bodoni Moda',Georgia,serif;
+    font-size:clamp(22px,3.4vw,30px);
+    line-height:1.28;
+    font-weight:500;
+    color:var(--ink);
+    margin:1.4em 0;
+    padding-left:20px;
+    border-left:3px solid var(--brass);
+  }
+
+  h2{
+    font-family:'Bodoni Moda',Georgia,serif;
+    font-weight:600;
+    font-size:clamp(24px,4vw,34px);
+    line-height:1.1;
+    margin:1.9em 0 .15em;
+    color:var(--ink);
+  }
+  h2 .num{
+    display:block;
+    font-family:'Spline Sans Mono',monospace;
+    font-size:12px; letter-spacing:.3em; font-weight:600;
+    color:var(--brass); text-transform:uppercase;
+    margin-bottom:.7em;
+  }
+
+  /* furlong-pole divider */
+  .pole{
+    border:0; height:auto; text-align:center;
+    margin:46px 0; color:var(--brass);
+    font-family:'Spline Sans Mono',monospace;
+    font-size:12px; letter-spacing:1em;
+  }
+  .pole::before{content:"— ¼ — ½ — ¾ —";}
+
+  .pull{
+    font-family:'Bodoni Moda',Georgia,serif;
+    font-style:italic;
+    font-size:clamp(20px,3vw,26px);
+    line-height:1.34;
+    color:var(--green-accent);
+    text-align:center;
+    margin:1.6em auto;
+    max-width:24em;
+  }
+
+  .endmark{
+    text-align:center; margin:40px 0 6px;
+    color:var(--brass); font-size:18px; letter-spacing:.5em;
+  }
+  .endmark::before{content:"❧";}
+
+  .colophon{
+    margin-top:34px; padding-top:22px;
+    border-top:1px solid var(--rule);
+    font-size:14px; line-height:1.6;
+    color:var(--ink-soft);
+    font-style:italic;
+  }
+  .colophon b{font-style:normal; color:var(--ink); font-weight:600;}
+
+  /* footnote markers */
+  sup.fn{
+    font-family:'Spline Sans Mono',monospace;
+    font-size:.62em;
+    font-weight:600;
+    color:var(--brass);
+    vertical-align:super;
+    line-height:0;
+    margin-left:1px;
+  }
+  sup.fn::before{content:"[";}
+  sup.fn::after{content:"]";}
+
+  /* sources & notes block */
+  .notes{
+    margin-top:40px;
+    padding-top:24px;
+    border-top:2px solid var(--brass);
+  }
+  .notes h3{
+    font-family:'Spline Sans Mono',monospace;
+    font-size:12px; letter-spacing:.3em; text-transform:uppercase;
+    color:var(--green-accent); font-weight:600;
+    margin:0 0 18px;
+  }
+  .notes ol{
+    margin:0; padding:0; list-style:none;
+    counter-reset:note;
+  }
+  .notes li{
+    position:relative;
+    counter-increment:note;
+    padding:0 0 14px 38px;
+    font-size:13.5px;
+    line-height:1.55;
+    color:var(--ink-soft);
+  }
+  .notes li::before{
+    content:"["counter(note)"]";
+    position:absolute; left:0; top:1px;
+    font-family:'Spline Sans Mono',monospace;
+    font-size:11px; font-weight:600;
+    color:var(--brass);
+  }
+  .notes li b{color:var(--ink); font-weight:600; font-style:normal;}
+  .notes .src{color:var(--ink-faint); font-style:italic;}
+  .notes .caveat{
+    margin-top:6px; padding-top:18px;
+    border-top:1px dashed #c7bb9c;
+    font-size:12.5px; color:var(--ink-faint); font-style:italic;
+  }
+
+  .footer{
+    position:relative; z-index:1;
+    text-align:center; margin-top:30px;
+    color:#cde2d6aa;
+    font-family:'Spline Sans Mono',monospace;
+    font-size:11px; letter-spacing:.25em; text-transform:uppercase;
+  }
+
+  @media (max-width:520px){
+    .formline{font-size:10px;}
+    article > p.lead:first-of-type::first-letter{font-size:3.6em;}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .paper{animation:rise .7s cubic-bezier(.2,.7,.2,1) both;}
+    @keyframes rise{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:none;}}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="masthead">Thoroughbred Racing <span class="dot">•</span> An Essay <span class="dot">•</span> 2026</div>
+
+    <main class="paper">
+      <p class="kicker">First Person</p>
+      <h1>The Form in <em>My Hands</em></h1>
+      <p class="dek">The sport that raised me looks like it's fading on paper. Stand in the paddock at Keeneland on a Saturday, and you'll know better.</p>
+      <p class="byline">By <b>David Lowry</b> &nbsp;—&nbsp; 50+ years a lover of the sport &amp; a handicapper</p>
+
+      <div class="formline" aria-hidden="true">
+        1 <span>SECRETARIAT</span> Belmont S., 1973 &nbsp;·&nbsp; 1½m &nbsp;·&nbsp; 2:24 &nbsp;·&nbsp; <span>world record</span> &nbsp;·&nbsp; won by 31 &nbsp;·&nbsp; <span>★</span> drew off at will, ridden out
+      </div>
+
+      <article>
+        <p class="lead">I could read a past-performance line before I could drive a car. The newsprint left ink on my fingers; the figures looked like a foreign alphabet until the day they didn't, and then they read like poetry. Speed and class and the shape of a race three weeks ago, all of it folded into a column an inch wide. My father took me to the track when I was very young, sat me down beside him, and taught me to read it — in person, on a hard bench, with a pencil behind his ear. That is where the love took hold, and it never once let go. Not through a marketing campaign. Through a form in my hands and a man who knew how to read it.</p>
+
+        <p>I tell you that because if you only read the numbers, you'd swear the whole thing was over. American handle finished 2025 around $11 billion, down again, and adjusted for inflation it has fallen by more than half since its peak in 2003.<sup class="fn">1</sup> We ran fewer races last year than in any year since the mid-1950s.<sup class="fn">2</sup> A Jockey Club study put the decline in on-track attendance at thirty percent across two decades.<sup class="fn">3</sup> Lay those figures on the table and the obituary writes itself.</p>
+
+        <p>And then you actually go to the racetrack.</p>
+
+        <p>You go to Keeneland on a stakes Saturday and there are tens of thousands of people there, dressed to the nines, leaning over the rail of a paddock the track just rebuilt so newcomers could watch every buckle and girth-strap up close.<sup class="fn">4</sup> And you don't even need a Saturday — go on an ordinary Wednesday afternoon and you can barely move for the crowd. You go to Saratoga in August, to Del Mar where the turf meets the surf, and you find young people three deep at the rail, phones up, laughing, completely alive to the spectacle in front of them. The grandstand is not empty. The grandstand is packed with people who came for the thing we have, and most of them will never buy a racing form, and they will go home not really knowing what they just watched.</p>
+
+        <p>That is the whole story, and it took me a long time to see it plainly. We do not have a demand problem. We have a translation problem.</p>
+
+        <h2><span class="num">The Honest Part</span>Say it once, then move on</h2>
+
+        <p>I'm a retail bettor. I'll name the things that keep my fellow horseplayers up at night, because pretending they don't exist insults everyone who's still here. Computer-assisted wagering now accounts for something like a third of all the money bet,<sup class="fn">5</sup> much of it propped up by rebates that let the biggest players profit on the same races where I pay full freight — and the late odds drop, where my 5-1 horse becomes 5-2 as the gates spring, is the bruise that reminds the small player every single day where he stands in the pecking order. We have leadership that, too often, seems to spend more energy lobbying than listening to the people funding the pools. These are real. They deserve real fixes — fairer pricing, transparency in the pools, a seat at the table for the customer.</p>
+
+        <p class="pivot">But I have watched this sport mourn itself for the better part of my fifty years in the game, and mourning has never once filled a grandstand or saddled a horse.</p>
+
+        <p>So I want to spend the rest of these words on what is actually worth saving — because it is magnificent, and because the case for fixing the problems is only as strong as the case for the thing the problems threaten.</p>
+
+        <hr class="pole" aria-hidden="true">
+
+        <h2><span class="num">What It Is</span>The animals at the center of it</h2>
+
+        <p>Strip away the windows and the wagering and the politics, and what is left is the most honest athlete on earth. A Thoroughbred does not run because a contract says so or a sponsor demands it. He runs because a thousand years of breeding sharpened a single instinct into something close to joy. Watch a horse who wants it — ears flat, stride lengthening, finding another gear nobody asked for in the final sixteenth — and you are watching a creature do the exact thing it was made to do, all out, holding nothing back. We say a horse "ran his heart out," and we mean it almost literally. They give everything. They have no idea there's money on it. They run because running is who they are.</p>
+
+        <p>That is the product. Not the takeout, not the tote board. A half-ton of muscle and courage choosing to spend itself completely, forty times an afternoon, for our entertainment and, if we're honest, for something in us that needs to witness that kind of heart. No app has ever replaced it. No sportsbook ever will.</p>
+
+        <h2><span class="num">What Becomes of Them</span>The best story we never tell</h2>
+
+        <p>Here is the part the critics never hear, and frankly the part we are too modest about. The same sport accused of using these animals up has quietly built one of the most serious aftercare systems in all of professional sport. Since 2012, some twenty thousand retired Thoroughbreds have moved into new homes and second careers through accredited organizations — a network now spanning more than eighty groups and a hundred and seventy-five facilities across North America, underwritten by upward of forty million dollars in industry grants.<sup class="fn">6</sup> At the New York tracks, every owner gives ten dollars on every single start, and a share of every claim, straight to aftercare.<sup class="fn">7</sup> It is built into the cost of doing business.</p>
+
+        <p>And the second acts are extraordinary. The horse who finished mid-pack in a claiming race becomes a five-star eventer, a champion in the show ring, a steady-eyed therapy mount carrying a wounded veteran or a child who has never trusted anything that big. Is the work finished? No. There are still horses who fall through the cracks, and the people who say so out loud are doing the sport a service, not a disservice. But a sport that returns twenty thousand of its athletes to good lives is not a sport that hates its horses. It is a sport that, at its best, loves them past the finish line — and that is a story we should be shouting from the clubhouse roof.</p>
+
+        <p class="pull">We keep apologizing for the sport's sins. We almost never brag about its grace.</p>
+
+        <hr class="pole" aria-hidden="true">
+
+        <h2><span class="num">The Real Question</span>How do we reach a kid who's never held a form?</h2>
+
+        <p>So back to that packed grandstand full of newcomers who'll never know what they watched. The instinct of the old guard is to mourn that they don't read the form. I want to gently say: of course they don't. The Daily Racing Form was a brilliant interface — for 1947. It was built for a reader with an afternoon to spend and a mentor on the next stool. It rewards exactly the kind of patient, decoded study that my father's world had time for and the modern world simply does not. Handing that document to a twenty-three-year-old at her first day at the races and expecting it to convert her is like handing her a slide rule and wondering why she reaches for her phone.</p>
+
+        <p>She is not rejecting the horses. She fell in love with the horses the moment the field turned for home. She is rejecting a wall of agate type that no one translated for her. And here is the hopeful part, the part I'd stake the future on: that wall has never been easier to translate. The very tools the next generation already lives inside — clean design, plain language, and yes, AI that can read a race the way my father taught me to and then explain it in a sentence — can do for the newcomer exactly what he did for me on that hard bench. Not dumb the game down. Open the door to it. Give her a starting point she can actually understand, so the puzzle has a chance to sink its hook the way it hooked me fifty years ago.</p>
+
+        <p>I didn't want to just write that hope down. I wanted to build it. Almost two years ago I began a project I call TrackSmart AI — the only AI, I believe, that actually thinks like a handicapper — for exactly this reason: to give today's young fan a way into the game. And I had to be honest with myself about something first. They are not going to sit down for six hours and handicap a full card the way I do — the way I still love to. There is nothing on earth like reading a race, picturing how it will unfold, and then watching it play out exactly the way you imagined. That kind of devotion can't be manufactured, and I wouldn't ask them to fake it. But maybe they don't need six hours to begin. Maybe they'll let an AI teach them just a little — enough to see how handicapping actually works, enough to look at a horse and recognize when he's sitting in a good spot today, when the setup fits him, when he can compete and just might run a big one. That small spark of understanding is the whole ballgame. It is the difference between watching a race and reading one.</p>
+
+        <p>I am not talking about replacing the craft. I love the craft; I've given my life to it. I'm talking about the on-ramp. The handicapper who spends six hours with the past performances will always exist, and good — that's the priesthood, and every great religion keeps one. But you do not grow a congregation by handing first-timers the original scripture in the original language. You meet them where they are, in the tongue they already speak, and you trust the beauty of the thing to do the rest. The horses have never needed help being magnificent. They have only needed us to stop guarding the door and start building a wider one.</p>
+
+        <hr class="pole" aria-hidden="true">
+
+        <h2><span class="num">The Hand-Off</span>What we owe the next bench</h2>
+
+        <p>The next kid who falls for this sport will not hold a form. She'll hold a phone, and she'll be standing at the Keeneland rail with tens of thousands of other people who already showed up — already voted with their feet that they want what we have. Our only job, the whole job, is to make sure that when she turns to the person beside her and asks "okay, so how does this work," somebody, or something, can answer her in a language she understands before the moment passes.</p>
+
+        <p>We have the crowds. We have the horses, who give us their hearts for free. We have an aftercare story most sports would kill for. We even, finally, have the tools to translate the game for a generation that's standing right there waiting to be let in. The decline was never about a sport that stopped being great. It was about a sport that forgot how to introduce itself.</p>
+
+        <p>I learned to read the form because someone took the time to teach me. The sport is worth that effort — worth handing forward, in whatever language the next generation speaks. Let's stop defending the old door. Let's go build the one they'll actually walk through.</p>
+
+        <div class="endmark" aria-hidden="true"></div>
+
+        <p class="colophon"><b>David Lowry</b> has spent more than fifty years as a lover of the sport and a handicapper. He is the founder of <b>TrackSmart AI</b> — "the only AI that thinks like a handicapper" — which he built to bring the game to a new generation. He writes from Port St. Lucie, Florida.</p>
+
+        <div class="notes">
+          <h3>Sources &amp; Notes</h3>
+          <ol>
+            <li><b>2025 handle and the long decline.</b> U.S. handle totaled roughly $11.03 billion in 2025, down 2.10% from 2024; handle peaked at $15.18 billion in 2003, a fall of about 57% once adjusted for inflation. <span class="src">Equibase Thoroughbred Economic Indicators, reported by Thoroughbred Daily News and BloodHorse, January 2026.</span></li>
+            <li><b>Fewer races than any year since the 1950s.</b> The U.S. ran 29,401 races in 2025 — the first time the figure has dropped below 30,000 since the mid-1950s. <span class="src">BloodHorse, citing records from The Jockey Club, January 5, 2026.</span></li>
+            <li><b>Attendance down roughly 30%.</b> A widely cited Jockey Club study reported that U.S. on-track race attendance fell about 30% between 2000 and 2022. <span class="src">The Jockey Club study, as referenced in industry analyses (e.g., IBISWorld).</span></li>
+            <li><b>Keeneland's reimagined paddock.</b> For the 2025 Fall Meet, Keeneland debuted a rebuilt saddling paddock with centralized stalls and improved sightlines, and relocated the Stakes Winner's Circle (formerly the Walking Ring) so fans surround the winners; the meet set an all-sources wagering record of about $217 million. <span class="src">Keeneland press releases and coverage, September–October 2025.</span></li>
+            <li><b>Computer-assisted wagering.</b> Industry analysts estimate CAW accounts for roughly 30–35% of total U.S. handle, often aided by rebates of 10–15% or more, with the "late odds drop" its visible signature. These figures are estimates — tracks do not publicly disclose CAW's share — and the practice is the subject of active 2025–26 litigation. <span class="src">Industry analysis (e.g., Past The Wire), 2026.</span></li>
+            <li><b>Aftercare totals.</b> Since 2012, the Thoroughbred Aftercare Alliance has granted more than $40.74 million to accredited groups and approximately 20,000 Thoroughbreds have been retrained, rehomed, or retired; 86 organizations across about 175 facilities currently hold accreditation, with $4.7 million awarded in 2025. <span class="src">Thoroughbred Aftercare Alliance, thoroughbredaftercare.org, 2025.</span></li>
+            <li><b>NYRA per-start and claim funding.</b> Every owner racing at NYRA tracks donates $10 per start to the TAA, and owners claiming a horse pay a 1.5% aftercare assessment on the claiming price. <span class="src">NYRA and TAA press releases.</span></li>
+          </ol>
+          <p class="caveat">Figures reflect the most recent full-year industry data available at the time of writing (2025 year-end). Handle, race counts, and aftercare totals are updated annually.</p>
+        </div>
+      </article>
+    </main>
+
+    <p class="footer">For the love of the game · Hand it forward</p>
+  </div>
+</body>
+</html>
