@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrackSmart AI — Saratoga 2026 Deep-Dive Research Report</title>
+<style>
+  :root{
+    --navy:#04101b;
+    --navy-2:#0a1c2e;
+    --panel:#0e2236;
+    --cyan:#28d6f5;
+    --brass:#b8860b;
+    --brass-lt:#d9a92a;
+    --cream:#f4efe1;
+    --parchment:#e8e0cc;
+    --ink:#cdd9e3;
+    --muted:#8aa0b2;
+    --line:rgba(184,134,11,.28);
+    --line-soft:rgba(205,217,227,.12);
+    --good:#3fb98a;
+    --warn:#e0a93a;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--navy);color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  h1,h2,h3,h4{font-family:"Trebuchet MS","Segoe UI",Helvetica,Arial,sans-serif;color:var(--cream);letter-spacing:.2px}
+  .mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace}
+
+  /* HERO */
+  header.hero{
+    border-bottom:1px solid var(--line);
+    background:
+      radial-gradient(1200px 380px at 78% -10%,rgba(40,214,245,.10),transparent 60%),
+      linear-gradient(180deg,#03101c 0%,#061827 100%);
+    padding:46px 0 34px;
+  }
+  .kicker{font-family:"Trebuchet MS",sans-serif;text-transform:uppercase;letter-spacing:.42em;
+    font-size:11px;color:var(--cyan);margin:0 0 14px}
+  .hero h1{font-size:clamp(30px,5.4vw,54px);line-height:1.02;margin:0 0 10px;font-weight:700}
+  .hero h1 .spa{color:var(--brass-lt)}
+  .hero .sub{font-size:17px;color:var(--ink);max-width:62ch;margin:0 0 22px}
+  .runline{display:flex;flex-wrap:wrap;gap:10px 26px;font-family:"Trebuchet MS",sans-serif;font-size:12.5px;color:var(--muted)}
+  .runline b{color:var(--parchment);font-weight:600}
+
+  /* HERO STAT STRIP */
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);margin-top:30px;border-radius:8px;overflow:hidden}
+  .strip .cell{background:var(--navy-2);padding:16px 16px 14px}
+  .strip .n{font-family:"Trebuchet MS",sans-serif;font-weight:700;color:var(--cyan);font-size:26px;line-height:1}
+  .strip .n small{color:var(--brass-lt);font-size:14px}
+  .strip .l{font-family:"Trebuchet MS",sans-serif;text-transform:uppercase;letter-spacing:.12em;
+    font-size:10px;color:var(--muted);margin-top:7px}
+  @media(max-width:680px){.strip{grid-template-columns:repeat(2,1fr)}}
+
+  /* TOC */
+  nav.toc{position:sticky;top:0;z-index:20;background:rgba(4,16,27,.93);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line-soft)}
+  nav.toc .wrap{display:flex;flex-wrap:wrap;gap:4px 4px;padding-top:9px;padding-bottom:9px}
+  nav.toc a{font-family:"Trebuchet MS",sans-serif;font-size:11.5px;letter-spacing:.04em;
+    color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:5px;white-space:nowrap}
+  nav.toc a:hover{color:var(--cream);background:rgba(40,214,245,.08)}
+
+  section{padding:42px 0;border-bottom:1px solid var(--line-soft)}
+  .eyebrow{font-family:"Trebuchet MS",sans-serif;display:flex;align-items:center;gap:12px;
+    text-transform:uppercase;letter-spacing:.28em;font-size:11px;color:var(--brass-lt);margin:0 0 6px}
+  .eyebrow .num{font-weight:700;color:var(--cyan);letter-spacing:0}
+  h2{font-size:clamp(22px,3.4vw,32px);margin:0 0 8px;font-weight:700}
+  .lede{font-size:16px;color:var(--parchment);max-width:74ch;margin:0 0 22px}
+  h3{font-size:18px;margin:30px 0 10px;color:var(--cream)}
+  h4{font-size:13px;text-transform:uppercase;letter-spacing:.14em;color:var(--cyan);margin:22px 0 8px;font-family:"Trebuchet MS",sans-serif}
+  p{margin:0 0 14px}
+  a{color:var(--cyan)}
+
+  /* TABLES */
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;margin:14px 0 8px}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:520px}
+  caption{caption-side:top;text-align:left;font-family:"Trebuchet MS",sans-serif;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:11px 14px 0}
+  th,td{padding:9px 13px;text-align:left;border-bottom:1px solid var(--line-soft)}
+  thead th{background:var(--navy-2);color:var(--brass-lt);font-family:"Trebuchet MS",sans-serif;
+    font-size:11px;text-transform:uppercase;letter-spacing:.08em;position:sticky;top:0}
+  tbody tr:hover{background:rgba(40,214,245,.05)}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-family:"SFMono-Regular",Consolas,monospace}
+  .rank{color:var(--brass-lt);font-weight:700;font-family:"Trebuchet MS",sans-serif}
+  .name b{color:var(--cream)}
+  .hot{color:var(--cyan);font-weight:700}
+  tr.lead td{background:rgba(184,134,11,.07)}
+  .cap{font-size:11.5px;color:var(--muted);margin:6px 2px 0;font-family:"Trebuchet MS",sans-serif}
+
+  /* CALLOUTS */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line-soft);border-radius:10px;padding:18px 18px 6px}
+  .card h4{margin-top:0}
+  .tag{display:inline-block;font-family:"Trebuchet MS",sans-serif;font-size:10px;letter-spacing:.1em;
+    text-transform:uppercase;padding:3px 8px;border-radius:4px;margin:0 6px 6px 0}
+  .tag.v{background:rgba(63,185,138,.14);color:var(--good);border:1px solid rgba(63,185,138,.4)}
+  .tag.c{background:rgba(224,169,58,.12);color:var(--warn);border:1px solid rgba(224,169,58,.4)}
+
+  .flag{border-left:3px solid var(--cyan);background:linear-gradient(90deg,rgba(40,214,245,.08),transparent);
+    padding:14px 18px;border-radius:0 8px 8px 0;margin:18px 0}
+  .flag.brass{border-left-color:var(--brass);background:linear-gradient(90deg,rgba(184,134,11,.10),transparent)}
+  .flag h4{margin:0 0 6px;color:var(--cyan)}
+  .flag.brass h4{color:var(--brass-lt)}
+
+  ul.tight{margin:6px 0 16px;padding-left:20px}
+  ul.tight li{margin:5px 0}
+  .src{font-size:11px;color:var(--muted);font-family:"Trebuchet MS",sans-serif}
+
+  /* engine spec list */
+  ol.spec{counter-reset:s;list-style:none;padding:0;margin:14px 0}
+  ol.spec li{position:relative;padding:14px 16px 14px 56px;border:1px solid var(--line-soft);
+    border-radius:8px;margin:10px 0;background:var(--panel)}
+  ol.spec li::before{counter-increment:s;content:counter(s,decimal-leading-zero);
+    position:absolute;left:16px;top:13px;font-family:"Trebuchet MS",sans-serif;font-weight:700;
+    color:var(--cyan);font-size:15px}
+  ol.spec b{color:var(--cream)}
+  code{background:rgba(40,214,245,.1);color:var(--cyan);padding:1px 6px;border-radius:4px;
+    font-family:"SFMono-Regular",Consolas,monospace;font-size:12.5px}
+
+  footer{padding:34px 0 60px;color:var(--muted);font-size:12px;font-family:"Trebuchet MS",sans-serif}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+  .badge{font-family:"Trebuchet MS",sans-serif;font-weight:700;letter-spacing:.06em;color:var(--cream)}
+  .badge span{color:var(--cyan)}
+
+  @media print{
+    nav.toc{display:none}
+    body{background:#fff;color:#111}
+    section{border-color:#ccc}
+    .card,.flag,ol.spec li{background:#fafafa}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">TrackSmart AI · Engine Intelligence Brief</p>
+    <h1>The <span class="spa">Spa</span> 2026 — Deep-Dive Research Report</h1>
+    <p class="sub">A fully sourced, three-year data review of the Saratoga summer meet built to drive revisions to the TrackSmart AI handicapping engine. Where verified data exists, it is reported. Where it does not, that gap is named — not filled with assumption.</p>
+    <div class="runline">
+      <span><b>Meet:</b> Fri Jul 3 – Mon Sep 7, 2026</span>
+      <span><b>Window analyzed:</b> 2023 · 2024 · 2025 meets + live 2026 sire data</span>
+      <span><b>Compiled:</b> Jun 28, 2026</span>
+      <span><b>Prepared for:</b> D. Lowry / TrackSmart AI</span>
+    </div>
+
+    <div class="strip">
+      <div class="cell"><div class="n">46<small> days</small></div><div class="l">2026 racing days (was 40)</div></div>
+      <div class="cell"><div class="n">73</div><div class="l">stakes · 20 Grade 1</div></div>
+      <div class="cell"><div class="n">$23.6<small>M</small></div><div class="l">total stakes purses</div></div>
+      <div class="cell"><div class="n">10<small> wks</small></div><div class="l">expanded calendar</div></div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#meet">01 Meet Structure</a>
+    <a href="#connections">02 Owners · Trainers · Jockeys</a>
+    <a href="#shippers">03 Shippers &amp; Origin Tracks</a>
+    <a href="#bias">04 Track Bias</a>
+    <a href="#freshman">05 Freshman Sires</a>
+    <a href="#crops">06 Soph &amp; 3rd-Crop Sires</a>
+    <a href="#nybred">07 New York-Breds</a>
+    <a href="#engine">08 Engine Revisions</a>
+    <a href="#provenance">09 Data Provenance</a>
+  </div>
+</nav>
+
+<!-- 01 MEET STRUCTURE -->
+<section id="meet">
+  <div class="wrap">
+    <p class="eyebrow"><span class="num">01</span> The Meet Has Changed Shape</p>
+    <h2>A 46-day, 10-week meet — not the traditional 40</h2>
+    <p class="lede">Before tuning anything else, the engine has to know this is a structurally different meet than 2023–2025. The footprint is bigger, the calendar is irregular, and Belmont's closure has pulled premier races and the entire spring prep circuit onto unfamiliar ground.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h4>The 2026 calendar (verified)</h4>
+        <ul class="tight">
+          <li><b>Opens Friday, July 3</b>; closes <b>Labor Day, Monday, Sept 7</b>.</li>
+          <li><b>46 racing days across 10 weeks</b> — an expansion from the traditional 40-day meet.</li>
+          <li>Dark Mondays &amp; Tuesdays as usual, <b>plus dark Wednesdays through July 26</b>.</li>
+          <li>Four-day weeks (Thu–Sun) July 9–26; <b>five-day weeks resume Wed July 29</b>.</li>
+          <li>Six-day closing stretch, Sept 2 – Labor Day.</li>
+        </ul>
+        <p class="src">Source: NYRA 2026 schedule announcement &amp; official Saratoga calendar.</p>
+      </div>
+      <div class="card">
+        <h4>Why it's bigger this year</h4>
+        <p>Belmont Park is closed for reconstruction. As a one-time event, the <b>July 4th Racing Festival moved to Saratoga</b>, bringing Belmont-signature races onto the Spa card: the <b>G1 Belmont Derby ($750K)</b>, <b>G1 Belmont Oaks ($600K)</b>, and <b>G2 Suburban</b> all run July 4. NYRA has stated the meet reverts to the traditional 40-day schedule in 2027 when Belmont reopens.</p>
+        <p class="src">Source: NYRA. Belmont Park reopens for live racing September 2026.</p>
+      </div>
+    </div>
+
+    <h3>Two-year-old (“baby race”) spine of the 2026 meet</h3>
+    <p>This is, as always, the country's most important juvenile proving ground — and the stakes ladder is the scaffold the engine should hang its 2yo logic on:</p>
+    <div class="tablewrap">
+      <table>
+        <caption>Key juvenile &amp; juvenile-adjacent stakes — 2026 (selected)</caption>
+        <thead><tr><th>Date</th><th>Race</th><th>For</th><th>Surface / note</th></tr></thead>
+        <tbody>
+          <tr><td>Jul 3</td><td class="name"><b>Schuylerville</b> (Listed)</td><td>2yo fillies</td><td>6f dirt — opening-day juvenile sprint</td></tr>
+          <tr><td>Aug 1</td><td class="name"><b>Saratoga Special</b> (G2)</td><td>2yo</td><td>dirt sprint</td></tr>
+          <tr><td>Aug 8</td><td class="name"><b>Test</b> (G1)</td><td>3yo fillies</td><td>sprint</td></tr>
+          <tr class="lead"><td>Sep 5</td><td class="name"><b>Spinaway</b> (G1)</td><td>2yo fillies</td><td>premier juvenile filly route prep</td></tr>
+          <tr class="lead"><td>Sep 6</td><td class="name"><b>Hopeful</b> (G1)</td><td>2yo</td><td>headline juvenile colt race</td></tr>
+          <tr><td>Sep 5</td><td class="name"><b>With Anticipation</b> (G3)</td><td>2yo</td><td>turf route</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cap">Plus the deep maiden-special-weight juvenile program that runs daily — where first-time-starter and sire angles (Sections 05–06) do the real work.</p>
+
+    <h3>Embedded New York-bred showcase stakes</h3>
+    <p>State-bred black-type is woven through the meet — these are the spots where Section 07's NY-bred sire and breeder weights matter most:</p>
+    <ul class="tight">
+      <li><b>Johnstone</b> (NYB) — Aug 5</li>
+      <li><b>Seeking the Ante</b> (NYB) — Sep 4 · juvenile state-breds</li>
+      <li><b>Funny Cide</b> (NYB) &amp; <b>Gio Ponti</b> — Sep 7 (closing day)</li>
+    </ul>
+    <p class="src">Source: NYRA 2026 stakes schedule.</p>
+  </div>
+</section>
+
+<!-- 02 CONNECTIONS -->
+<section id="connections">
+  <div class="wrap">
+    <p class="eyebrow"><span class="num">02</span> The People Who Win</p>
+    <h2>Leading owners, trainers &amp; jockeys</h2>
+    <p class="lede">The Spa concentrates the sport's best connections in one place. Three years of verified standings show who carries the meet — and, more usefully for the engine, the difference between high-volume win leaders and high-strike-rate operators you should actually bet.</p>
+
+    <h3>Trainers — three-year title history</h3>
+    <div class="grid3">
+      <div class="card"><h4>2025 (40 days)</h4><p><b>Chad Brown 32</b> &amp; <b>Todd Pletcher 32</b> (dead heat for the title) · Linda Rice 24 · Miguel Clement 18 · Bill Mott 16.</p></div>
+      <div class="card"><h4>2024</h4><p><b>Chad Brown 45</b> — ran away with it. Brown's most dominant Spa season.</p></div>
+      <div class="card"><h4>2023</h4><p><b>Chad Brown 35</b> &amp; <b>Linda Rice 35</b> (tie).</p></div>
+    </div>
+    <p>Translation: <b>Chad Brown is the structural meet leader</b> — won or shared the title all three years. But raw wins mislead. The 2025 verified table exposes who to actually trust per-start:</p>
+
+    <div class="tablewrap">
+      <table>
+        <caption>2025 Saratoga trainer leaders — verified (sorted by wins)</caption>
+        <thead><tr><th class="num">#</th><th>Trainer</th><th class="num">Sts</th><th class="num">Wins</th><th class="num">Win %</th><th class="num">Top-3 %</th></tr></thead>
+        <tbody>
+          <tr class="lead"><td class="num rank">1</td><td class="name"><b>Chad C. Brown</b></td><td class="num">186</td><td class="num">32</td><td class="num">17.2%</td><td class="num">48.4%</td></tr>
+          <tr class="lead"><td class="num rank">1</td><td class="name"><b>Todd A. Pletcher</b></td><td class="num">131</td><td class="num">32</td><td class="num hot">24.4%</td><td class="num">53.4%</td></tr>
+          <tr><td class="num rank">3</td><td class="name"><b>Linda Rice</b></td><td class="num">129</td><td class="num">24</td><td class="num">18.6%</td><td class="num">47.3%</td></tr>
+          <tr><td class="num rank">4</td><td class="name"><b>Miguel Clement</b></td><td class="num">80</td><td class="num">18</td><td class="num">22.5%</td><td class="num">46.2%</td></tr>
+          <tr><td class="num rank">5</td><td class="name"><b>William I. Mott</b></td><td class="num">109</td><td class="num">16</td><td class="num">14.7%</td><td class="num">43.1%</td></tr>
+          <tr><td class="num rank">6</td><td class="name"><b>Steven Asmussen</b></td><td class="num">50</td><td class="num">15</td><td class="num hot">30.0%</td><td class="num">58.0%</td></tr>
+          <tr><td class="num rank">8</td><td class="name">Brad Cox</td><td class="num">59</td><td class="num">12</td><td class="num">20.3%</td><td class="num">49.2%</td></tr>
+          <tr><td class="num rank">12</td><td class="name">Thomas Amoss</td><td class="num">32</td><td class="num">9</td><td class="num hot">28.1%</td><td class="num">56.2%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="flag">
+      <h4>Strike-rate read for the engine</h4>
+      <p>Pletcher (24.4%) beat Brown's win rate by 7 points on far fewer starts, and his edge is specifically <b>2-year-olds and dirt</b> — he swept the juvenile G1 sprints (Hopeful, Spinaway). <b>Asmussen (30%) and Amoss (28%) are lower-volume, high-conversion shippers</b> worth a positive coefficient even off short meet samples. Brown's volume inflates his win count; his per-start rate is mid-pack.</p>
+    </div>
+
+    <h3>Jockeys — three-year title history</h3>
+    <div class="grid3">
+      <div class="card"><h4>2025</h4><p><b>Irad Ortiz Jr. 59</b> · Jose Ortiz 55 · Flavien Prat 42. Irad's 4th straight title, 7th overall.</p></div>
+      <div class="card"><h4>2024</h4><p><b>Irad Ortiz Jr. 52</b> · Prat 45 (led all riders in purses, $6.6M).</p></div>
+      <div class="card"><h4>2023</h4><p><b>Irad Ortiz Jr. 62</b> — a runaway.</p></div>
+    </div>
+    <p>An Ortiz brother has won every Spa riding title since 2015 except 2021 (Luis Saez, 64). The 2025 verified table:</p>
+    <div class="tablewrap">
+      <table>
+        <caption>2025 Saratoga jockey leaders — verified (sorted by wins)</caption>
+        <thead><tr><th class="num">#</th><th>Jockey</th><th class="num">Sts</th><th class="num">Wins</th><th class="num">Win %</th><th class="num">Top-3 %</th></tr></thead>
+        <tbody>
+          <tr class="lead"><td class="num rank">1</td><td class="name"><b>Irad Ortiz, Jr.</b></td><td class="num">286</td><td class="num">59</td><td class="num">20.6%</td><td class="num">55.6%</td></tr>
+          <tr><td class="num rank">2</td><td class="name"><b>Jose L. Ortiz</b></td><td class="num">243</td><td class="num">55</td><td class="num hot">22.6%</td><td class="num">52.7%</td></tr>
+          <tr><td class="num rank">3</td><td class="name"><b>Flavien Prat</b></td><td class="num">230</td><td class="num">42</td><td class="num">18.3%</td><td class="num">54.3%</td></tr>
+          <tr><td class="num rank">4</td><td class="name">Ricardo Santana Jr.</td><td class="num">256</td><td class="num">38</td><td class="num">14.8%</td><td class="num">43.0%</td></tr>
+          <tr><td class="num rank">5</td><td class="name">Kendrick Carmouche</td><td class="num">193</td><td class="num">29</td><td class="num">15.0%</td><td class="num">40.4%</td></tr>
+          <tr><td class="num rank">8</td><td class="name">Dylan Davis</td><td class="num">217</td><td class="num">21</td><td class="num">9.7%</td><td class="num">35.9%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="flag brass">
+      <h4>Value vs. chalk</h4>
+      <p>Jose Ortiz quietly out-converted his brother in 2025 (22.6% vs 20.6%) on fewer mounts — an underlay-beating angle when the public hammers Irad. The documented <b>price play is Dylan Davis</b>: reporting put his average win payoff at roughly <b>$16.80 in 2024 and $18.90 in 2023</b>, far above the favorite-heavy stars. Irad, who rode the most favorites, returned the lowest average win mutuel (~$7.70 in 2024) — fine for hit rate, poor for ROI. Encode rider value as <em>payoff-adjusted</em>, not win-count.</p>
+    </div>
+
+    <h3>Owners</h3>
+    <p><b>Mike Repole / Repole Stable is the dominant ownership force</b> — 14 wins and the leading-owner title in 2025, his <b>fourth</b> Saratoga ownership title. By per-start efficiency in 2025, the verified standout outfits were <b>Klaravich Stables</b> (4 wins / 13 starts, ~31%) and <b>West Point Thoroughbreds</b> (3 / 9, ~33%), with Juddmonte and Gary Barber also hitting at a third of their starters.</p>
+    <p class="src">Sources: NYRA official 2025 leaderboards (verified jockey/trainer/owner tables); NYRA &amp; America's Best Racing meet recaps for 2023–2024 title history.</p>
+  </div>
+</section>
+
+<!-- 03 SHIPPERS -->
+<section id="shippers">
+  <div class="wrap">
+    <p class="eyebrow"><span class="num">03</span> Where the Horses Come From</p>
+    <h2>Shippers &amp; origin-track form</h2>
+    <p class="lede">You asked specifically how Churchill, Gulfstream and Aqueduct horses perform. Here is the honest state of the data — and a structural change in 2026 that bears directly on the engine's “last-race-track” logic.</p>
+
+    <div class="flag brass">
+      <h4>Honest data limitation — read this first</h4>
+      <p>Clean, public, aggregate <b>win-rate-by-origin-track</b> tables for Saratoga (e.g. “horses last out at Gulfstream win X% at the Spa”) are <b>not published</b> by Equibase, NYRA, DRF or any free source as a downloadable stat. Anyone presenting a single tidy “Gulfstream shippers hit 19%” number is either citing a paywalled trip/pace product or fabricating it. <b>The right move is to have TrackSmart compute these from the past performances it already ingests</b> — the data is in the PPs (last-raced track is a field on every line). Section 08 specs that build. Everything below is what is verifiably knowable now.</p>
+    </div>
+
+    <h3>The 2026 structural shift that changes “last race track”</h3>
+    <p>This is the single most important shipper finding in the report, because it breaks naive last-track matching:</p>
+    <div class="grid2">
+      <div class="card">
+        <h4>Belmont is closed → the NY feeder moved</h4>
+        <p>With Belmont Park under reconstruction, NYRA ran its 2026 spring NY-circuit racing at <b>Aqueduct under the “Belmont at the Big A” banner</b>. So the bulk of horses arriving at Saratoga 2026 off a New York prep <b>last raced at Aqueduct</b> — but the chart/PP track label may read as a Belmont-branded meet at the Aqueduct strip.</p>
+      </div>
+      <div class="card">
+        <h4>Why it matters for the model</h4>
+        <p>Aqueduct's main track is a smaller, tighter oval than Belmont's. Recent NY route form in 2026 was earned around <b>Aqueduct's configuration</b>, not Belmont's sweeping mile-and-a-half. Engine must (a) <b>map the “Belmont at the Big A” label to the Aqueduct node</b>, and (b) avoid crediting horses with Belmont-style two-turn experience they didn't actually get.</p>
+      </div>
+    </div>
+    <p class="src">Source: NYRA (Aqueduct closing weekend / Belmont reopening Sept 2026; “Belmont at Aqueduct” spring race references in 2026 entries).</p>
+
+    <h3>What is verifiably known about the origin tracks</h3>
+    <div class="tablewrap">
+      <table>
+        <caption>Origin-track context for 2026 Saratoga shippers</caption>
+        <thead><tr><th>Origin</th><th>Role in the pipeline</th><th>Engine note</th></tr></thead>
+        <tbody>
+          <tr><td class="name"><b>Aqueduct</b><br><span class="src">(“Belmont at the Big A”)</span></td><td>Primary NY-circuit feeder in 2026. Most NY-based runners ship in directly off this meet.</td><td>Tightest oval of the feeders; class is honest but speed figures run a touch lower than Saratoga pars.</td></tr>
+          <tr><td class="name"><b>Churchill Downs</b></td><td>Spring/summer meet runs into early July; strong dirt class, especially Cox/Asmussen/McPeek barns. Ellis Park picks up after.</td><td>Churchill is a long-stretch, fair dirt track — form translates well to Saratoga's long stretch. High-class shippers, not bargains.</td></tr>
+          <tr><td class="name"><b>Gulfstream Park</b></td><td>Winter/spring base; many 3yo and older runners take a freshening then point to the Spa.</td><td>Gulfstream form often comes off speed-favoring, tight-turn racing; watch for horses stretching to Saratoga two-turn routes for the first time.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="flag">
+      <h4>The one verified shipper datapoint</h4>
+      <p>Published 2025 analysis credited <b>Todd Pletcher with a ~21% win rate specifically with shippers</b> at the meet — consistent with his overall 24.4% and a reminder that elite barns ship to win, not to school. Treat “first start at the meet” as barn-dependent, not a blanket negative.</p>
+    </div>
+
+    <div class="flag brass">
+      <h4>The structural route trap (verified, high-value)</h4>
+      <p>Saratoga's dirt-route geometry is unusual and trips up shippers every year: <b>the Spa runs no one-turn miles and no 1‑1/16-mile dirt routes</b> — its dirt routes are <b>two-turn at 1‑1/8 miles or longer</b>. Belmont historically ran most of its dirt routes (1m, 1‑1/16, 1‑1/8) <b>around one turn</b>. So a horse with sharp “route” form earned around one turn elsewhere is facing a genuinely different test here. Prefer horses with proven <b>two-turn</b> form when handicapping Saratoga dirt routes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 BIAS -->
+<section id="bias">
+  <div class="wrap">
+    <p class="eyebrow"><span class="num">04</span> The Surface Itself</p>
+    <h2>Track bias: dirt sprints reward forward position</h2>
+    <p class="lede">A recurring, documented Saratoga dirt-sprint profile — useful as a prior, with the standing caveat that within-meet bias swings day-to-day with weather and rail placement.</p>
+    <div class="grid2">
+      <div class="card">
+        <h4>6-furlong dirt sprints</h4>
+        <p><b>~33%</b> won by front-runners, <b>~31%</b> by early-pace types — roughly <b>64%</b> of these races go to horses on or near the lead.</p>
+      </div>
+      <div class="card">
+        <h4>7-furlong dirt sprints</h4>
+        <p><b>~43%</b> front-runners, <b>~26%</b> early-pace — about <b>69%</b> won with tactical speed and forward placement.</p>
+      </div>
+    </div>
+    <p class="src">Source: published Saratoga dirt track-profile data (Today's Racing Digest). Treat as a baseline prior, not a daily certainty — the engine should still update bias from each day's results.</p>
+    <div class="flag">
+      <h4>Engine implication</h4>
+      <p>Pace-shape modeling should carry a <b>positive early-position coefficient on dirt sprints</b>, strongest at 6–7f, and discount deep closers in those splits unless the projected pace is genuinely contested. Pair this with the two-turn route rule above for a coherent dirt model.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 FRESHMAN -->
+<section id="freshman">
+  <div class="wrap">
+    <p class="eyebrow"><span class="num">05</span> The Baby-Race Engine</p>
+    <h2>Freshman sires — first crop (2-year-olds of 2026)</h2>
+    <p class="lede">Saratoga is the most important freshman-sire battleground of the year. These standings are live as of late June 2026 and will reshuffle weekly through the meet — the Spa itself routinely rearranges this list. Maiden juvenile races are where this data earns its keep.</p>
+
+    <div class="tablewrap">
+      <table>
+        <caption>2026 freshman-sire watch list — current leaders &amp; live status (late June 2026)</caption>
+        <thead><tr><th>Sire</th><th>Sire line / farm</th><th>Status &amp; read</th></tr></thead>
+        <tbody>
+          <tr class="lead"><td class="name"><b>Life Is Good</b></td><td>Into Mischief — WinStar ($100K intro)</td><td>Most <b>efficient</b> of the class (early 3 wins from ~5 starters). Throwing speed + scope; expected to surge late summer. Premium juvenile sire.</td></tr>
+          <tr class="lead"><td class="name"><b>Golden Pal</b></td><td>Uncle Mo — Ashford</td><td>Most <b>active</b>; winners on dirt, turf <em>and</em> synthetic. Sheer speed (Wesley Ward's “fastest I've trained”) — primed for short, fast juvenile sprints.</td></tr>
+          <tr><td class="name"><b>Early Voting</b></td><td>Gun Runner — Three Chimneys</td><td>~2 wins from 4 (50%). Gun Runner's first son at stud to click early; dirt-classic-leaning.</td></tr>
+          <tr><td class="name"><b>Nashville</b></td><td>Speightstown</td><td>Surging — vaulted to ~3 wins (27% strike) in late June. Speightstown speed.</td></tr>
+          <tr><td class="name"><b>Epicenter</b></td><td>Not This Time — Coolmore</td><td>Live runner Epic Reign; classic-influenced, may improve with distance.</td></tr>
+          <tr><td class="name"><b>Drain the Clock</b></td><td>Maclean's Music ($10K)</td><td><b>Top value play.</b> OBS March breeze standout; sons of Maclean's Music bring precocious speed at a fraction of the marquee fees.</td></tr>
+          <tr><td class="name"><b>Roadster / Corniche / Pinehurst</b></td><td>various (Coolmore/SF)</td><td>Corniche = champion 2yo profile, “ready-made” precocity; Roadster adding winners; Pinehurst speed.</td></tr>
+          <tr><td class="name"><b>Flightline</b></td><td>Tapit — Lane's End ($200K intro)</td><td><b>Slow first-out, high ceiling.</b> Stock looks to want more distance/time; likely much better at 3. Don't over-bet his 2yo first-timers on name alone.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="src">Sources: Horse Racing Nation freshman-sire tracker (May–June 2026), TDN &amp; BloodHorse freshman-sire panels. <b>Note:</b> the 2025 champion freshman sire was <b>Yaupon</b> — now a sophomore sire (see Section 06).</p>
+
+    <div class="flag brass">
+      <h4>How to actually use this at the Spa</h4>
+      <p>Freshman-sire rank alone is a weak signal; it's strongest <b>combined with barn and price point</b>. The high-value intersection: a <b>Pletcher/Brown/Ward first-time starter</b> by a speed-precocious value sire (Drain the Clock, Golden Pal, Nashville) in a <b>6f dirt or 5.5f turf juvenile sprint</b> — that stacks the trainer 2yo edge (Section 02), the dirt-sprint speed bias (Section 04), and a sire bred to fire early. Discount marquee-fee, distance-leaning sires (Flightline) in short first-out sprints.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 CROPS -->
+<section id="crops">
+  <div class="wrap">
+    <p class="eyebrow"><span class="num">06</span> The Established Young Sires</p>
+    <h2>Sophomore (2nd-crop) &amp; third-crop sires</h2>
+    <p class="lede">For 3yo and lightly-raced 4yo fields, the sophomore and third-crop lists carry more signal than the freshman list because the sample is real. Verified anchors below; the engine should refresh full standings live, as these rankings move with every graded result.</p>
+    <div class="grid2">
+      <div class="card">
+        <h4>Sophomore sires — oldest are 3yos in 2026</h4>
+        <p>This group <em>is</em> the 2025 freshman class, one year on. Verified anchor: <b>Yaupon</b> (son of the late Uncle Mo; Spendthrift) was the <b>No. 1 first-crop sire of 2025</b> — dominating juvenile categories and leading by a wide earnings margin — so he heads this list entering 2026.</p>
+        <p><b>Bolt d'Oro</b> (the 2022 champion freshman sire) also belongs here as an established young dirt sire, with multiple black-type 3yos reported in 2025.</p>
+      </div>
+      <div class="card">
+        <h4>Third-crop sires — oldest are 4yos in 2026</h4>
+        <p>This group is the 2024 freshman class. Verified anchor: <b>Vekoma</b> was the <b>Champion First-Crop Sire of 2024</b> and the <b>No. 1 Second-Crop Sire of 2025</b>, with his fee climbing to $100K — a clear, sustained leader for this crop year.</p>
+      </div>
+    </div>
+    <div class="flag">
+      <h4>Why this section is deliberately conservative</h4>
+      <p>U.S. second- and third-crop standings for 2026 are not cleanly scrapeable from free sources right now (BloodHorse's sire-list tables are bot-walled; much of the freely indexed crop data is European). Rather than quote stale or mis-attributed U.S. numbers, the verified anchors above are stated and the rest is flagged as a <b>live-pull task</b> (Section 08). This is the “must not assume” discipline you asked for.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 NY BRED -->
+<section id="nybred">
+  <div class="wrap">
+    <p class="eyebrow"><span class="num">07</span> The State-Bred Game</p>
+    <h2>New York-breds: sires, breeders &amp; owners</h2>
+    <p class="lede">Saratoga's card is saturated with restricted state-bred races, and the NY-bred ecosystem is small, stable, and concentrated — which makes it highly modelable. All figures below are verified from the official New York Thoroughbred Breeding &amp; Development Fund award standings (stallion/breeder/owner awards on NY purse earnings, 1st–3rd).</p>
+
+    <h3>Leading New York sires (by stallion awards)</h3>
+    <div class="tablewrap">
+      <table>
+        <caption>NY stallions by stallion-award earnings — 2023 → 2026-YTD (verified)</caption>
+        <thead><tr><th>Sire</th><th class="num">2023</th><th class="num">2024</th><th class="num">2025</th><th class="num">2026 (thru Apr 30)</th></tr></thead>
+        <tbody>
+          <tr class="lead"><td class="name"><b>Central Banker</b></td><td class="num">$239,847</td><td class="num">$458,984</td><td class="num">$340,122</td><td class="num">$67,272</td></tr>
+          <tr class="lead"><td class="name"><b>Solomini</b></td><td class="num">$84,317</td><td class="num">$280,067</td><td class="num">$297,804</td><td class="num hot">$122,938</td></tr>
+          <tr><td class="name">Laoban <span class="src">(dec.)</span></td><td class="num">$252,111</td><td class="num">$210,916</td><td class="num">$77,202</td><td class="num">$8,197</td></tr>
+          <tr><td class="name">War Dancer</td><td class="num">$130,056</td><td class="num">$158,075</td><td class="num">$121,049</td><td class="num">—</td></tr>
+          <tr><td class="name">Bustin Stones</td><td class="num">$134,149</td><td class="num">$140,940</td><td class="num">$96,573</td><td class="num">$10,630</td></tr>
+          <tr><td class="name"><b>Honest Mischief</b></td><td class="num">—</td><td class="num">$126,822</td><td class="num">$170,611</td><td class="num">$36,109</td></tr>
+          <tr><td class="name"><b>King for a Day</b></td><td class="num">—</td><td class="num">$89,790</td><td class="num">$89,790</td><td class="num">$23,475</td></tr>
+          <tr><td class="name">Mission Impazible</td><td class="num">$84,320</td><td class="num">$69,759</td><td class="num">$73,147</td><td class="num">$8,860</td></tr>
+          <tr><td class="name">Freud</td><td class="num">$81,626</td><td class="num">$55,735</td><td class="num">$55,735</td><td class="num">—</td></tr>
+          <tr><td class="name">Redesdale</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num hot">$41,736</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="flag brass">
+      <h4>NY-bred sire read</h4>
+      <p><b>Central Banker is the bedrock</b> — top-two among NY sires every single year of the window. <b>Solomini is overtaking him</b> and leads the 2026-YTD standings. <b>Laoban</b> was a dominant force but is deceased; his crops are shrinking, so fade his influence going forward. The <b>rising young NY sires to weight up are Honest Mischief and King for a Day</b>, with <b>Redesdale and Name Changer</b> emerging in 2026. This is a slow-moving, learnable list — ideal for hard-coded NY-bred sire coefficients refreshed annually.</p>
+    </div>
+
+    <h3>Leading New York breeders</h3>
+    <div class="tablewrap">
+      <table>
+        <caption>NY breeder-award leaders — 2023 → 2025 (verified, top 5 each year)</caption>
+        <thead><tr><th>Breeder</th><th class="num">2023</th><th class="num">2024</th><th class="num">2025</th></tr></thead>
+        <tbody>
+          <tr class="lead"><td class="name"><b>Chester &amp; Mary Broman</b></td><td class="num">$268,199</td><td class="num">$534,377</td><td class="num hot">$521,997</td></tr>
+          <tr class="lead"><td class="name"><b>McMahon of Saratoga</b></td><td class="num">$339,400</td><td class="num hot">$715,713</td><td class="num">$410,831</td></tr>
+          <tr class="lead"><td class="name"><b>Sequel Thoroughbreds</b></td><td class="num hot">$399,365</td><td class="num">$516,178</td><td class="num">$333,978</td></tr>
+          <tr><td class="name">Stonewall Farm</td><td class="num">$210,388</td><td class="num">$267,082</td><td class="num">$231,918</td></tr>
+          <tr><td class="name">Windylea Farm – NY</td><td class="num">—</td><td class="num">$238,653</td><td class="num">$214,298</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The breeder list is even more stable than the sire list: <b>Broman, McMahon of Saratoga, and Sequel</b> are the perennial top three, with Stonewall and Windylea filling out the elite tier. A state-bred from one of these programs is a meaningfully different proposition than a state-bred from an unknown breeder.</p>
+
+    <h3>Owners &amp; stallion farms in the NY-bred game</h3>
+    <div class="grid2">
+      <div class="card">
+        <h4>Stallion-farm award leaders (where the sires stand)</h4>
+        <p><b>McMahon of Saratoga Thoroughbreds</b> and <b>Sequel Stallions New York</b> are the consistent 1–2 stallion-owner programs across all three years, followed by <b>Rockridge Stud</b>, <b>Irish Hill &amp; Dutchess Views</b>, <b>War Dancer LLC</b> and <b>Waldorf Farm</b>.</p>
+      </div>
+      <div class="card">
+        <h4>Open-company owners running NY-breds</h4>
+        <p><b>Michael Dubb</b> is the perennial leader at running state-breds in open company, with <b>Reeves Thoroughbred Racing</b>, <b>Windylea</b>, and <b>Lady Sheila Stable</b> recurring near the top. These connections signal a NY-bred good enough to try open company — a class-up tell.</p>
+      </div>
+    </div>
+    <p class="src">Source: New York Thoroughbred Breeding &amp; Development Fund official leaderboard (nybreds.com), 2023–2026 award standings.</p>
+
+    <div class="flag">
+      <h4>Broodmare-sire note (honest)</h4>
+      <p><b>Tapit</b> is the dominant U.S. broodmare sire nationally (poised for a third straight North American title) and shows up heavily behind quality NY-breds. A clean <em>NY-bred-specific</em> broodmare-sire ranking isn't published as a free table — the engine should compute the damsire distribution directly from the state-bred PPs it ingests rather than import a national list wholesale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 08 ENGINE -->
+<section id="engine">
+  <div class="wrap">
+    <p class="eyebrow"><span class="num">08</span> Putting It in the Model</p>
+    <h2>Recommended TrackSmart AI engine revisions</h2>
+    <p class="lede">Concrete, prioritized changes derived only from the verified findings above. Items marked “compute” are builds against the PPs the engine already ingests — not external assumptions.</p>
+
+    <ol class="spec">
+      <li><b>Rescale meet-volume thresholds for 46 days.</b> Any logic keyed to raw win counts (“leading trainer pace,” hot-barn flags) needs roughly a <b>+15% adjustment</b> vs. 2023–2025 40-day baselines, or convert all volume metrics to <b>per-start rates</b> to stay meet-length-agnostic.</li>
+      <li><b>Map the “Belmont at the Big A” label to the Aqueduct node.</b> Treat 2026 NY-circuit prep form as Aqueduct-configuration form. Do not credit Belmont-style sweeping two-turn experience that horses didn't actually run. <code>last_track in {Belmont@BigA, Aqueduct} → NY_circuit_node</code>.</li>
+      <li><b>Build the origin-track shipper module (compute).</b> From PP last-raced-track fields, compute rolling Saratoga win/ITM rates by origin for <b>Churchill, Gulfstream, Aqueduct, Woodbine, Monmouth, Kentucky Downs/Ellis</b>. Replace any hard-coded shipper assumption with these computed priors. This is the proper home for the question “how do Gulfstream/Churchill horses do.”</li>
+      <li><b>Encode the two-turn dirt-route filter.</b> Saratoga has <b>no one-turn miles / no 1‑1/16 dirt routes</b>; dirt routes are two-turn at 1‑1/8m+. Add a <b>two-turn-proven</b> feature and penalize horses whose route form is one-turn-only.</li>
+      <li><b>Add the dirt-sprint early-position coefficient.</b> Positive weight for front-runners / early-pace types at <b>6f (~64% on-pace) and 7f (~69% on-pace)</b>, conditioned on projected pace contention. Keep a daily-bias updater on top of this prior.</li>
+      <li><b>Weight 2yo barns and sire×barn×distance stacks.</b> Boost <b>Pletcher, Brown, Ward</b> first-time juveniles; intersect with <b>speed-precocious value freshman sires</b> (Drain the Clock, Golden Pal, Nashville, Life Is Good) in short sprints. Discount marquee distance-leaning sires (Flightline) first-out short.</li>
+      <li><b>Model rider value as payoff-adjusted, not win-count.</b> Flag <b>Dylan Davis</b>-type positive-ROI riders; treat <b>Jose Ortiz</b> as an efficiency edge when the public overbets <b>Irad</b>. Carry per-meet favorite-mutuel context.</li>
+      <li><b>Hard-code annual NY-bred coefficients.</b> Sires: <b>Central Banker, Solomini, Honest Mischief, King for a Day</b> up; <b>Laoban</b> decaying. Breeders: <b>Broman, McMahon, Sequel, Stonewall, Windylea</b> as a quality tier. Refresh from the NY Fund leaderboard each January.</li>
+      <li><b>Compute the NY-bred damsire distribution (compute).</b> Don't import a national broodmare-sire list; derive it from state-bred PPs to capture the actual NY population.</li>
+      <li><b>Refresh live sire standings weekly during the meet.</b> Freshman and sophomore lists reshuffle at the Spa — schedule a weekly pull so juvenile-race weights track the current leaderboard, not the June snapshot.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- 09 PROVENANCE -->
+<section id="provenance">
+  <div class="wrap">
+    <p class="eyebrow"><span class="num">09</span> Show the Work</p>
+    <h2>Data provenance — verified vs. compute-from-PP</h2>
+    <p class="lede">Per your standing instruction that the engine must not assume: here is exactly what in this report is hard, sourced data versus what is flagged for the engine to compute or pull live.</p>
+    <div class="grid2">
+      <div class="card">
+        <span class="tag v">Verified — sourced</span>
+        <ul class="tight">
+          <li>2026 meet dates, day count, calendar irregularities, stakes schedule — NYRA.</li>
+          <li>2025 trainer / jockey / owner leaders with starts, wins, % — NYRA official leaderboard.</li>
+          <li>2023–2024 trainer &amp; jockey title history — NYRA / ABR recaps.</li>
+          <li>NY-bred sire, breeder, owner, stallion-farm award standings 2023–2026 — NY Breeding Fund.</li>
+          <li>Dirt-sprint pace-bias percentages — published Saratoga track profile.</li>
+          <li>Two-turn dirt-route structural fact — multiple racing sources.</li>
+          <li>Live 2026 freshman-sire status — Horse Racing Nation / TDN (late June).</li>
+          <li>Crop anchors: Yaupon (2025 champ freshman), Vekoma (2024 champ freshman / 2025 #1 2nd-crop).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="tag c">Flagged — compute or live-pull</span>
+        <ul class="tight">
+          <li>Win-rate-by-origin-track for shippers — not public; compute from PPs.</li>
+          <li>Full U.S. 2nd-/3rd-crop sire 2026 standings — paywalled/bot-walled; live-pull.</li>
+          <li>NY-bred-specific broodmare-sire ranking — compute from state-bred PPs.</li>
+          <li>Day-to-day in-meet track bias — update from daily results, not assumed.</li>
+          <li>2023–2024 owner-title specifics beyond Repole's dominance — partial in free sources.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="flag brass">
+      <h4>One caution worth stating plainly</h4>
+      <p>The single biggest risk to the 2026 model is treating it like a normal 40-day Belmont-fed meet. It isn't: it's longer, the calendar is lumpy, the premier July races are Belmont imports, and the entire NY prep circuit ran at Aqueduct under a Belmont brand. Items 01–04 in Section 08 exist specifically to keep the engine from making that assumption.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="badge">TrackSmart <span>AI</span> — The Only AI That Thinks Like a Handicapper</div>
+    <div>Engine Intelligence Brief · Saratoga 2026 · Compiled June 28, 2026 · Sources cited inline per section</div>
+  </div>
+</footer>
+
+</body>
+</html>
