@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The One-Angle Play: Finding the Horse That's Ready to Run · TrackSmart AI</title>
+<meta name="description" content="AI does the entire deep dive on every horse in the field. My only job left is finding the one that's ready to fire today — and it takes about two minutes.">
+<link rel="canonical" href="https://start.tracksmartracing.com/the-one-angle-play.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="TrackSmart AI">
+<meta property="og:url" content="https://start.tracksmartracing.com/the-one-angle-play.html">
+<meta property="og:title" content="The One-Angle Play: Finding the Horse That's Ready to Run">
+<meta property="og:description" content="AI does the entire deep dive on every horse in the field. My only job left is finding the one that's ready to fire today — and it takes about two minutes.">
+<meta property="og:image" content="https://start.tracksmartracing.com/og-one-angle-play.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The One-Angle Play: Finding the Horse That's Ready to Run">
+<meta name="twitter:description" content="AI does the entire deep dive on every horse in the field. My only job left is finding the one that's ready to fire today.">
+
+<!--
+  NOTE FOR DAVID:
+  Same setup as the-3-minute-edge.html — fonts load from Google Fonts CDN instead
+  of your embedded base64 woff2s, and og-one-angle-play.png is a placeholder path
+  that needs a real banner image. Swap both in to match the rest of the repo exactly.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#04101b;
+    --panel:#0a1b2a;
+    --panel-2:#0d2033;
+    --border:#1b3b54;
+    --cyan:#28d6f5;
+    --cyan-bright:#5ce8ff;
+    --cyan-2:#46c6ff;
+    --ink:#eef6fb;
+    --muted:#9fbed2;
+    --faint:#6f93aa;
+    --amber:#ffb454;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1100px 620px at 10% -10%, rgba(40,214,245,0.09), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(70,198,255,0.06), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Hanken Grotesk','Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    line-height:1.7;
+    font-size:18px;
+  }
+  h1,h2,h3,h4{font-family:'Sora','Poppins',sans-serif;}
+  a{color:var(--cyan-bright);}
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px;}
+
+  header.top{
+    position:sticky;top:0;z-index:20;
+    padding:16px 24px;border-bottom:1px solid var(--border);
+    background:rgba(4,16,27,0.85);backdrop-filter:blur(8px);
+  }
+  header.top .inner{max-width:720px;margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:center;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;letter-spacing:0.2px;text-decoration:none;color:var(--ink);}
+  .logo .mark{
+    width:30px;height:30px;border-radius:8px;
+    background:linear-gradient(160deg,var(--panel-2),var(--panel));
+    border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .logo .mark svg{width:18px;height:18px;}
+  .logo .ai{color:var(--cyan);}
+  header.top nav a.back{font-size:0.85rem;color:var(--muted);text-decoration:none;}
+  header.top nav a.back:hover{color:var(--cyan-bright);}
+
+  .hero{padding:60px 24px 20px;text-align:center;}
+  .hero .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:0.72rem;letter-spacing:1.6px;text-transform:uppercase;
+    color:var(--cyan-bright);background:rgba(40,214,245,0.08);
+    border:1px solid rgba(40,214,245,0.35);border-radius:999px;
+    padding:6px 14px;margin-bottom:24px;font-family:'Sora',sans-serif;font-weight:600;
+  }
+  .hero h1{
+    font-size:2.5rem;line-height:1.18;margin:0 0 20px;font-weight:800;
+    background:linear-gradient(90deg,#fff,#cfe6f2 55%,var(--cyan-bright));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    letter-spacing:-0.01em;
+  }
+  .hero .dek{
+    font-size:1.15rem;color:var(--muted);max-width:600px;margin:0 auto 28px;
+    font-style:italic;line-height:1.6;
+  }
+  .byline{
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    font-size:0.85rem;color:var(--faint);margin-bottom:8px;
+  }
+  .byline .avatar{
+    width:36px;height:36px;border-radius:50%;
+    background:linear-gradient(160deg,var(--cyan),var(--cyan-2));
+    display:flex;align-items:center;justify-content:center;
+    color:#04101b;font-family:'Sora',sans-serif;font-weight:800;font-size:0.95rem;
+  }
+  .byline .who strong{color:var(--ink);display:block;font-size:0.9rem;}
+  .byline .dot{color:var(--border);}
+
+  .divider{border:none;border-top:1px solid var(--border);margin:44px 0;}
+
+  article{padding:8px 24px 20px;}
+  article p{color:#dbe9f1;margin:0 0 24px;}
+  article p.lead{font-size:1.2rem;color:var(--ink);}
+  article h2{
+    font-size:1.55rem;margin:56px 0 20px;line-height:1.3;color:var(--ink);
+    padding-bottom:14px;border-bottom:1px solid var(--border);
+  }
+  article h2 .num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:30px;height:30px;border-radius:8px;margin-right:12px;
+    background:rgba(40,214,245,0.1);border:1px solid rgba(40,214,245,0.4);
+    color:var(--cyan-bright);font-size:0.95rem;font-weight:700;vertical-align:middle;
+  }
+  article strong{color:var(--ink);}
+  article em{color:var(--cyan-bright);font-style:italic;}
+
+  blockquote.pull{
+    margin:36px 0;padding:4px 0 4px 22px;border-left:3px solid var(--cyan);
+    font-family:'Sora',sans-serif;font-size:1.25rem;font-weight:600;
+    color:var(--cyan-bright);line-height:1.5;font-style:normal;
+  }
+
+  .stat-row{
+    display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:32px 0;
+  }
+  @media (max-width:560px){.stat-row{grid-template-columns:1fr;}}
+  .stat-card{
+    background:var(--panel);border:1px solid var(--border);border-radius:14px;
+    padding:22px 20px;text-align:center;
+  }
+  .stat-card .num{
+    font-family:'Sora',sans-serif;font-weight:800;font-size:2.4rem;
+    background:linear-gradient(90deg,var(--cyan-bright),var(--cyan-2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    line-height:1;margin-bottom:8px;
+  }
+  .stat-card .label{color:var(--muted);font-size:0.88rem;line-height:1.4;}
+  .stat-caption{
+    text-align:center;color:var(--faint);font-size:0.8rem;margin-top:-18px;margin-bottom:32px;
+    font-family:'JetBrains Mono',monospace;letter-spacing:0.3px;
+  }
+
+  .angle-grid{display:flex;flex-direction:column;gap:14px;margin:32px 0;}
+  .angle-card{
+    display:flex;gap:16px;background:var(--panel);border:1px solid var(--border);
+    border-radius:14px;padding:20px 22px;align-items:flex-start;
+  }
+  .angle-card .n{
+    flex:0 0 auto;width:32px;height:32px;border-radius:50%;
+    background:rgba(40,214,245,0.10);border:1px solid rgba(40,214,245,0.4);
+    color:var(--cyan-bright);display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:0.92rem;font-family:'Sora',sans-serif;
+  }
+  .angle-card h4{margin:0 0 6px;font-size:1.02rem;color:var(--ink);font-family:'Sora',sans-serif;}
+  .angle-card p{margin:0;color:var(--muted);font-size:0.95rem;}
+
+  .sig{
+    margin-top:8px;font-family:'Sora',sans-serif;font-style:normal;font-size:1.05rem;
+    color:var(--ink);
+  }
+  .sig .role{display:block;color:var(--faint);font-size:0.82rem;font-family:'Hanken Grotesk',sans-serif;margin-top:2px;}
+
+  .cta{
+    margin:56px 24px 0;background:linear-gradient(160deg,var(--panel-2),var(--panel));
+    border:1px solid var(--border);border-radius:18px;padding:36px 30px;text-align:center;
+  }
+  .cta h3{font-size:1.3rem;margin:0 0 10px;}
+  .cta p{color:var(--muted);max-width:480px;margin:0 auto 22px;font-size:0.98rem;}
+  .cta a.btn{
+    display:inline-block;background:linear-gradient(90deg,var(--cyan),var(--cyan-2));
+    color:#04101b;text-decoration:none;font-family:'Sora',sans-serif;font-weight:700;
+    padding:13px 28px;border-radius:9px;font-size:0.95rem;
+  }
+  .cta a.btn:hover{filter:brightness(1.08);}
+
+  footer{margin-top:56px;border-top:1px solid var(--border);padding:36px 24px 40px;text-align:center;}
+  footer .brand-foot{font-weight:700;letter-spacing:0.5px;margin-bottom:6px;font-family:'Sora',sans-serif;}
+  footer .brand-foot .ai{color:var(--cyan);}
+  footer .copyright{color:var(--faint);font-size:0.78rem;margin-top:6px;}
+  footer a{color:var(--faint);text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <a class="logo" href="https://start.tracksmartracing.com/">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="22" height="22" rx="6" stroke="#28d6f5" stroke-width="1.4"/>
+          <path d="M4 16l4.5-5 3.5 3 7-8" stroke="#5ce8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15.5 6H19v3.5" stroke="#5ce8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span>TrackSmart <span class="ai">AI</span></span>
+    </a>
+    <nav><a class="back" href="https://start.tracksmartracing.com/">All Guides →</a></nav>
+  </div>
+</header>
+
+<div class="hero">
+  <span class="eyebrow">From the Founder</span>
+  <h1>The One-Angle Play</h1>
+  <p class="dek">How I let AI do the entire deep dive on every horse — so all that's left for me is finding the one that's ready to run today.</p>
+  <div class="byline">
+    <span class="avatar">DL</span>
+    <span class="who"><strong>David Lowry</strong>Founder, TrackSmart AI <span class="dot">·</span> 6 min read</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <hr class="divider" style="margin-top:8px;">
+
+  <article>
+    <p class="lead">There used to be a moment in every race I dreaded: the moment I finished the deep dive on horse number one and realized I had eleven more to go.</p>
+
+    <p>That moment doesn't exist for me anymore.</p>
+
+    <h2><span class="num">1</span>AI Does the Deep Dive So I Don't Have To</h2>
+
+    <p>I'm not exaggerating when I say TrackSmart AI does <em>all</em> of the handicapping work now — not the easy 80% of it, the whole thing. Speed pars, class analysis, pace pressure, connections, weight, form cycles, trip trouble buried in the comment lines — every dimension I used to grind through by hand is already done and organized into a report before I've had my second cup of coffee.</p>
+
+    <p>That's the part people underestimate about handing this work to AI. It's not that it saves me time on the boring parts. It's that it does the <em>entire</em> job — the same job that used to take me the better part of an hour per race — and hands it back to me already ranked, already reasoned, already narrowed to a short list of four or five horses worth my attention.</p>
+
+    <p>I'm not reading past performances anymore. I'm reading conclusions.</p>
+
+    <h2><span class="num">2</span>The #1 Pick Isn't Always the Bet</h2>
+
+    <p>Here's something I want to be completely honest about: TrackSmart AI is not a crystal ball. It's a 50,000+ token handicapping engine reading exactly what's written in the past performances — nothing more, nothing less. It doesn't know if a rail that played dead all week suddenly turns live in race nine, or if a jockey has something going on we'll never see in a form line. No model, mine included, is ever going to get every race right. Anyone who tells you otherwise is selling something.</p>
+
+    <p>That's exactly why I stopped treating the #1 selection like it's the only one that matters. The real value was never a single pick — it's a proven, ranked shortlist:</p>
+
+    <div class="stat-row">
+      <div class="stat-card"><div class="num">80%</div><div class="label">of winners land in the AI's Top&nbsp;4 selections</div></div>
+      <div class="stat-card"><div class="num">50%</div><div class="label">of winners land in the AI's Top&nbsp;2 selections</div></div>
+    </div>
+    <div class="stat-caption">Based on 2,800+ races tested</div>
+
+    <p>Read those numbers the right way and they don't say "bet the top pick and walk away." They say the winner is sitting somewhere in that shortlist four times out of five — which means my real job is figuring out <em>which one</em> of those four or five horses is actually doing the running today. Sometimes that's the model's #1. Just as often, it's #2, #3, or #4 — the one showing a readiness signal the others aren't.</p>
+
+    <h2><span class="num">3</span>My Only Job: Find the Horse That's Ready</h2>
+
+    <p>With the deep dive already done and the shortlist already proven, I go to those four or five horses with exactly one question in mind — the question that actually decides which name on that list gets my money:</p>
+
+    <blockquote class="pull">Which horse looks ready to run his or her best race today?</blockquote>
+
+    <p>I'm not recalculating speed figures or second-guessing the class rating. The model already did that, and it did it better and faster than I ever could by hand. I'm doing one thing: scanning those four or five horses for the one detail that says <em>this one is about to fire</em>.</p>
+
+    <div class="angle-grid">
+      <div class="angle-card">
+        <div class="n">1</div>
+        <div>
+          <h4>Second or Third Off the Layoff</h4>
+          <p>A horse rounding into peak form after time away often shows it right here — sharper works, a tightening pattern, the freshness starting to pay off instead of just showing up.</p>
+        </div>
+      </div>
+      <div class="angle-card">
+        <div class="n">2</div>
+        <div>
+          <h4>An Easier Spot After a Bad Break</h4>
+          <p>Big odds the last race or two are often a tell, not a warning. A horse that went off at a huge price probably didn't have a real chance that day — wrong post, bad trip, tough company. Today might be the easier spot where that changes.</p>
+        </div>
+      </div>
+      <div class="angle-card">
+        <div class="n">3</div>
+        <div>
+          <h4>Back on the Surface Where He Runs Best</h4>
+          <p>Some horses are simply different animals on the surface that suits them. When one of my four or five is returning to the dirt, turf, or synthetic where its best numbers live, that's worth more than another line of data.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>That's it. One glance, one angle, applied to a field the AI already cut down for me — and confirmed by the numbers rather than a hunch. It takes a couple of minutes, not because I'm rushing, but because there's simply nothing left to dig for. The digging is finished; all that's left is deciding.</p>
+
+    <h2><span class="num">4</span>Two Minutes to the Window</h2>
+
+    <p>I read the four or five profiles, I ask my one question, and I'm heading to the windows for win/place — or win/place/show if I like the value underneath the top pick. No spreadsheets, no second-guessing, no nagging feeling that I missed something buried on page three of the past performances. I know I didn't, because there was no page three left to miss anything on.</p>
+
+    <p>And I'm not married to the #1. If the readiness signal points to the model's #3 instead, that's who gets my ticket — because I trust the shortlist, not any single rank inside it.</p>
+
+    <p>That's the trade I made: fifty years of grinding through every angle on every horse, swapped for fifty years of judgment spent on exactly one angle, on exactly the horses worth it.</p>
+
+    <h2>The Bottom Line</h2>
+
+    <p>I built TrackSmart AI to take over the part of handicapping that was always mechanical anyway — the counting, the comparing, the cross-referencing. It's not going to be perfect every time; nothing reading a form and nothing else ever will be. What's left for me is the part that was never mechanical to begin with: recognizing which horse in a proven shortlist is about to run the race of its life, and having the experience to trust what I'm seeing.</p>
+
+    <p>I have never cashed this many tickets doing this little work. Not because the work got easier — because the AI is finally doing the work that doesn't need me, so I can spend my attention on the one thing that still does.</p>
+
+    <p class="sig">— David Lowry<span class="role">Founder, TrackSmart AI</span></p>
+  </article>
+
+  <div class="cta">
+    <h3>See TrackSmart AI in action</h3>
+    <p>Let the model do the deep dive. Spend your experience finding the horse that's ready — not building the report from scratch.</p>
+    <a class="btn" href="https://start.tracksmartracing.com/">Explore the Engines</a>
+  </div>
+
+  <footer>
+    <div class="brand-foot">TrackSmart <span class="ai">AI</span></div>
+    <div class="copyright">© 2026 TrackSmart AI · <a href="https://www.tracksmartracing.com">tracksmartracing.com</a></div>
+  </footer>
+</div>
+
+</body>
+</html>
