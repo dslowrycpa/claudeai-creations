@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Become a TrackSmart AI Member — Fully Handicapped Race Cards, Every Day</title>
+<meta name="description" content="Join TrackSmart AI for $20/month and get at least two fully handicapped race cards delivered to your email and the Substack app — every day. Plus every major meet, always included.">
+<link rel="canonical" href="https://start.tracksmartracing.com/membership.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TrackSmart AI">
+<meta property="og:url" content="https://start.tracksmartracing.com/membership.html">
+<meta property="og:title" content="Become a TrackSmart AI Member — Fully Handicapped Race Cards, Every Day">
+<meta property="og:description" content="$20/month gets you at least two fully handicapped race cards every day, delivered to your inbox and the Substack app. Saratoga, Belmont, Del Mar, Churchill, Keeneland & Gulfstream Championship — always included.">
+<meta property="og:image" content="https://start.tracksmartracing.com/og-membership.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Become a TrackSmart AI Member">
+<meta name="twitter:description" content="At least two fully handicapped race cards a day for $20/month. Every major meet included.">
+
+<!--
+  NOTE FOR DAVID:
+  Fonts load from Google Fonts CDN (Sora / Hanken Grotesk / JetBrains Mono) rather
+  than your embedded base64 woff2s — swap in the real @font-face block from any
+  other page if you want this fully self-contained/offline like the rest of the repo.
+  og-membership.png is a placeholder path — needs a real banner image.
+  The "Become a Member" buttons link to https://tracksmartai.substack.com — confirm
+  that's the right URL for the paid tier before publishing (deep-link to the specific
+  subscribe/paywall page if you have one).
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#04101b;
+    --panel:#0a1b2a;
+    --panel-2:#0d2033;
+    --border:#1b3b54;
+    --cyan:#28d6f5;
+    --cyan-bright:#5ce8ff;
+    --cyan-2:#46c6ff;
+    --ink:#eef6fb;
+    --muted:#9fbed2;
+    --faint:#6f93aa;
+    --amber:#ffb454;
+    --green:#3ee0a8;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1200px 620px at 12% -10%, rgba(40,214,245,0.10), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(70,198,255,0.07), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Hanken Grotesk','Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3,h4{font-family:'Sora','Poppins',sans-serif;}
+  a{color:var(--cyan-bright);}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px;}
+
+  header.top{
+    position:sticky;top:0;z-index:20;
+    padding:16px 24px;border-bottom:1px solid var(--border);
+    background:rgba(4,16,27,0.85);backdrop-filter:blur(8px);
+  }
+  header.top .inner{max-width:880px;margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:center;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;letter-spacing:0.2px;text-decoration:none;color:var(--ink);}
+  .logo .mark{
+    width:30px;height:30px;border-radius:8px;
+    background:linear-gradient(160deg,var(--panel-2),var(--panel));
+    border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .logo .mark svg{width:18px;height:18px;}
+  .logo .ai{color:var(--cyan);}
+  header.top nav a.navlink{font-size:0.85rem;color:var(--muted);text-decoration:none;margin-left:20px;}
+  header.top nav a.navlink:hover{color:var(--cyan-bright);}
+  header.top nav a.navcta{
+    font-size:0.82rem;color:#04101b;text-decoration:none;margin-left:20px;
+    background:linear-gradient(90deg,var(--cyan),var(--cyan-2));
+    padding:8px 14px;border-radius:7px;font-weight:700;font-family:'Sora',sans-serif;
+  }
+
+  .hero{position:relative;text-align:center;padding:64px 24px 40px;border-bottom:1px solid var(--border);overflow:hidden;}
+  .hero .glow{
+    position:absolute;top:-120px;left:50%;transform:translateX(-50%);
+    width:700px;height:400px;background:radial-gradient(circle,rgba(40,214,245,0.18),transparent 70%);
+    pointer-events:none;
+  }
+  .hero .content{position:relative;z-index:1;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:0.72rem;letter-spacing:1.6px;text-transform:uppercase;
+    color:var(--cyan-bright);background:rgba(40,214,245,0.08);
+    border:1px solid rgba(40,214,245,0.35);border-radius:999px;
+    padding:6px 14px;margin-bottom:24px;font-family:'Sora',sans-serif;font-weight:600;
+  }
+  .hero h1{
+    font-size:2.6rem;line-height:1.15;margin:0 0 20px;font-weight:800;
+    background:linear-gradient(90deg,#fff,#cfe6f2 55%,var(--cyan-bright));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    letter-spacing:-0.01em;
+  }
+  .hero p.dek{font-size:1.1rem;color:var(--muted);max-width:600px;margin:0 auto 32px;line-height:1.6;}
+  .hero .proof{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;
+    color:var(--faint);font-size:0.85rem;font-family:'JetBrains Mono',monospace;
+  }
+  .hero .proof span{white-space:nowrap;}
+  .hero .proof strong{color:var(--cyan-bright);}
+
+  section{padding:56px 24px;}
+  section.tight{padding-top:0;}
+  .section-label{
+    font-size:0.72rem;letter-spacing:1.6px;text-transform:uppercase;color:var(--cyan);
+    font-weight:700;margin-bottom:8px;font-family:'Sora',sans-serif;text-align:center;
+  }
+  h2.section-title{font-size:1.7rem;margin:0 0 14px;text-align:center;}
+  p.section-desc{color:var(--muted);text-align:center;max-width:560px;margin:0 auto 40px;}
+
+  /* Pricing card */
+  .price-card{
+    max-width:440px;margin:0 auto;background:linear-gradient(160deg,var(--panel-2),var(--panel));
+    border:1px solid var(--border);border-radius:20px;padding:36px 34px;text-align:center;
+    box-shadow:0 20px 60px -20px rgba(40,214,245,0.15);
+  }
+  .price-card .plan{font-family:'Sora',sans-serif;font-weight:700;color:var(--cyan-bright);font-size:0.85rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;}
+  .price-card .amount{font-family:'Sora',sans-serif;font-weight:800;font-size:3.2rem;color:var(--ink);}
+  .price-card .amount span{font-size:1.1rem;color:var(--muted);font-weight:500;}
+  .price-card .sub{color:var(--muted);font-size:0.92rem;margin:10px 0 26px;}
+  .price-card ul{list-style:none;margin:0 0 28px;padding:0;text-align:left;}
+  .price-card li{
+    display:flex;gap:10px;align-items:flex-start;color:#dbe9f1;font-size:0.94rem;
+    padding:9px 0;border-top:1px solid var(--border);
+  }
+  .price-card li:first-child{border-top:none;}
+  .price-card li .check{color:var(--green);font-weight:700;flex:0 0 auto;}
+  .btn{
+    display:inline-block;background:linear-gradient(90deg,var(--cyan),var(--cyan-2));
+    color:#04101b;text-decoration:none;font-family:'Sora',sans-serif;font-weight:700;
+    padding:14px 30px;border-radius:9px;font-size:0.98rem;width:100%;
+  }
+  .btn:hover{filter:brightness(1.08);}
+  .price-card .fine{color:var(--faint);font-size:0.78rem;margin-top:14px;}
+
+  /* Feature grid */
+  .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media (max-width:640px){.feature-grid{grid-template-columns:1fr;}}
+  .feature{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px 22px;}
+  .feature .icon{
+    width:36px;height:36px;border-radius:9px;margin-bottom:14px;
+    background:rgba(40,214,245,0.1);border:1px solid rgba(40,214,245,0.35);
+    display:flex;align-items:center;justify-content:center;color:var(--cyan-bright);font-size:1.05rem;
+  }
+  .feature h4{margin:0 0 8px;font-size:1.02rem;}
+  .feature p{margin:0;color:var(--muted);font-size:0.92rem;}
+
+  /* Track grid */
+  .track-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  @media (max-width:640px){.track-grid{grid-template-columns:repeat(2,1fr);}}
+  .track{
+    background:var(--panel);border:1px solid var(--border);border-radius:12px;
+    padding:20px 14px;text-align:center;
+  }
+  .track .name{font-family:'Sora',sans-serif;font-weight:700;color:var(--ink);font-size:0.95rem;margin-bottom:4px;}
+  .track .tag{color:var(--faint);font-size:0.75rem;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.4px;}
+  .always-badge{
+    display:block;text-align:center;margin:22px auto 0;color:var(--green);font-size:0.85rem;
+    font-family:'JetBrains Mono',monospace;letter-spacing:0.3px;
+  }
+
+  /* Steps */
+  .steps{display:flex;flex-direction:column;gap:14px;max-width:640px;margin:0 auto;}
+  .step{display:flex;gap:16px;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:18px 20px;}
+  .step .n{
+    flex:0 0 auto;width:32px;height:32px;border-radius:50%;
+    background:rgba(40,214,245,0.10);border:1px solid rgba(40,214,245,0.4);
+    color:var(--cyan-bright);display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:0.92rem;font-family:'Sora',sans-serif;
+  }
+  .step h4{margin:0 0 6px;font-size:1rem;}
+  .step p{margin:0;color:var(--muted);font-size:0.92rem;}
+
+  /* Callout */
+  .callout{
+    max-width:640px;margin:0 auto;background:rgba(40,214,245,0.06);border:1px solid rgba(40,214,245,0.3);
+    border-radius:14px;padding:20px 24px;color:#d7f0f8;font-size:0.94rem;text-align:center;
+  }
+  .callout strong{color:var(--cyan-bright);}
+
+  /* FAQ */
+  .faq{max-width:680px;margin:0 auto;}
+  details{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:12px;}
+  summary{font-family:'Sora',sans-serif;font-weight:600;cursor:pointer;color:var(--ink);font-size:0.98rem;}
+  details p{color:var(--muted);margin:12px 0 0;font-size:0.92rem;}
+
+  .final-cta{
+    text-align:center;background:linear-gradient(160deg,var(--panel-2),var(--panel));
+    border:1px solid var(--border);border-radius:20px;padding:44px 30px;
+  }
+  .final-cta h3{font-size:1.5rem;margin:0 0 12px;}
+  .final-cta p{color:var(--muted);max-width:480px;margin:0 auto 26px;}
+  .final-cta a.btn{width:auto;padding:14px 36px;}
+
+  footer{margin-top:20px;border-top:1px solid var(--border);padding:36px 24px 40px;text-align:center;}
+  footer .brand-foot{font-weight:700;letter-spacing:0.5px;margin-bottom:6px;font-family:'Sora',sans-serif;}
+  footer .brand-foot .ai{color:var(--cyan);}
+  footer .copyright{color:var(--faint);font-size:0.78rem;margin-top:6px;}
+  footer .legal{color:var(--faint);font-size:0.72rem;margin-top:14px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.6;}
+  footer a{color:var(--faint);text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <a class="logo" href="https://start.tracksmartracing.com/">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="22" height="22" rx="6" stroke="#28d6f5" stroke-width="1.4"/>
+          <path d="M4 16l4.5-5 3.5 3 7-8" stroke="#5ce8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15.5 6H19v3.5" stroke="#5ce8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span>TrackSmart <span class="ai">AI</span></span>
+    </a>
+    <nav>
+      <a class="navlink" href="https://start.tracksmartracing.com/">All Guides</a>
+      <a class="navlink" href="https://start.tracksmartracing.com/sample-performance-report.html">Sample Report</a>
+      <a class="navcta" href="https://tracksmartai.substack.com">Become a Member</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="glow"></div>
+  <div class="content">
+    <span class="eyebrow">TrackSmart AI Membership</span>
+    <h1>The Card's Already Handicapped.</h1>
+    <p class="dek">Become a TrackSmart AI member and get at least two fully handicapped race cards delivered straight to your inbox and the Substack app every single day — built on the same 5th-generation models proven across 2,800+ races.</p>
+    <div class="proof">
+      <span><strong>2+ cards</strong> every day, not just monthly</span>
+      <span><strong>80%</strong> of winners in the Top 4</span>
+      <span><strong>50%</strong> of winners in the Top 2</span>
+      <span><strong>50 years</strong> of handicapping behind every card</span>
+    </div>
+    <p style="color:var(--faint);font-size:0.8rem;margin:16px auto 0;max-width:520px;line-height:1.6;">
+      Those numbers are a statistical average across a 2,800+ race testing sample — not a promise for every single card, every single day. Some days run hotter than others.
+      <a href="https://start.tracksmartracing.com/sample-performance-report.html">See a real day's results →</a>
+    </p>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section class="tight" style="padding-top:56px;">
+    <div class="price-card">
+      <div class="plan">Monthly Membership</div>
+      <div class="amount">$20<span>/month</span></div>
+      <div class="sub">That's 60+ handicapped cards a month — for one flat price. Manage or cancel anytime, right from Substack.</div>
+      <ul>
+        <li><span class="check">✓</span> At least 2 fully handicapped race cards every day</li>
+        <li><span class="check">✓</span> Delivered by email and the Substack app</li>
+        <li><span class="check">✓</span> Saratoga, Belmont, Del Mar, Churchill Downs, Keeneland &amp; Gulfstream (Championship Meet) — always included</li>
+        <li><span class="check">✓</span> Request any other track — we'll do our best to include it</li>
+        <li><span class="check">✓</span> A daily performance report — hit rates, big hits, and what the AI adjusted</li>
+      </ul>
+      <a class="btn" href="https://tracksmartai.substack.com">Become a Member</a>
+      <div class="fine">Subscriptions are handled securely through Substack at tracksmartai.substack.com.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Why Join</div>
+    <h2 class="section-title">Skip the Grind. Keep the Edge.</h2>
+    <p class="section-desc">You get the finished report — the same shortlist system I use myself, every card, every day.</p>
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="icon">⚡</div>
+        <h4>Fully Handicapped, Not Just Data</h4>
+        <p>Every card is a complete analysis — speed, class, pace, form cycles, and connections already broken down into a ranked shortlist, not a raw spreadsheet you still have to interpret.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📬</div>
+        <h4>Delivered, Not Chased</h4>
+        <p>Your cards land in your email and the Substack app automatically. No logging in to check for updates — it comes to you.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🏆</div>
+        <h4>The Meets That Matter</h4>
+        <p>Saratoga, Belmont, Del Mar, Churchill Downs, Keeneland, and the Gulfstream Championship Meet are always part of your membership — no extra request needed.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🎯</div>
+        <h4>Your Track, On Request</h4>
+        <p>Following a smaller circuit or a specific stakes day elsewhere? Members can request it. We'll do our best to work it into the daily lineup — not guaranteed, but the earlier you ask, the better we can plan.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Always Included</div>
+    <h2 class="section-title">Six Marquee Meets, Covered Daily</h2>
+    <p class="section-desc">These are covered automatically as part of every membership — no request required.</p>
+    <div class="track-grid">
+      <div class="track"><div class="name">Saratoga</div><div class="tag">NYRA</div></div>
+      <div class="track"><div class="name">Belmont</div><div class="tag">NYRA</div></div>
+      <div class="track"><div class="name">Del Mar</div><div class="tag">California</div></div>
+      <div class="track"><div class="name">Churchill Downs</div><div class="tag">Kentucky</div></div>
+      <div class="track"><div class="name">Keeneland</div><div class="tag">Kentucky</div></div>
+      <div class="track"><div class="name">Gulfstream Park</div><div class="tag">Championship Meet</div></div>
+    </div>
+    <span class="always-badge">✓ Always on the schedule — no request needed</span>
+  </section>
+
+  <section>
+    <div class="section-label">No Guesswork</div>
+    <h2 class="section-title">Full Transparency, Every Day</h2>
+    <p class="section-desc">Every day, members get a full performance wrap-up — not just picks. Hit rates by track, the best calls of the day, and exactly what the model adjusted overnight based on what it got wrong.</p>
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="icon">📊</div>
+        <h4>Real Numbers, Every Day</h4>
+        <p>Total races handicapped, winners in the Top 4, average payouts, and a track-by-track hit-rate breakdown — published daily, not cherry-picked.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🧠</div>
+        <h4>The AI Shows Its Work</h4>
+        <p>A dedicated "Learning &amp; Adjustments" section spells out exactly what the model misjudged and how it's being recalibrated for the next card.</p>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:24px;">
+      Curious what this actually looks like? <a href="https://start.tracksmartracing.com/sample-performance-report.html"><strong>See a real sample report →</strong></a>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Beyond the Majors</div>
+    <h2 class="section-title">Request Your Track</h2>
+    <p class="section-desc">Want a card from a different track, or a specific stakes day? Just ask — we'll do our best to work it into the daily lineup.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="n">1</div>
+        <div><h4>Send your request</h4><p>Reply to any card email or message us through Substack with the track and date you'd like handicapped.</p></div>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <div><h4>Ask a few days ahead</h4><p>Requests aren't guaranteed, but they're not a race against other members either — we just need time to plan. A few days' notice gives your request the best shot at making the daily lineup; same-day asks are much harder to fit in.</p></div>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <div><h4>Get your card</h4><p>If we're able to include it, your requested track's card is delivered the same way as your regular ones — email and the Substack app.</p></div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:24px;">
+      Track requests are always welcome, and we'll try to accommodate every one — but they're <strong>not guaranteed</strong>. A few days' advance notice is what lets us plan it in.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Questions</div>
+    <h2 class="section-title">Good to Know</h2>
+    <div class="faq">
+      <details>
+        <summary>How many cards do I get?</summary>
+        <p>At least two fully handicapped race cards every day, always including whichever of Saratoga, Belmont, Del Mar, Churchill Downs, Keeneland, and the Gulfstream Championship Meet are in season — all for one flat $20/month membership.</p>
+      </details>
+      <details>
+        <summary>How will I receive my cards?</summary>
+        <p>Straight to your email and the Substack app — wherever you already read TrackSmart AI.</p>
+      </details>
+      <details>
+        <summary>Can I request a track that's not on the list?</summary>
+        <p>Yes — track requests are welcome, and we'll do our best to work yours into the daily lineup. It's not guaranteed, but asking a few days ahead gives us the best chance to plan it in, rather than the same day.</p>
+      </details>
+      <details>
+        <summary>Does the AI hit 80%/50% every single day?</summary>
+        <p>No — those figures are a statistical average across a 2,800+ race testing sample, not a guarantee for any individual card or day. Some days beat it, some days fall short — our July 12 sample report shows a real example of that spread across three tracks in one day.</p>
+      </details>
+      <details>
+        <summary>How is a card built?</summary>
+        <p>Every card runs through TrackSmart AI's 5th-generation handicapping models — the same system behind our proven results — then gets a final pass before it's sent out.</p>
+      </details>
+      <details>
+        <summary>Do you publish your actual results?</summary>
+        <p>Yes — every day. Members get a full performance wrap-up covering hit rates by track, the best calls of the day, and what the model adjusted based on what it missed. <a href="https://start.tracksmartracing.com/sample-performance-report.html">See a real sample report.</a></p>
+      </details>
+      <details>
+        <summary>How do I manage or cancel my membership?</summary>
+        <p>Your subscription is handled entirely through Substack at tracksmartai.substack.com, where you can manage or cancel it at any time.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="final-cta">
+      <h3>Ready for your first card?</h3>
+      <p>Join TrackSmart AI for $20/month and let the shortlist come to you.</p>
+      <a class="btn" href="https://tracksmartai.substack.com">Become a Member</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand-foot">TrackSmart <span class="ai">AI</span></div>
+    <div class="copyright">© 2026 TrackSmart AI · <a href="https://www.tracksmartracing.com">tracksmartracing.com</a> · <a href="https://tracksmartai.substack.com">tracksmartai.substack.com</a></div>
+    <div class="legal">For entertainment and informational purposes only. No handicapping model, human or AI, guarantees winning results. Please wager responsibly.</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
