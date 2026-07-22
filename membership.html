@@ -27,6 +27,116 @@
   subscribe/paywall page if you have one).
 -->
 
+<!-- JSON-LD Structured Data for Service & Subscription -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "TrackSmart AI Monthly Membership",
+  "serviceType": "AI Horse Racing Handicapping Subscription",
+  "provider": {
+    "@type": "Organization",
+    "name": "TrackSmart AI",
+    "url": "https://www.tracksmartracing.com"
+  },
+  "description": "Daily fully handicapped race cards delivered via Substack and email. Powered by TrackSmart AI 5th-generation engines covering major tracks including Saratoga, Belmont, Del Mar, Churchill Downs, Keeneland, and Gulfstream Park.",
+  "areaServed": "Worldwide",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Daily Race Card Subscription",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "TrackSmart AI Daily Membership"
+        },
+        "price": "20.00",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "20.00",
+          "priceCurrency": "USD",
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": "1",
+            "unitCode": "MON"
+          }
+        },
+        "url": "https://tracksmartai.substack.com",
+        "availability": "https://schema.org/InStock"
+      }
+    ]
+  }
+}
+</script>
+
+<!-- JSON-LD Structured Data for Interactive FAQ Rich Snippets -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many cards do I get?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At least two fully handicapped race cards every day, always including whichever of Saratoga, Belmont, Del Mar, Churchill Downs, Keeneland, and the Gulfstream Championship Meet are in season — all for one flat $20/month membership."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How will I receive my cards?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Straight to your email and the Substack app — wherever you already read TrackSmart AI."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I request a track that's not on the list?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — track requests are welcome, and we'll do our best to work yours into the daily lineup. It's not guaranteed, but asking a few days ahead gives us the best chance to plan it in, rather than the same day."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the AI hit 80%/50% every single day?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — those figures are a statistical average across a 2,800+ race testing sample, not a guarantee for any individual card or day. Some days beat it, some days fall short."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is a card built?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every card runs through TrackSmart AI's 5th-generation handicapping models — the same system behind our proven results — then gets a final pass before it's sent out."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you publish your actual results?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — every day. Members get a full performance wrap-up covering hit rates by track, the best calls of the day, and the story behind what worked and what didn't."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I manage or cancel my membership?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your subscription is handled entirely through Substack at tracksmartai.substack.com, where you can manage or cancel it at any time."
+      }
+    }
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -141,7 +251,7 @@
   .btn{
     display:inline-block;background:linear-gradient(90deg,var(--cyan),var(--cyan-2));
     color:#04101b;text-decoration:none;font-family:'Sora',sans-serif;font-weight:700;
-    padding:14px 30px;border-radius:9px;font-size:0.98rem;width:100%;
+    padding:14px 30px;border-radius:99px;font-size:0.98rem;width:100%;
   }
   .btn:hover{filter:brightness(1.08);}
   .price-card .fine{color:var(--faint);font-size:0.78rem;margin-top:14px;}
