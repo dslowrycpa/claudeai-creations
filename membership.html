@@ -10,124 +10,22 @@
 <meta property="og:site_name" content="TrackSmart AI">
 <meta property="og:url" content="https://dslowrycpa.github.io/claudeai-creations/membership.html">
 <meta property="og:title" content="Become a TrackSmart AI Member — Fully Handicapped Race Cards, Every Day">
-<meta property="og:description" content="$20/month gets you at least two fully handicapped race cards every day, delivered to your inbox and the Substack app. Saratoga, Belmont, Del Mar, Churchill, Keeneland & Gulfstream Championship — always included.">
+<meta property="og:description" content="$20/month gets you at least four fully handicapped race cards every day, delivered to your inbox and the Substack app. Saratoga, Belmont, Del Mar, Churchill, Keeneland & Gulfstream Championship — always included.">
 <meta property="og:image" content="https://dslowrycpa.github.io/claudeai-creations/og-membership.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Become a TrackSmart AI Member">
 <meta name="twitter:description" content="At least four fully handicapped race cards a day for $20/month. Every major meet included.">
 
-<!-- Google Search Console Verification Tag -->
-<meta name="google-site-verification" content="QvgbFWAKwSbWvP_lU9liP2ogVDRi2RLOAwrRXoMM46Q" />
-
-<!-- JSON-LD Structured Data for Service & Subscription -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "TrackSmart AI Monthly Membership",
-  "serviceType": "AI Horse Racing Handicapping Subscription",
-  "provider": {
-    "@type": "Organization",
-    "name": "TrackSmart AI",
-    "url": "https://www.tracksmartracing.com"
-  },
-  "description": "Daily fully handicapped race cards delivered via Substack and email. Powered by TrackSmart AI 5th-generation engines covering major tracks including Saratoga, Belmont, Del Mar, Churchill Downs, Keeneland, and Gulfstream Park.",
-  "areaServed": "Worldwide",
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Daily Race Card Subscription",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "TrackSmart AI Daily Membership"
-        },
-        "price": "20.00",
-        "priceCurrency": "USD",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "price": "20.00",
-          "priceCurrency": "USD",
-          "referenceQuantity": {
-            "@type": "QuantitativeValue",
-            "value": "1",
-            "unitCode": "MON"
-          }
-        },
-        "url": "https://tracksmartai.substack.com",
-        "availability": "https://schema.org/InStock"
-      }
-    ]
-  }
-}
-</script>
-
-<!-- JSON-LD Structured Data for Interactive FAQ Rich Snippets -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How many cards do I get?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "At least two fully handicapped race cards every day, always including whichever of Saratoga, Belmont, Del Mar, Churchill Downs, Keeneland, and the Gulfstream Championship Meet are in season — all for one flat $20/month membership."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How will I receive my cards?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Straight to your email and the Substack app — wherever you already read TrackSmart AI."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I request a track that's not on the list?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes — track requests are welcome, and we'll do our best to work yours into the daily lineup. It's not guaranteed, but asking a few days ahead gives us the best chance to plan it in, rather than the same day."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does the AI hit 80%/50% every single day?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No — those figures are a statistical average across a 2,800+ race testing sample, not a guarantee for any individual card or day. Some days beat it, some days fall short."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How is a card built?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Every card runs through TrackSmart AI's 5th-generation handicapping models — the same system behind our proven results — then gets a final pass before it's sent out."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you publish your actual results?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes — every day. Members get a full performance wrap-up covering hit rates by track, the best calls of the day, and the story behind what worked and what didn't."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I manage or cancel my membership?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Your subscription is handled entirely through Substack at tracksmartai.substack.com, where you can manage or cancel it at any time."
-      }
-    }
-  ]
-}
-</script>
+<!--
+  NOTE FOR DAVID:
+  Fonts load from Google Fonts CDN (Sora / Hanken Grotesk / JetBrains Mono) rather
+  than your embedded base64 woff2s — swap in the real @font-face block from any
+  other page if you want this fully self-contained/offline like the rest of the repo.
+  og-membership.png is a placeholder path — needs a real banner image.
+  The "Become a Member" buttons link to https://tracksmartai.substack.com — confirm
+  that's the right URL for the paid tier before publishing (deep-link to the specific
+  subscribe/paywall page if you have one).
+-->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -243,10 +141,38 @@
   .btn{
     display:inline-block;background:linear-gradient(90deg,var(--cyan),var(--cyan-2));
     color:#04101b;text-decoration:none;font-family:'Sora',sans-serif;font-weight:700;
-    padding:14px 30px;border-radius:99px;font-size:0.98rem;width:100%;
+    padding:14px 30px;border-radius:9px;font-size:0.98rem;width:100%;
   }
   .btn:hover{filter:brightness(1.08);}
   .price-card .fine{color:var(--faint);font-size:0.78rem;margin-top:14px;}
+  .value-line{
+    max-width:440px;margin:16px auto 0;text-align:center;color:var(--green);
+    font-size:0.86rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.2px;
+  }
+
+  /* Report anatomy */
+  .report-demo{
+    max-width:680px;margin:0 auto;background:linear-gradient(160deg,var(--panel-2),var(--panel));
+    border:1px solid var(--border);border-radius:16px;padding:26px 28px;
+  }
+  .report-demo .rd-row{padding:16px 0;border-top:1px solid var(--border);}
+  .report-demo .rd-row:first-child{border-top:none;padding-top:0;}
+  .report-demo .rd-label{
+    display:flex;align-items:center;flex-wrap:wrap;gap:8px;
+    font-family:'Sora',sans-serif;font-weight:700;font-size:0.92rem;color:var(--cyan-bright);margin-bottom:7px;
+  }
+  .report-demo .rd-label .dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);flex:0 0 auto;}
+  .report-demo .rd-body{color:#cfe1ec;font-size:0.92rem;margin:0;}
+  .report-demo .rd-body .horse{color:var(--amber);font-weight:600;font-family:'JetBrains Mono',monospace;}
+  .report-demo .rd-tag{
+    display:inline-block;font-size:0.68rem;font-family:'JetBrains Mono',monospace;
+    text-transform:uppercase;letter-spacing:0.8px;color:var(--amber);
+    border:1px solid rgba(255,180,84,0.45);background:rgba(255,180,84,0.08);border-radius:6px;padding:2px 8px;
+  }
+  .not-numbers{
+    text-align:center;font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;
+    color:var(--amber);margin:26px auto 0;letter-spacing:-0.01em;
+  }
 
   /* Feature grid */
   .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
@@ -342,16 +268,15 @@
   <div class="content">
     <span class="eyebrow">TrackSmart AI Membership</span>
     <h1>The Card's Already Handicapped.</h1>
-    <p class="dek">Become a TrackSmart AI member and get at least two fully handicapped race cards delivered straight to your inbox and the Substack app every single day — built on the same 5th-generation models proven across 2,800+ races.</p>
+    <p class="dek">Become a TrackSmart AI member and get at least four fully handicapped race cards delivered straight to your inbox and the Substack app every single day — from the biggest meets in the country to the small tracks the crowd overlooks. We can handicap any track in North America, all on the same 5th-generation models proven across 2,800+ races.</p>
     <div class="proof">
-      <span><strong>2+ cards</strong> every day, not just monthly</span>
+      <span><strong>4+ cards</strong> every day, not just monthly</span>
       <span><strong>80%</strong> of winners in the Top 4</span>
       <span><strong>50%</strong> of winners in the Top 2</span>
       <span><strong>50 years</strong> of handicapping behind every card</span>
     </div>
     <p style="color:var(--faint);font-size:0.8rem;margin:16px auto 0;max-width:520px;line-height:1.6;">
       Those numbers are a statistical average across a 2,800+ race testing sample — not a promise for every single card, every single day. Some days run hotter than others.
-      <a href="sample-performance-report.html">See a real day's results →</a>
     </p>
   </div>
 </div>
@@ -362,23 +287,24 @@
     <div class="price-card">
       <div class="plan">Monthly Membership</div>
       <div class="amount">$20<span>/month</span></div>
-      <div class="sub">That's 60+ handicapped cards a month — for one flat price. Manage or cancel anytime, right from Substack.</div>
+      <div class="sub">That's 120+ handicapped cards a month — for one flat price. Manage or cancel anytime, right from Substack.</div>
       <ul>
-        <li><span class="check">✓</span> At least 2 fully handicapped race cards every day</li>
+        <li><span class="check">✓</span> At least 4 fully handicapped race cards every day</li>
         <li><span class="check">✓</span> Delivered by email and the Substack app</li>
         <li><span class="check">✓</span> Saratoga, Belmont, Del Mar, Churchill Downs, Keeneland &amp; Gulfstream (Championship Meet) — always included</li>
-        <li><span class="check">✓</span> Request any other track — we'll do our best to include it</li>
+        <li><span class="check">✓</span> Request <strong>any track in North America</strong> — big circuit or small, we'll do our best to include it</li>
         <li><span class="check">✓</span> A daily performance report — hit rates, big hits, and the story behind the results</li>
       </ul>
       <a class="btn" href="https://tracksmartai.substack.com">Become a Member</a>
       <div class="fine">Subscriptions are handled securely through Substack at tracksmartai.substack.com.</div>
     </div>
+    <div class="value-line">✓ 4+ cards a day works out to about 17¢ a card — less than a losing $2 ticket.</div>
   </section>
 
   <section>
     <div class="section-label">Why Join</div>
     <h2 class="section-title">Skip the Grind. Keep the Edge.</h2>
-    <p class="section-desc">You get the finished report — the same shortlist system I use myself, every card, every day.</p>
+    <p class="section-desc">You get the finished report — the same shortlist system I use myself, on four or more cards, every single day.</p>
     <div class="feature-grid">
       <div class="feature">
         <div class="icon">⚡</div>
@@ -397,10 +323,35 @@
       </div>
       <div class="feature">
         <div class="icon">🎯</div>
-        <h4>Your Track, On Request</h4>
-        <p>Following a smaller circuit or a specific stakes day elsewhere? Members can request it. We'll do our best to work it into the daily lineup — not guaranteed, but the earlier you ask, the better we can plan.</p>
+        <h4>Any Track in North America</h4>
+        <p>The marquee meets are always covered — and beyond them, TrackSmart AI can handicap any track on the continent. Love the small circuits the big services ignore? Request them and we'll do our best to add them to your daily lineup.</p>
       </div>
     </div>
+  </section>
+
+  <section>
+    <div class="section-label">Inside Every Report</div>
+    <h2 class="section-title">Not Just 4 Numbers on a Page</h2>
+    <p class="section-desc">Anyone can hand you four horses. Every TrackSmart AI race report tells you how the race will actually unfold — the pace, the pressure, and who's set up to benefit when it breaks.</p>
+    <div class="report-demo">
+      <div class="rd-row">
+        <div class="rd-label"><span class="dot"></span>Projected Race Shape <span class="rd-tag">Meltdown</span></div>
+        <p class="rd-body">An extreme cluster of early speed guarantees a destructive pace that will collapse in the stretch.</p>
+      </div>
+      <div class="rd-row">
+        <div class="rd-label"><span class="dot"></span>Early Speed Edge</div>
+        <p class="rd-body"><span class="horse">#4 Good News Rocket</span>, <span class="horse">#1 Zingales King</span>, and <span class="horse">#10 Borz</span> will hook up early in a contested battle, validated by A-grade TS Ignition metrics.</p>
+      </div>
+      <div class="rd-row">
+        <div class="rd-label"><span class="dot"></span>Late Kick / Pace Beneficiary</div>
+        <p class="rd-body"><span class="horse">#9 Twelve Nelson</span> holds the Late Kick Advantage and is the primary beneficiary of the collapsing pace.</p>
+      </div>
+      <div class="rd-row">
+        <div class="rd-label"><span class="dot"></span>Deep Flow Analysis</div>
+        <p class="rd-body">The break will be chaotic as multiple sprinters commit to suicidal early fractions to clear the pack. The middle of the turn will see a destructive duel as the leaders refuse to yield, draining their stamina reserves significantly. By the top of the stretch, the front-runners will be vulnerable and tiring, perfectly setting the table for a late closer. The pace beneficiary will stalk from the outside and sweep past the exhausted leaders in the final furlong.</p>
+      </div>
+    </div>
+    <div class="not-numbers">Not just 4 numbers on a page.</div>
   </section>
 
   <section>
@@ -416,6 +367,9 @@
       <div class="track"><div class="name">Gulfstream Park</div><div class="tag">Championship Meet</div></div>
     </div>
     <span class="always-badge">✓ Always on the schedule — no request needed</span>
+    <div class="callout" style="margin-top:24px;">
+      These six are guaranteed — but they're just the start. TrackSmart AI can handicap <strong>any track in North America</strong>, so the small circuits most services ignore are always on the table. Just ask.
+    </div>
   </section>
 
   <section>
@@ -435,14 +389,14 @@
       </div>
     </div>
     <div class="callout" style="margin-top:24px;">
-      Curious what this actually looks like? <a href="sample-performance-report.html"><strong>See a real sample report →</strong></a>
+      Every member gets this same full wrap-up in their inbox — <strong>every single day.</strong>
     </div>
   </section>
 
   <section>
     <div class="section-label">Beyond the Majors</div>
-    <h2 class="section-title">Request Your Track</h2>
-    <p class="section-desc">Want a card from a different track, or a specific stakes day? Just ask — we'll do our best to work it into the daily lineup.</p>
+    <h2 class="section-title">Love the Small Tracks? So Do We.</h2>
+    <p class="section-desc">The big meets are always covered — but the real value is that TrackSmart AI can handicap <strong>any track in North America</strong>. Following a bush-league circuit, a half-mile bullring, or a specific stakes day the big services skip? Just ask — we'll do our best to work it into the daily lineup.</p>
     <div class="steps">
       <div class="step">
         <div class="n">1</div>
@@ -468,7 +422,7 @@
     <div class="faq">
       <details>
         <summary>How many cards do I get?</summary>
-        <p>At least two fully handicapped race cards every day, always including whichever of Saratoga, Belmont, Del Mar, Churchill Downs, Keeneland, and the Gulfstream Championship Meet are in season — all for one flat $20/month membership.</p>
+        <p>At least four fully handicapped race cards every day, always including whichever of Saratoga, Belmont, Del Mar, Churchill Downs, Keeneland, and the Gulfstream Championship Meet are in season — all for one flat $20/month membership.</p>
       </details>
       <details>
         <summary>How will I receive my cards?</summary>
@@ -476,11 +430,11 @@
       </details>
       <details>
         <summary>Can I request a track that's not on the list?</summary>
-        <p>Yes — track requests are welcome, and we'll do our best to work yours into the daily lineup. It's not guaranteed, but asking a few days ahead gives us the best chance to plan it in, rather than the same day.</p>
+        <p>Yes — TrackSmart AI can handicap any track in North America, big circuit or small. Track requests are welcome, and we'll do our best to work yours into the daily lineup. It's not guaranteed, but asking a few days ahead gives us the best chance to plan it in, rather than the same day.</p>
       </details>
       <details>
         <summary>Does the AI hit 80%/50% every single day?</summary>
-        <p>No — those figures are a statistical average across a 2,800+ race testing sample, not a guarantee for any individual card or day. Some days beat it, some days fall short — our July 12 sample report shows a real example of that spread across three tracks in one day.</p>
+        <p>No — those figures are a statistical average across a 2,800+ race testing sample, not a guarantee for any individual card or day. Some days beat it, some days fall short — that's exactly why we publish a full performance wrap-up every single day.</p>
       </details>
       <details>
         <summary>How is a card built?</summary>
@@ -488,7 +442,7 @@
       </details>
       <details>
         <summary>Do you publish your actual results?</summary>
-        <p>Yes — every day. Members get a full performance wrap-up covering hit rates by track, the best calls of the day, and the story behind what worked and what didn't. <a href="sample-performance-report.html">See a real sample report.</a></p>
+        <p>Yes — every day. Members get a full performance wrap-up covering hit rates by track, the best calls of the day, and the story behind what worked and what didn't.</p>
       </details>
       <details>
         <summary>How do I manage or cancel my membership?</summary>
@@ -499,8 +453,8 @@
 
   <section class="tight">
     <div class="final-cta">
-      <h3>Ready for your first card?</h3>
-      <p>Join TrackSmart AI for $20/month and let the shortlist come to you.</p>
+      <h3>Ready for your first four cards?</h3>
+      <p>Join TrackSmart AI for $20/month and let four-plus handicapped cards come to you every day.</p>
       <a class="btn" href="https://tracksmartai.substack.com">Become a Member</a>
     </div>
   </section>
