@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saratoga Dead-Rail Report &amp; Revised Dirt Selections — Aug 8, 2026 · TrackSmart AI</title>
+<meta name="description" content="TrackSmart AI track-bias special: how the Aug 7 dead rail at Saratoga played out across every dirt race, and the revised top-4 dirt selections for Aug 8.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#04101b; --panel:#0a1b2a; --panel-2:#0d2033; --border:#1b3b54;
+    --cyan:#28d6f5; --cyan-bright:#5ce8ff; --cyan-2:#46c6ff; --ink:#eef6fb;
+    --muted:#9fbed2; --faint:#6f93aa; --amber:#ffb454; --green:#3ee0a8; --red:#ff7a7a;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1100px 620px at 10% -10%, rgba(40,214,245,0.09), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(70,198,255,0.06), transparent 55%),
+      var(--bg);
+    color:var(--ink); font-family:'Hanken Grotesk','Inter',-apple-system,BlinkMacSystemFont,sans-serif; line-height:1.65;
+  }
+  h1,h2,h3,h4{font-family:'Sora','Poppins',sans-serif;}
+  a{color:var(--cyan-bright);}
+  .wrap{max-width:840px;margin:0 auto;padding:0 24px;}
+
+  header.top{position:sticky;top:0;z-index:20;padding:16px 24px;border-bottom:1px solid var(--border);background:rgba(4,16,27,0.85);backdrop-filter:blur(8px);}
+  header.top .inner{max-width:840px;margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:center;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;text-decoration:none;color:var(--ink);}
+  .logo .mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--border);display:flex;align-items:center;justify-content:center;}
+  .logo .mark svg{width:18px;height:18px;}
+  .logo .ai{color:var(--cyan);}
+  header.top nav a.navlink{font-size:0.85rem;color:var(--muted);text-decoration:none;margin-left:20px;}
+  header.top nav a.navlink:hover{color:var(--cyan-bright);}
+  header.top nav a.navcta{font-size:0.82rem;color:#04101b;text-decoration:none;margin-left:20px;background:linear-gradient(90deg,var(--cyan),var(--cyan-2));padding:8px 14px;border-radius:7px;font-weight:700;font-family:'Sora',sans-serif;}
+
+  .hero{text-align:center;padding:56px 24px 36px;border-bottom:1px solid var(--border);}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:0.72rem;letter-spacing:1.6px;text-transform:uppercase;color:var(--cyan-bright);background:rgba(40,214,245,0.08);border:1px solid rgba(40,214,245,0.35);border-radius:999px;padding:6px 14px;margin-bottom:22px;font-family:'Sora',sans-serif;font-weight:600;}
+  .hero h1{font-size:2.1rem;line-height:1.2;margin:0 0 14px;font-weight:800;background:linear-gradient(90deg,#fff,#cfe6f2 55%,var(--cyan-bright));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero .meta{color:var(--muted);font-size:0.95rem;font-family:'JetBrains Mono',monospace;}
+  .hero .meta strong{color:var(--ink);font-family:'Hanken Grotesk',sans-serif;}
+
+  section{padding:40px 24px;}
+  section.tight{padding-top:6px;}
+  h2.section-title{font-size:1.35rem;margin:0 0 4px;display:flex;align-items:center;gap:10px;}
+  p.section-sub{color:var(--faint);font-size:0.85rem;margin:0 0 22px;font-style:italic;}
+
+  .verdict{background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--border);border-left:4px solid var(--cyan);border-radius:14px;padding:22px 24px;}
+  .verdict h3{margin:0 0 8px;font-size:1.15rem;color:var(--cyan-bright);}
+  .verdict p{margin:0;color:#dbe9f1;font-size:0.96rem;}
+
+  .method{background:var(--panel);border:1px solid rgba(255,180,84,0.3);border-radius:14px;padding:20px 22px;}
+  .method h3{margin:0 0 8px;font-size:1.05rem;color:var(--amber);}
+  .method ul{margin:8px 0 0;padding-left:20px;color:#dbe9f1;font-size:0.92rem;}
+  .method li{margin-bottom:6px;}
+  .method .note{margin:12px 0 0;color:var(--muted);font-size:0.88rem;font-style:italic;border-top:1px solid var(--border);padding-top:10px;}
+  .method .up{color:var(--green);font-weight:700;} .method .down{color:var(--red);font-weight:700;}
+
+  .glance{color:var(--muted);font-size:0.9rem;margin:0 0 20px;}
+
+  .race{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin-bottom:16px;}
+  .race h3{margin:0 0 8px;font-size:1.08rem;}
+  .race .lead{margin:6px 0;color:var(--muted);font-size:0.92rem;}
+  .race .lead .k{color:var(--cyan-bright);font-weight:600;}
+  .race .lead.bias{font-style:italic;color:var(--faint);font-size:0.86rem;}
+  .race .lead.bias .k2{color:var(--faint);font-weight:600;font-style:normal;}
+  .race .call{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--border);color:#dbe9f1;font-size:0.92rem;}
+  .race .call .k{color:var(--amber);font-weight:700;}
+
+  .rtable{width:100%;border-collapse:collapse;margin:14px 0 4px;font-size:0.88rem;}
+  .rtable th{background:var(--panel-2);color:var(--cyan-bright);text-align:left;padding:8px 10px;font-family:'Sora',sans-serif;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid var(--border);}
+  .rtable td{padding:8px 10px;border-bottom:1px solid rgba(27,59,84,0.55);color:var(--muted);vertical-align:top;}
+  .rtable td.horse{color:var(--ink);font-weight:600;font-family:'Sora',sans-serif;white-space:nowrap;}
+  .rtable td.fin,.rtable td.rk{color:var(--ink);font-weight:700;text-align:center;font-family:'Sora',sans-serif;width:34px;}
+  .rtable tr.flag td{background:rgba(255,122,122,0.08);}
+  .rtable td.pathcell.flag{color:var(--red);font-weight:600;}
+  .chg{font-family:'Sora',sans-serif;font-weight:700;font-size:0.7rem;letter-spacing:0.4px;}
+  .chg.up,.chg.new{color:var(--green);} .chg.down{color:var(--red);} .chg.hold{color:var(--faint);}
+
+  table.sum{width:100%;border-collapse:collapse;font-size:0.9rem;}
+  table.sum th{background:var(--panel-2);color:var(--cyan-bright);text-align:left;padding:9px 12px;font-family:'Sora',sans-serif;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid var(--border);}
+  table.sum td{padding:9px 12px;border-bottom:1px solid rgba(27,59,84,0.55);vertical-align:top;}
+  table.sum td.rk{color:var(--ink);font-weight:700;font-family:'Sora',sans-serif;text-align:center;width:48px;}
+  table.sum td.down{color:var(--red);} table.sum td.up{color:var(--green);}
+
+  .caveats .race p{margin:0 0 10px;color:var(--muted);font-size:0.92rem;}
+  .caveats b{color:var(--ink);}
+
+  .cta{margin-top:8px;text-align:center;background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--border);border-radius:18px;padding:36px 30px;}
+  .cta h3{font-size:1.25rem;margin:0 0 10px;}
+  .cta p{color:var(--muted);max-width:460px;margin:0 auto 22px;font-size:0.94rem;}
+  .cta a.btn{display:inline-block;background:linear-gradient(90deg,var(--cyan),var(--cyan-2));color:#04101b;text-decoration:none;font-family:'Sora',sans-serif;font-weight:700;padding:13px 28px;border-radius:9px;font-size:0.95rem;}
+
+  footer{margin-top:20px;border-top:1px solid var(--border);padding:36px 24px 40px;text-align:center;}
+  footer .brand-foot{font-weight:700;letter-spacing:0.5px;margin-bottom:6px;font-family:'Sora',sans-serif;}
+  footer .brand-foot .ai{color:var(--cyan);}
+  footer .copyright{color:var(--faint);font-size:0.78rem;margin-top:6px;}
+  footer .legal{color:var(--faint);font-size:0.72rem;margin-top:14px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <a class="logo" href="https://start.tracksmartracing.com/">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="22" height="22" rx="6" stroke="#28d6f5" stroke-width="1.4"/>
+          <path d="M4 16l4.5-5 3.5 3 7-8" stroke="#5ce8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15.5 6H19v3.5" stroke="#5ce8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span>TrackSmart <span class="ai">AI</span></span>
+    </a>
+    <nav>
+      <a class="navlink" href="membership.html">Membership</a>
+      <a class="navcta" href="https://tracksmartai.substack.com">Become a Member</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <span class="eyebrow">Member Exclusive · Track-Bias Special</span>
+  <h1>Saratoga Dead-Rail Report &amp; Revised Dirt Selections</h1>
+  <p class="meta"><strong>Bias observed:</strong> Fri, Aug 7, 2026 &nbsp;·&nbsp; <strong>Applied to:</strong> Sat, Aug 8, 2026 (dirt races)</p>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <h2 class="section-title">&#9888;&#65039; The Read: Was the Rail Dead?</h2>
+    <div class="verdict">
+      <h3>Verdict — tiring / dead rail, track played to the outside</h3>
+      <p>Across all six dirt races on Aug 7, the winning path was at least ~2 lanes off the rail, and horses that saved ground on the fence consistently flattened, weakened, or stopped — several finished last. Treat it as a strong lean (one afternoon, six races), not proof: upgrade rail-trip losers next out, and be skeptical of the wide-trip winners' raw finish positions.</p>
+    </div>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">&#128200; Aug 7 — Dirt Races, Trip by Trip</h2>
+    <p class="section-sub">Flagged rows = horses on or dropping to the rail. Comments are from the official chart (abbreviated).</p>
+<div class="race"><h3>Race 1 — 7f dirt (Clm $20k, F&amp;M)</h3><p class="lead"><span class="k">Rail read:</span> Mild-to-moderate. Win/place/show all came from 2 paths off the rail or wider; the 1.18 favorite raced inside and weakened, and the horse pinned 2p-to-inside ran last.</p><table class="rtable"><thead><tr><th>Fin</th><th>Horse</th><th>Path</th><th>Trip comment</th></tr></thead><tbody><tr><td class="fin">1</td><td class="horse">4 Furry Fox</td><td class="pathcell">2p</td><td>pace, 2p turn, responded</td></tr><tr><td class="fin">2</td><td class="horse">1 Mobelladream</td><td class="pathcell">closer</td><td>stumbled st, off slow, gained from 7th</td></tr><tr><td class="fin">3</td><td class="horse">7 Call Me Jal</td><td class="pathcell">out / 3p</td><td>out, 3p turn, kept on</td></tr><tr class="flag"><td class="fin">6</td><td class="horse">2 Margarita Molly (1.18*)</td><td class="pathcell flag">ins-2p</td><td>bobbled brk, ins-2p, weakened (was 3rd)</td></tr><tr class="flag"><td class="fin">7</td><td class="horse">6 Lady Delilah</td><td class="pathcell flag">2p-ins</td><td>bmp brk, squeezed, 2p-ins — faded to last</td></tr></tbody></table></div>
+<div class="race"><h3>Race 4 — 6f dirt (Alw Opt Clm)</h3><p class="lead"><span class="k">Rail read:</span> Moderate. Winner tipped 3-wide to run down the pace; the lone horse that chased inside managed only a mild kick for 4th, and the post-1 runner trailed.</p><table class="rtable"><thead><tr><th>Fin</th><th>Horse</th><th>Path</th><th>Trip comment</th></tr></thead><tbody><tr><td class="fin">1</td><td class="horse">3 Anyway</td><td class="pathcell">3w 5/16</td><td>tip 3w 5/16, up 1/16 pole</td></tr><tr><td class="fin">2</td><td class="horse">8 What&#x27;s Up Bro</td><td class="pathcell">out</td><td>drift out str, ran on</td></tr><tr><td class="fin">3</td><td class="horse">7 Party in the Army (1.77*)</td><td class="pathcell">3-2w</td><td>dueled 3-2w, kept on</td></tr><tr class="flag"><td class="fin">4</td><td class="horse">2 Long Pour</td><td class="pathcell flag">inside</td><td>chased ins, mild kick only</td></tr><tr class="flag"><td class="fin">6</td><td class="horse">1 Elysian Meadows</td><td class="pathcell flag">5-6w</td><td>post 1; 5-6w upper, trailed</td></tr></tbody></table></div>
+<div class="race"><h3>Race 5 — 1-1/8m dirt (Starter Alw)</h3><p class="lead"><span class="k">Rail read:</span> Strong. The winner and the 0.96 favorite both actively abandoned the rail; the two that stayed inside on the turns emptied out badly.</p><table class="rtable"><thead><tr><th>Fin</th><th>Horse</th><th>Path</th><th>Trip comment</th></tr></thead><tbody><tr><td class="fin">1</td><td class="horse">1 Papa Yo</td><td class="pathcell">moved out 5F</td><td>post 1, moved out 5F, eased late — won by 15</td></tr><tr><td class="fin">2</td><td class="horse">4 Ez Roll (0.96*)</td><td class="pathcell">ins → 3-4p</td><td>ins-2p, 3p 5/16, 4p 1/4</td></tr><tr><td class="fin">3</td><td class="horse">2 Fateful Lightning</td><td class="pathcell">3-5p</td><td>off bit slow, 3-5 paths turns</td></tr><tr class="flag"><td class="fin">5</td><td class="horse">5 American Grant</td><td class="pathcell flag">inside</td><td>inside turns, no response (bt ~19L)</td></tr><tr class="flag"><td class="fin">6</td><td class="horse">3 Googol Joke</td><td class="pathcell flag">ins-2p</td><td>3p 1st, ins-2p 2nd, tired</td></tr></tbody></table></div>
+<div class="race"><h3>Race 6 — 6f dirt (Mdn Sp Wt, 2yo)</h3><p class="lead"><span class="k">Rail read:</span> Moderate (closer-flavored). The 1-2 finishers both stumbled and closed from the back; inside speed weakened. Front/inside speed did not hold.</p><table class="rtable"><thead><tr><th>Fin</th><th>Horse</th><th>Path</th><th>Trip comment</th></tr></thead><tbody><tr><td class="fin">1</td><td class="horse">4 Constant Force</td><td class="pathcell">closed</td><td>stumbled 2x start — won from last</td></tr><tr><td class="fin">2</td><td class="horse">11 Nodin</td><td class="pathcell">closed</td><td>stumbled st, mild kick from 8th</td></tr><tr class="flag"><td class="fin">3</td><td class="horse">1 Pirate Ship</td><td class="pathcell flag">inside</td><td>post 1, bumped st, kept on (rail held here)</td></tr><tr class="flag"><td class="fin">5</td><td class="horse">6 Hurricane Mo</td><td class="pathcell flag">inside</td><td>dueled ins, weakened late</td></tr><tr><td class="fin">12</td><td class="horse">12 Silverus (3.20*)</td><td class="pathcell">5-4w</td><td>chased 5-4w, faltered — last</td></tr></tbody></table></div>
+<div class="race"><h3>Race 8 — 1 mile dirt (Clm $20k)</h3><p class="lead"><span class="k">Rail read:</span> Strong. Winner 4-wide; the two horses on or just off the rail ran 9th and 10th, including a textbook saved-ground line.</p><table class="rtable"><thead><tr><th>Fin</th><th>Horse</th><th>Path</th><th>Trip comment</th></tr></thead><tbody><tr><td class="fin">1</td><td class="horse">10 You&#x27;re Lookin Good</td><td class="pathcell">4w</td><td>4w upper, edged clear</td></tr><tr><td class="fin">3</td><td class="horse">5 Mike&#x27;s Magic</td><td class="pathcell">3-2w</td><td>cut pace 3-2w, kept on</td></tr><tr class="flag"><td class="fin">6</td><td class="horse">1 Monte Avi</td><td class="pathcell flag">ins → 3w</td><td>post 1, off inside, no headway</td></tr><tr class="flag"><td class="fin">9</td><td class="horse">2 Raging Sea Captain</td><td class="pathcell flag">just off ins</td><td>raced just off inside, no impact</td></tr><tr class="flag"><td class="fin">10</td><td class="horse">4 Reside</td><td class="pathcell flag">rail</td><td>SAVED GROUND, no avail; inside route, tired — last</td></tr></tbody></table></div>
+<div class="race"><h3>Race 11 — 7f dirt (Starter Opt Clm, F&amp;M)</h3><p class="lead"><span class="k">Rail read:</span> Strong. Winner raced 2-4 wide; the horse that dropped to the rail stopped to last, and the favorite weakened once it came inside.</p><table class="rtable"><thead><tr><th>Fin</th><th>Horse</th><th>Path</th><th>Trip comment</th></tr></thead><tbody><tr><td class="fin">1</td><td class="horse">8 Mursal</td><td class="pathcell">2-3p / 4p</td><td>hit gate, bobbled, 2-3p, 4p</td></tr><tr><td class="fin">2</td><td class="horse">10 Despo&#x27;s Dream</td><td class="pathcell">out</td><td>out, bid 1/2, 3-2p turn</td></tr><tr class="flag"><td class="fin">3</td><td class="horse">5 Coquito (1.72*)</td><td class="pathcell flag">out → 2p-ins</td><td>out, 2p-ins turn, weakened</td></tr><tr class="flag"><td class="fin">4</td><td class="horse">6 Baby Sassicaia</td><td class="pathcell flag">ins-2p</td><td>ins-2p turn, no rally</td></tr><tr class="flag"><td class="fin">7</td><td class="horse">3 Carolina Smokeshow</td><td class="pathcell flag">rail</td><td>post 1; DROP BACK RAIL 3/8, STOP — last</td></tr></tbody></table></div>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">&#129517; How the Dead Rail Rewrites Today</h2>
+    <div class="method">
+      <h3>The adjustment layer</h3>
+      <ul>
+        <li><span class="down">Downgrade</span> rail-committed types — inside-drawn need-the-lead speed, and closers/stalkers that save ground on the fence.</li>
+        <li><span class="up">Upgrade</span> outside draws and closers who can make one wide, sweeping run.</li>
+        <li>Lone speed is <b>not</b> an automatic fade — it can still win if it clears and angles off the rail (Papa Yo did exactly that Aug 7). The fade is speed trapped on the fence.</li>
+      </ul>
+      <p class="note">Key flag: several reports baked in a rail/speed bonus (Rail Bias Advantage +5, Rail Bias Multiplier +10, &ldquo;heavily speed-biased track&rdquo;). Those bonuses are built on the opposite of what the rail is doing — so any ranking leaning on them is the first to revise.</p>
+    </div>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">&#127943; Aug 8 — Revised Dirt Selections</h2>
+    <p class="section-sub">Chg: <span class="chg new">NEW</span> into top 4 · <span class="chg up">UP</span> moves up · <span class="chg down">DOWN</span> moves down · <span class="chg hold">HOLD</span> unchanged. Turf races excluded.</p>
+<div class="race"><h3>Race 1 — Mdn 115k, 6½f (2yo, FTS)</h3><p class="lead"><span class="k">Original AI Top 4:</span> #8 Hemingway, #5 Star Salute, #6 Bellissimo d&#x27;Oro, #7 Gaudreau</p><p class="lead bias"><span class="k2">Report’s stated bias:</span> Juvenile dash; report already notes outside draws get clear air away from kickback.</p><p class="lead"><span class="k">Dead-rail read:</span> Minimal change — the top 4 are all mid-to-outside draws, which the dead rail favors. The bias only hardens the fade of the rail-trapped horses already flagged (#1 U.S.S. Valor, #2 Coach Pope). No speed-bonus horses to unwind.</p><table class="rtable"><thead><tr><th>Rk</th><th>Horse</th><th>Run style / Draw</th><th>Chg</th><th>Why (dead-rail logic)</th></tr></thead><tbody><tr><td class="rk">1</td><td class="horse">8 Hemingway</td><td>FTS speed / outside</td><td><span class="chg hold">HOLD</span></td><td>Outside draw + clear air; ideal for a dead rail.</td></tr><tr><td class="rk">2</td><td class="horse">5 Star Salute</td><td>FTS speed / mid</td><td><span class="chg hold">HOLD</span></td><td>Bullet gate work; fine tactical draw.</td></tr><tr><td class="rk">3</td><td class="horse">6 Bellissimo d&#x27;Oro</td><td>FTS speed / mid</td><td><span class="chg hold">HOLD</span></td><td>Blazing gate bullet; no rail penalty.</td></tr><tr><td class="rk">4</td><td class="horse">7 Gaudreau</td><td>FTS / mid-out</td><td><span class="chg hold">HOLD</span></td><td>Fine draw; edges #9 Coach&#x27;s Pals for the spot.</td></tr></tbody></table><p class="call"><span class="k">Revised call:</span> Keep as-is. Fade #1 and #2 (rail) with extra conviction; #9 Coach&#x27;s Pals is the outside-drawn saver for exotics.</p></div>
+<div class="race"><h3>Race 2 — Mdn 115k, 6½f (2yo, FTS)</h3><p class="lead"><span class="k">Original AI Top 4:</span> #9 Code of Arms, #4 Tommy Tang, #3 Live, #7 Stone Aged</p><p class="lead bias"><span class="k2">Report’s stated bias:</span> Juvenile dash; report explicitly gives a “massive edge to outside-drawn horses.”</p><p class="lead"><span class="k">Dead-rail read:</span> Small tweak. The bias agrees with the report&#x27;s own outside lean, so promote the widest. #7 Stone Aged (“outside draw a major plus”) moves up; #3 Live (inside) slides a spot; #10 Implied Open (outside) enters for exotics.</p><table class="rtable"><thead><tr><th>Rk</th><th>Horse</th><th>Run style / Draw</th><th>Chg</th><th>Why (dead-rail logic)</th></tr></thead><tbody><tr><td class="rk">1</td><td class="horse">9 Code of Arms</td><td>FTS speed / outside</td><td><span class="chg hold">HOLD</span></td><td>Gate bullet + outside draw; top pick stands.</td></tr><tr><td class="rk">2</td><td class="horse">7 Stone Aged</td><td>FTS / outside</td><td><span class="chg up">UP</span></td><td>Clean outside post is now a live edge, not just depth.</td></tr><tr><td class="rk">3</td><td class="horse">4 Tommy Tang</td><td>FTS / mid</td><td><span class="chg hold">HOLD</span></td><td>Cox intent; acceptable draw.</td></tr><tr><td class="rk">4</td><td class="horse">3 Live</td><td>FTS / inside</td><td><span class="chg down">DOWN</span></td><td>Inside draw for a green debut runner is a mild negative today.</td></tr></tbody></table><p class="call"><span class="k">Revised call:</span> Lean widest. #7 up, #3 down a notch; #10 Implied Open added underneath. Fade #2 Sharply Dressed (rail trap).</p></div>
+<div class="race"><h3>Race 3 — OC 110k, 1⅛ mile (4&amp;up)</h3><p class="lead"><span class="k">Original AI Top 4:</span> #7 Instant Replay, #6 Yo Daddy, #1 San Siro, #4 Vibe</p><p class="lead bias"><span class="k2">Report’s stated bias:</span> Report calls it a “speed-favoring surface” and hands #1 San Siro a “Rail Bias Advantage (+5).”</p><p class="lead"><span class="k">Dead-rail read:</span> Meaningful revision. #1 San Siro is a deep closer drawn on the rail, boosted for saving ground — exactly the profile buried Aug 7 (R8 Reside, “saved ground, no avail,” last). He can still hit the board, but only swinging wide, so the +5 edge is gone. #7 Instant Replay (outside closer) is reinforced on top; #4 Vibe rises; #6 Yo Daddy stays live but must clear and get off the fence.</p><table class="rtable"><thead><tr><th>Rk</th><th>Horse</th><th>Run style / Draw</th><th>Chg</th><th>Why (dead-rail logic)</th></tr></thead><tbody><tr><td class="rk">1</td><td class="horse">7 Instant Replay</td><td>Presser / A-closer, outside</td><td><span class="chg hold">HOLD</span></td><td>Off-pace, wide — perfect for the bias. Top pick.</td></tr><tr><td class="rk">2</td><td class="horse">4 Vibe</td><td>Presser / A+ closer, mid</td><td><span class="chg up">UP</span></td><td>Strong late kick, can angle out; upgraded over the rail closer.</td></tr><tr><td class="rk">3</td><td class="horse">6 Yo Daddy</td><td>Controlling speed / mid-out</td><td><span class="chg down">DOWN</span></td><td>Lone speed still dangerous, but soft-fractions-wire thesis weakens on a tiring surface.</td></tr><tr><td class="rk">4</td><td class="horse">1 San Siro</td><td>Deep closer / RAIL</td><td><span class="chg down">DOWN</span></td><td>“Rail Bias Advantage” reverses — must come wide from post 1. Live but no longer #3.</td></tr></tbody></table><p class="call"><span class="k">Revised call:</span> #7 on top; promote #4 Vibe; #1 San Siro drops from 3rd — keep only as a wide-trip exotics closer. #3 Full Screen is the alternate underneath.</p></div>
+<div class="race"><h3>Race 5 — Alw 120k n1x, 7f</h3><p class="lead"><span class="k">Original AI Top 4:</span> #6 Pretty Boy Miah, #4 Private Desire, #8 Fact, #7 Tagermeen</p><p class="lead bias"><span class="k2">Report’s stated bias:</span> “Alpha Controls / extreme speed bias… heavily favors front-runners.” #4 Private Desire promoted as a “must-use massive overlay.”</p><p class="lead"><span class="k">Dead-rail read:</span> Meaningful revision. #4 Private Desire is a need-the-lead type whose entire overlay case is the speed bias — the premise the dead rail reverses. From a mid post he can still get loose and steal if he clears off the rail, so he stays on the ticket, but the “must use” tag is gone and he drops. The two garden-spot stalkers with outside/mid draws rise; #6 Pretty Boy Miah holds on top.</p><table class="rtable"><thead><tr><th>Rk</th><th>Horse</th><th>Run style / Draw</th><th>Chg</th><th>Why (dead-rail logic)</th></tr></thead><tbody><tr><td class="rk">1</td><td class="horse">6 Pretty Boy Miah</td><td>Presser / stalker, mid-out</td><td><span class="chg hold">HOLD</span></td><td>Best figures, tracks the pace — ideal against a dead rail.</td></tr><tr><td class="rk">2</td><td class="horse">8 Fact</td><td>Tactical stalker / outside</td><td><span class="chg up">UP</span></td><td>Outside stalker who can sweep wide; upgraded past the lone speed.</td></tr><tr><td class="rk">3</td><td class="horse">7 Tagermeen</td><td>Presser / mid-out</td><td><span class="chg hold">HOLD</span></td><td>Garden-spot trip, forward move 2nd off the layoff.</td></tr><tr><td class="rk">4</td><td class="horse">4 Private Desire</td><td>Need-the-lead / mid</td><td><span class="chg down">DOWN</span></td><td>Speed-bias overlay case reverses; keep only if he clears and stays off the rail.</td></tr></tbody></table><p class="call"><span class="k">Revised call:</span> Downgrade #4 from danger to 4th. Fade #1 Unbroken Chain (rail). Play through #6 with #8 and #7 as the improvers.</p></div>
+<div class="race"><h3>Race 6 — Mdn 115k, 6½f (2yo, dirt)</h3><p class="lead"><span class="k">Original AI Top 4:</span> #5 Norah Begorrah, #7 Dulce Vita, #10 Joy of Life, #3 Red Poppy</p><p class="lead bias"><span class="k2">Report’s stated bias:</span> Green juvenile sprint, pace unknown.</p><p class="lead"><span class="k">Dead-rail read:</span> Minor change. With unraced 2-year-olds the bias is a light thumb on the scale toward outside draws that avoid kickback. #10 Joy of Life (outside) nudges up; #3 Red Poppy (inside, bet-down underlay) gets a small caution. Top pair unchanged.</p><table class="rtable"><thead><tr><th>Rk</th><th>Horse</th><th>Run style / Draw</th><th>Chg</th><th>Why (dead-rail logic)</th></tr></thead><tbody><tr><td class="rk">1</td><td class="horse">5 Norah Begorrah</td><td>FTS / mid</td><td><span class="chg hold">HOLD</span></td><td>Elite intent + pedigree; top pick stands.</td></tr><tr><td class="rk">2</td><td class="horse">7 Dulce Vita</td><td>FTS / mid-out</td><td><span class="chg hold">HOLD</span></td><td>Elite sire, Brown/Prat; fine draw.</td></tr><tr><td class="rk">3</td><td class="horse">10 Joy of Life</td><td>FTS / outside</td><td><span class="chg up">UP</span></td><td>Widest draw is a small plus on this bias.</td></tr><tr><td class="rk">4</td><td class="horse">3 Red Poppy</td><td>FTS / inside</td><td><span class="chg down">DOWN</span></td><td>Inside draw + underlay price; easy to leave off the top line.</td></tr></tbody></table><p class="call"><span class="k">Revised call:</span> Largely intact; tilt to the outside. #10 up over #3. Don&#x27;t force the 5/2 (#3) on top.</p></div>
+<div class="race"><h3>Race 9 — Test S. (G1), 7f</h3><p class="lead"><span class="k">Original AI Top 4:</span> #7 Explora, #4 Where Luck Lives, #1 Movie Night, #6 On Time Girl</p><p class="lead bias"><span class="k2">Report’s stated bias:</span> “Alpha Controls / extreme speed bias.” #4 Where Luck Lives was PROMOTED to #2 explicitly as “controlling speed on a heavily speed-biased track.”</p><p class="lead"><span class="k">Dead-rail read:</span> Meaningful revision. The promotion that lifted #4 Where Luck Lives is the exact bonus the dead rail cancels — she drops back. #7 Explora (huge class, tracking trip, outside) is reinforced on top. #6 On Time Girl is a closer drawn outside — the profile the bias rewards — so she moves up. #1 Movie Night is a fine stalker but sits on the RAIL, a draw caution.</p><table class="rtable"><thead><tr><th>Rk</th><th>Horse</th><th>Run style / Draw</th><th>Chg</th><th>Why (dead-rail logic)</th></tr></thead><tbody><tr><td class="rk">1</td><td class="horse">7 Explora</td><td>Presser / stalker, outside</td><td><span class="chg hold">HOLD</span></td><td>Class of the field, perfect stalking trip. Even stronger now.</td></tr><tr><td class="rk">2</td><td class="horse">6 On Time Girl</td><td>Closer (B+) / outside</td><td><span class="chg up">UP</span></td><td>Wide, late-running Cox/Irad filly — prime dead-rail beneficiary.</td></tr><tr><td class="rk">3</td><td class="horse">1 Movie Night</td><td>Tactical stalker / RAIL</td><td><span class="chg down">DOWN</span></td><td>Talented but rail-drawn; must get off the fence — draw caution.</td></tr><tr><td class="rk">4</td><td class="horse">4 Where Luck Lives</td><td>Need-the-lead / mid</td><td><span class="chg down">DOWN</span></td><td>Speed-bias promotion removed; back to a price longshot, not the danger.</td></tr></tbody></table><p class="call"><span class="k">Revised call:</span> #7 on top; elevate #6 On Time Girl as the main threat. #4 falls from #2 to the bottom of the ticket.</p></div>
+<div class="race"><h3>Race 12 — Whitney S. (G1), 1⅛ mile</h3><p class="lead"><span class="k">Original AI Top 4:</span> #2 Nitrogen, #1 Magnitude, #6 Sovereignty, #4 Forged Steel</p><p class="lead bias"><span class="k2">Report’s stated bias:</span> “Loose on lead.” #4 Forged Steel force-promoted as lone speed (Norm TPN just 68); #2 Nitrogen ranked #1 on “Inside Speed Advantage.” #8 Baeza faded for soft pace.</p><p class="lead"><span class="k">Dead-rail read:</span> This is where the bias pays. #8 Baeza is the field&#x27;s #2 raw figure and an A+ deep closer — faded only on the soft-pace projection. A dead rail that stops the fence-drawn leaders is precisely the setup he needs, so he jumps into the top group. #6 Sovereignty (outside tracker, highest ceiling) also rises. #4 Forged Steel is lone speed trying to wire from a speed premise that just reversed — drop him. #1 Magnitude keeps top billing on class + A+ kick, but flag his inside draw.</p><table class="rtable"><thead><tr><th>Rk</th><th>Horse</th><th>Run style / Draw</th><th>Chg</th><th>Why (dead-rail logic)</th></tr></thead><tbody><tr><td class="rk">1</td><td class="horse">1 Magnitude</td><td>Presser / A+ kick, inside</td><td><span class="chg hold">HOLD</span></td><td>Class + bullet + late kick overcome the draw — but must come off the rail.</td></tr><tr><td class="rk">2</td><td class="horse">8 Baeza</td><td>Deep closer (A+) / outside</td><td><span class="chg new">NEW</span></td><td>2nd-best raw fig, wide sweeping run; the exact horse the bias unlocks.</td></tr><tr><td class="rk">3</td><td class="horse">6 Sovereignty</td><td>Tactical stalker / outside</td><td><span class="chg up">UP</span></td><td>Outside tracker, top ceiling; better placed than the rail speed.</td></tr><tr><td class="rk">4</td><td class="horse">2 Nitrogen</td><td>Presser / A+ kick, inside</td><td><span class="chg down">DOWN</span></td><td>Live late kick, but “Inside Speed Advantage” is suspect on a dead rail.</td></tr></tbody></table><p class="call"><span class="k">Revised call:</span> Biggest swing on the card: promote #8 Baeza into the win picture, drop #4 Forged Steel out of the top 4. Class still argues #1 Magnitude, with Baeza the danger.</p></div>
+<div class="race"><h3>Race 13 — OC 55k n1x, 7f</h3><p class="lead"><span class="k">Original AI Top 4:</span> #1 Romantic Dancer, #2 Feminism, #8 Battis Grove, #3 Helen&#x27;s Revenge</p><p class="lead bias"><span class="k2">Report’s stated bias:</span> “Alpha Controls.” #1 Romantic Dancer ranked #1 almost entirely on an “Extreme Rail Bias Multiplier (+10)” from post 1.</p><p class="lead"><span class="k">Dead-rail read:</span> Clearest over-fit on the card. Strip the +10 rail multiplier and #1 Romantic Dancer — a ground-saving stalker on the fence — falls out of the top line (elite Dutrow/Irad keeps him relevant only if taken off the rail). #8 Battis Grove (outside, massive class edge, A+ late kick) becomes the logical top pick. #3 Helen&#x27;s Revenge rises. #2 Feminism has real speed but sits inside.</p><table class="rtable"><thead><tr><th>Rk</th><th>Horse</th><th>Run style / Draw</th><th>Chg</th><th>Why (dead-rail logic)</th></tr></thead><tbody><tr><td class="rk">1</td><td class="horse">8 Battis Grove</td><td>Presser / A+ kick, outside</td><td><span class="chg up">UP</span></td><td>Class edge + wide late run; new top pick with the rail dead.</td></tr><tr><td class="rk">2</td><td class="horse">3 Helen&#x27;s Revenge</td><td>Stalker / A+ closer, mid</td><td><span class="chg up">UP</span></td><td>Can sweep wide; Rice/Prat. Upgraded over the rail types.</td></tr><tr><td class="rk">3</td><td class="horse">2 Feminism</td><td>Presser / speed, inside</td><td><span class="chg down">DOWN</span></td><td>Genuine ability but inside draw is a today-negative.</td></tr><tr><td class="rk">4</td><td class="horse">1 Romantic Dancer</td><td>Stalker / RAIL</td><td><span class="chg down">DOWN</span></td><td>The +10 rail bonus that made him #1 reverses. Only live if ridden off the fence.</td></tr></tbody></table><p class="call"><span class="k">Revised call:</span> Flip the top: #8 Battis Grove over #1 Romantic Dancer. #1 falls from 1st to the bottom of the ticket; #3 Helen&#x27;s Revenge is the improving stalker to add.</p></div>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">&#128202; At a Glance: What Changed</h2>
+    <table class="sum">
+      <thead><tr><th>Race</th><th>Biggest downgrade</th><th>Biggest upgrade</th></tr></thead>
+      <tbody>
+<tr><td class="rk">1</td><td class="down">Confirms fade of #1, #2 (rail) — top 4 holds</td><td class="up">None material (top 4 already outside)</td></tr>
+<tr><td class="rk">2</td><td class="down">#3 Live (inside) down a spot</td><td class="up">#7 Stone Aged (outside draw)</td></tr>
+<tr><td class="rk">3</td><td class="down">#1 San Siro — rail closer, +5 bonus reversed</td><td class="up">#4 Vibe (A+ kick, can go wide)</td></tr>
+<tr><td class="rk">5</td><td class="down">#4 Private Desire — “must-use” speed overlay reversed</td><td class="up">#8 Fact (outside stalker)</td></tr>
+<tr><td class="rk">6</td><td class="down">#3 Red Poppy (inside underlay)</td><td class="up">#10 Joy of Life (outside)</td></tr>
+<tr><td class="rk">9</td><td class="down">#4 Where Luck Lives — speed-bias promotion removed</td><td class="up">#6 On Time Girl (wide closer)</td></tr>
+<tr><td class="rk">12</td><td class="down">#4 Forged Steel — lone rail speed, out of top 4</td><td class="up">#8 Baeza (wide deep closer) — NEW</td></tr>
+<tr><td class="rk">13</td><td class="down">#1 Romantic Dancer — +10 rail multiplier reversed</td><td class="up">#8 Battis Grove (outside, class + kick)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="tight caveats">
+    <h2 class="section-title">&#9878;&#65039; Caveats</h2>
+    <div class="race">
+      <p><b>One-day read.</b> The bias is from a single Aug 7 card. Watch the early Aug 8 dirt races live — if inside runners start winning, revert to the reports' original rankings.</p>
+      <p><b>Speed isn't dead, the rail is.</b> Front-runners drawn off the fence (or who angle out) can still win. The specific fade is speed and closers committed to saving ground on the rail.</p>
+      <p><b>Class can override draw.</b> Elite horses with a strong late kick (Magnitude, Explora) can overcome an inside post with a good ride — treat their draw as a caution, not a knockout.</p>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="cta">
+      <h3>Get reads like this every race day</h3>
+      <p>Members get fully handicapped cards plus track-bias reads and daily performance wrap-ups — the story behind every call, not just the picks.</p>
+      <a class="btn" href="membership.html">See Membership Details</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand-foot">TrackSmart <span class="ai">AI</span></div>
+    <div class="copyright">&copy; 2026 TrackSmart AI. For entertainment and informational purposes.</div>
+    <div class="legal">Handicapping analysis is opinion, not a guarantee of results. Bet responsibly and within your means. Must be of legal wagering age in your jurisdiction. If gambling is a problem, call 1-800-GAMBLER.</div>
+  </footer>
+
+</div>
+</body>
+</html>
