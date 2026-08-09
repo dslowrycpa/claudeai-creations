@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 2: The Dead Rail Was Real — Saratoga, Aug 8, 2026 · TrackSmart AI</title>
+<meta name="description" content="We were the only ones asking if Saratoga had a dead rail. Day 2 answered it: all eight dirt winners won off the rail, the inside buried three favorites, and the live track was the center of the strip.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#04101b; --panel:#0a1b2a; --panel-2:#0d2033; --border:#1b3b54;
+    --cyan:#28d6f5; --cyan-bright:#5ce8ff; --cyan-2:#46c6ff; --ink:#eef6fb;
+    --muted:#9fbed2; --faint:#6f93aa; --amber:#ffb454; --green:#3ee0a8; --red:#ff7a7a;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1100px 620px at 10% -10%, rgba(40,214,245,0.09), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(70,198,255,0.06), transparent 55%),
+      var(--bg);
+    color:var(--ink); font-family:'Hanken Grotesk','Inter',-apple-system,BlinkMacSystemFont,sans-serif; line-height:1.65;
+  }
+  h1,h2,h3,h4{font-family:'Sora','Poppins',sans-serif;}
+  a{color:var(--cyan-bright);}
+  .wrap{max-width:840px;margin:0 auto;padding:0 24px;}
+
+  header.top{position:sticky;top:0;z-index:20;padding:16px 24px;border-bottom:1px solid var(--border);background:rgba(4,16,27,0.85);backdrop-filter:blur(8px);}
+  header.top .inner{max-width:840px;margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:center;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;text-decoration:none;color:var(--ink);}
+  .logo .mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--border);display:flex;align-items:center;justify-content:center;}
+  .logo .mark svg{width:18px;height:18px;}
+  .logo .ai{color:var(--cyan);}
+  header.top nav a.navlink{font-size:0.85rem;color:var(--muted);text-decoration:none;margin-left:20px;}
+  header.top nav a.navlink:hover{color:var(--cyan-bright);}
+  header.top nav a.navcta{font-size:0.82rem;color:#04101b;text-decoration:none;margin-left:20px;background:linear-gradient(90deg,var(--cyan),var(--cyan-2));padding:8px 14px;border-radius:7px;font-weight:700;font-family:'Sora',sans-serif;}
+
+  .hero{text-align:center;padding:56px 24px 36px;border-bottom:1px solid var(--border);}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:0.72rem;letter-spacing:1.6px;text-transform:uppercase;color:var(--cyan-bright);background:rgba(40,214,245,0.08);border:1px solid rgba(40,214,245,0.35);border-radius:999px;padding:6px 14px;margin-bottom:22px;font-family:'Sora',sans-serif;font-weight:600;}
+  .hero h1{font-size:2.15rem;line-height:1.2;margin:0 0 14px;font-weight:800;background:linear-gradient(90deg,#fff,#cfe6f2 55%,var(--cyan-bright));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero .meta{color:var(--muted);font-size:0.95rem;font-family:'JetBrains Mono',monospace;}
+  .hero .meta strong{color:var(--ink);font-family:'Hanken Grotesk',sans-serif;}
+  .hero .lede{color:var(--muted);max-width:600px;margin:18px auto 0;font-size:1rem;}
+
+  section{padding:40px 24px;}
+  section.tight{padding-top:6px;}
+  h2.section-title{font-size:1.35rem;margin:0 0 4px;display:flex;align-items:center;gap:10px;}
+  p.section-sub{color:var(--faint);font-size:0.85rem;margin:0 0 22px;font-style:italic;}
+
+  .verdict{background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--border);border-left:4px solid var(--green);border-radius:14px;padding:22px 24px;}
+  .verdict h3{margin:0 0 8px;font-size:1.15rem;color:var(--green);}
+  .verdict p{margin:0;color:#dbe9f1;font-size:0.96rem;}
+
+  .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  @media (max-width:640px){.stat-grid{grid-template-columns:1fr 1fr;}}
+  .stat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px 14px;text-align:center;}
+  .stat .num{font-family:'Sora',sans-serif;font-weight:800;font-size:1.55rem;color:var(--cyan-bright);line-height:1.1;margin-bottom:6px;}
+  .stat .label{color:var(--muted);font-size:0.78rem;line-height:1.35;}
+  .stat.highlight .num{color:var(--green);}
+
+  .win{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin-bottom:12px;}
+  .win-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;}
+  .wh-horse{font-family:'Sora',sans-serif;font-weight:700;font-size:1.08rem;color:var(--ink);}
+  .wh-race{color:var(--faint);font-size:0.78rem;font-family:'JetBrains Mono',monospace;margin-left:10px;}
+  .wh-pay{font-family:'Sora',sans-serif;font-weight:800;color:var(--amber);font-size:1.05rem;}
+  .win-tags{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0;}
+  .tag{font-family:'Sora',sans-serif;font-weight:700;font-size:0.7rem;letter-spacing:0.4px;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:1px solid var(--border);}
+  .tag.path{color:var(--green);border-color:rgba(62,224,168,0.4);background:rgba(62,224,168,0.08);}
+  .tag.style{color:var(--cyan-bright);border-color:rgba(40,214,245,0.35);background:rgba(40,214,245,0.06);}
+  .wh-how{margin:0 0 8px;color:#dbe9f1;font-size:0.92rem;}
+  .wh-cas{margin:0;color:var(--muted);font-size:0.87rem;}
+  .wh-cas .k{color:var(--red);font-weight:600;}
+
+  .pattern{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px 24px;}
+  .pattern p{margin:0 0 12px;color:#dbe9f1;font-size:0.95rem;}
+  .pattern p:last-child{margin-bottom:0;}
+  .pattern b{color:var(--cyan-bright);}
+
+  .lanes{display:flex;flex-direction:column;gap:8px;}
+  .lane{display:grid;grid-template-columns:150px 130px 1fr;gap:14px;align-items:center;background:var(--panel);border:1px solid var(--border);border-left-width:4px;border-radius:12px;padding:14px 16px;}
+  @media (max-width:640px){.lane{grid-template-columns:1fr;gap:4px;}}
+  .lane.dead{border-left-color:var(--red);}
+  .lane.live{border-left-color:var(--green);}
+  .lane.warn{border-left-color:var(--amber);}
+  .lane-label{font-family:'Sora',sans-serif;font-weight:700;color:var(--ink);font-size:0.92rem;}
+  .lane-verdict{font-family:'Sora',sans-serif;font-weight:800;font-size:0.78rem;letter-spacing:0.6px;}
+  .lane.dead .lane-verdict{color:var(--red);}
+  .lane.live .lane-verdict{color:var(--green);}
+  .lane.warn .lane-verdict{color:var(--amber);}
+  .lane-note{color:var(--muted);font-size:0.86rem;}
+
+  .outlook{background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--border);border-radius:14px;padding:24px 26px;color:#dbe9f1;font-size:0.96rem;}
+  .outlook strong{color:var(--cyan-bright);}
+
+  .cta{margin-top:8px;text-align:center;background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--border);border-radius:18px;padding:36px 30px;}
+  .cta h3{font-size:1.25rem;margin:0 0 10px;}
+  .cta p{color:var(--muted);max-width:460px;margin:0 auto 22px;font-size:0.94rem;}
+  .cta a.btn{display:inline-block;background:linear-gradient(90deg,var(--cyan),var(--cyan-2));color:#04101b;text-decoration:none;font-family:'Sora',sans-serif;font-weight:700;padding:13px 28px;border-radius:9px;font-size:0.95rem;}
+
+  footer{margin-top:20px;border-top:1px solid var(--border);padding:36px 24px 40px;text-align:center;}
+  footer .brand-foot{font-weight:700;letter-spacing:0.5px;margin-bottom:6px;font-family:'Sora',sans-serif;}
+  footer .brand-foot .ai{color:var(--cyan);}
+  footer .copyright{color:var(--faint);font-size:0.78rem;margin-top:6px;}
+  footer .legal{color:var(--faint);font-size:0.72rem;margin-top:14px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <a class="logo" href="https://start.tracksmartracing.com/">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="22" height="22" rx="6" stroke="#28d6f5" stroke-width="1.4"/>
+          <path d="M4 16l4.5-5 3.5 3 7-8" stroke="#5ce8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15.5 6H19v3.5" stroke="#5ce8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span>TrackSmart <span class="ai">AI</span></span>
+    </a>
+    <nav>
+      <a class="navlink" href="membership.html">Membership</a>
+      <a class="navcta" href="https://tracksmartai.substack.com">Become a Member</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <span class="eyebrow">Member Exclusive · Track-Bias Follow-Up</span>
+  <h1>Day 2: The Dead Rail Was Real</h1>
+  <p class="meta"><strong>Saratoga main track</strong> &nbsp;·&nbsp; Saturday, August 8, 2026 &nbsp;·&nbsp; 8 dirt races</p>
+  <p class="lede">Yesterday we were the only ones asking the question: did Saratoga have a dead rail? Today the charts answered it. All eight dirt winners won off the fence — and the inside buried three favorites.</p>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <h2 class="section-title">&#9989; Thesis: Confirmed</h2>
+    <div class="verdict">
+      <h3>Two straight days — the rail was dead, the outside was gold</h3>
+      <p>Eight dirt races, eight winners off the rail. Not one horse won on or inside the two-path. The only rail-drawn horses that even hit the board had to angle off the fence to do it. Meanwhile the crowd kept betting the meet-long &ldquo;rail-friendly&rdquo; story — and three beaten favorites drawn inside (1.43, 0.61 and 1.95) paid the price.</p>
+    </div>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">&#128202; The Card at a Glance</h2>
+    <div class="stat-grid">
+<div class="stat highlight"><div class="num">8 / 8</div><div class="label">Dirt winners that won OFF the rail</div></div>
+<div class="stat highlight"><div class="num">0</div><div class="label">Winners on or inside the 2-path</div></div>
+<div class="stat"><div class="num">3</div><div class="label">Beaten favorites drawn inside (1.43, 0.61, 1.95)</div></div>
+<div class="stat"><div class="num">3&ndash;6w</div><div class="label">The live winning lane band</div></div>
+<div class="stat"><div class="num">$33.76</div><div class="label">Top outside-closer payout (R6)</div></div>
+<div class="stat"><div class="num">Day 2</div><div class="label">Consecutive days the bias held</div></div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">&#127937; Every Winner, and How It Won</h2>
+    <p class="section-sub">Paths and trip notes are taken from the official Equibase result charts.</p>
+<div class="win"><div class="win-head"><div><span class="wh-horse">Gaudreau</span><span class="wh-race">Race 1 · 6½f</span></div><span class="wh-pay">$6.82 · 2.41</span></div><div class="win-tags"><span class="tag path">2&ndash;3 wide</span><span class="tag style">Off-pace stalker</span></div><p class="wh-how">Stalked 3-then-2 paths off the rail the whole way — never touched the fence — took over at the 3/16 and held.</p><p class="wh-cas"><span class="k">Rail cost someone:</span> Inside speed Bellissimo d'Oro (2p-ins) tired to 5th; the widest horse, Hemingway (4&ndash;5w), faltered to last.</p></div>
+<div class="win"><div class="win-head"><div><span class="wh-horse">Admiralty</span><span class="wh-race">Race 2 · 6½f</span></div><span class="wh-pay">$7.74 · 2.87</span></div><div class="win-tags"><span class="tag path">4&ndash;5 wide</span><span class="tag style">Midpack rally</span></div><p class="wh-how">Sat midpack and swept 4–5 wide through the upper stretch to nail it on the wire.</p><p class="wh-cas"><span class="k">Rail cost someone:</span> The inside and rail types all faded behind him.</p></div>
+<div class="win"><div class="win-head"><div><span class="wh-horse">San Siro</span><span class="wh-race">Race 3 · 1⅛m</span></div><span class="wh-pay">$22.46 · 10-1</span></div><div class="win-tags"><span class="tag path">inside → 3 wide</span><span class="tag style">Deep closer</span></div><p class="wh-how">From last of six, he angled OUT to the 3-path at the 3/16 — he won by leaving the rail, not by saving it.</p><p class="wh-cas"><span class="k">Rail cost someone:</span> Inside pacesetter and 1.43 favorite Vibe led on the fence and tired to 5th.</p></div>
+<div class="win"><div class="win-head"><div><span class="wh-horse">Tagermeen</span><span class="wh-race">Race 5 · 7f</span></div><span class="wh-pay">$7.46 · 2.73</span></div><div class="win-tags"><span class="tag path">5 wide</span><span class="tag style">Off-pace sweep</span></div><p class="wh-how">Stumbled and broke slow, then circled 5 wide for the final quarter and took command.</p><p class="wh-cas"><span class="k">Rail cost someone:</span> Rail horse Unbroken Chain faded to 5th; even wide-but-empty Pretty Boy Miah (fav) finished last.</p></div>
+<div class="win"><div class="win-head"><div><span class="wh-horse">Summer Starlet</span><span class="wh-race">Race 6 · 6½f</span></div><span class="wh-pay">$33.76 · 15-1</span></div><div class="win-tags"><span class="tag path">6 wide</span><span class="tag style">Deep closer</span></div><p class="wh-how">Launched a 6-wide bid in the upper stretch and drew clear — the widest trip and the biggest price of the day.</p><p class="wh-cas"><span class="k">Rail cost someone:</span> Rail filly Rum Twist “balked in tight”; the 0.61 favorite Red Poppy weakened inside.</p></div>
+<div class="win"><div class="win-head"><div><span class="wh-horse">Explora</span><span class="wh-race">Race 9 · Test-G1 · 7f</span></div><span class="wh-pay">$5.74 · 1.87</span></div><div class="win-tags"><span class="tag path">3&ndash;4 wide</span><span class="tag style">Wide stalker</span></div><p class="wh-how">Pressed 3 wide, bid, angled to the 4-path at the quarter, and drew off by five.</p><p class="wh-cas"><span class="k">Rail cost someone:</span> Rail horse Movie Night tired; inside speed Where Luck Lives finished last.</p></div>
+<div class="win"><div class="win-head"><div><span class="wh-horse">Sovereignty</span><span class="wh-race">Race 12 · Whitney-G1 · 1⅛m</span></div><span class="wh-pay">$6.52 · 2.26</span></div><div class="win-tags"><span class="tag path">5&ndash;6 wide</span><span class="tag style">Midpack sweep</span></div><p class="wh-how">Swung 5–6 wide into the stretch and drew clear by nearly five in the day's marquee race.</p><p class="wh-cas"><span class="k">Rail cost someone:</span> The rail-drawn 1.95 favorite Magnitude tired to 6th; inside pacesetter Nitrogen was collared for 2nd.</p></div>
+<div class="win"><div class="win-head"><div><span class="wh-horse">Will Not Be Swayed</span><span class="wh-race">Race 13 · 7f</span></div><span class="wh-pay">$26.00 · 12-1</span></div><div class="win-tags"><span class="tag path">5 wide</span><span class="tag style">Wide closer</span></div><p class="wh-how">Moved 3–4 wide on the turn, out to the 5-path at the quarter, and rallied by.</p><p class="wh-cas"><span class="k">Rail cost someone:</span> Inside speed Beach Heist was headed at the 3/16 and collapsed to 7th.</p></div>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">&#128200; The Pattern Is Unmistakable</h2>
+    <div class="pattern">
+      <p>The winning lanes, in order: <b>2&ndash;3w, 4&ndash;5w, tipped-to-3w, 5w, 6w, 3&ndash;4w, 5&ndash;6w, 5w.</b> Pure front-running rail speed went <b>0-for-8.</b> Six of the eight winners were closers or off-pace types making one sustained wide run; the two that sat forward (Gaudreau, Explora) still did it from 2&ndash;4 paths off the rail, never on it.</p>
+      <p>The routes played exactly like the sprints. In the <b>Whitney</b> and the 1⅛-mile allowance, the winners tipped 3&ndash;6 wide and swept clear while the rail-drawn leaders emptied out — same shape, longer distance.</p>
+      <p>And the rail didn't just fail to win — it actively cost the public. <b>Vibe (1.43), Red Poppy (0.61) and Magnitude (1.95)</b> all drew inside, all raced on or near the fence, and all tired. That is the definition of a dead rail.</p>
+    </div>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">&#128205; Where the Live Track Was</h2>
+    <p class="section-sub">Our read on the best — and worst — ground on the strip.</p>
+    <div class="lanes">
+<div class="lane dead"><div class="lane-label">Rail &amp; 1&ndash;2 path</div><div class="lane-verdict">DEAD</div><div class="lane-note">Front-runners and ground-savers tired here all day. 0 winners. Three beaten favorites drew inside.</div></div>
+<div class="lane live"><div class="lane-label">3&ndash;4 path</div><div class="lane-verdict">LIVE</div><div class="lane-note">The reliable winning lane. Stalkers and closers who tipped here powered home.</div></div>
+<div class="lane live"><div class="lane-label">5&ndash;6 path</div><div class="lane-verdict">LIVE</div><div class="lane-note">Where the biggest prices came from — the day's widest sweeps drew clear ($33.76, $26, $22).</div></div>
+<div class="lane warn"><div class="lane-label">Far outside, coasting</div><div class="lane-verdict">NEEDS MOMENTUM</div><div class="lane-note">Wide alone wasn't enough: horses parked out there without a live run (Pretty Boy Miah, Hemingway) still emptied out.</div></div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="outlook"><strong>The bottom line:</strong> the golden ground was the center of the track — roughly the 3-path out to the 6-path — and the rail through the two-path was a graveyard for speed and ground-savers alike. One honest qualifier that sharpens the angle rather than softening it: wide alone didn't win. It had to be <strong>wide and traveling</strong> — a horse parked outside without a live run (Pretty Boy Miah, Hemingway) still emptied out. The playable edge on this surface: back off-pace horses that can get to the center of the track, and throw out anything committed to the fence — no matter how short the price.</div>
+  </section>
+
+  <section class="tight">
+    <div class="cta">
+      <h3>This is what members get</h3>
+      <p>We flagged the dead rail from one day of charts while the rest of the room bet the old narrative — then watched it cash at 15-1, 12-1 and 10-1. Track-bias reads, fully handicapped cards, and the story behind every result.</p>
+      <a class="btn" href="membership.html">See Membership Details</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand-foot">TrackSmart <span class="ai">AI</span></div>
+    <div class="copyright">&copy; 2026 TrackSmart AI. For entertainment and informational purposes.</div>
+    <div class="legal">Handicapping analysis is opinion, not a guarantee of results. Bet responsibly and within your means. Must be of legal wagering age in your jurisdiction. If gambling is a problem, call 1-800-GAMBLER.</div>
+  </footer>
+
+</div>
+</body>
+</html>
