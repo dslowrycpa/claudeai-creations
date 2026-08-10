@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Del Mar 2026 Meet &mdash; Track &amp; Post Position Bias Report &middot; TrackSmart AI</title>
+<meta name="description" content="TrackSmart AI's deep-dive bias report on the Del Mar 2026 meet: post position and pace bias by surface and distance, from opening day (July 17) through August 9.">
+<link rel="canonical" href="https://dslowrycpa.github.io/claudeai-creations/delmar-2026-bias-report.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="TrackSmart AI">
+<meta property="og:title" content="Del Mar 2026 Meet &mdash; Track &amp; Post Position Bias Report">
+<meta property="og:description" content="Post position and pace bias by surface and distance across the first 15 race days of the Del Mar 2026 meet.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#04101b; --panel:#0a1b2a; --panel-2:#0d2033; --border:#1b3b54;
+    --cyan:#28d6f5; --cyan-bright:#5ce8ff; --cyan-2:#46c6ff;
+    --ink:#eef6fb; --muted:#9fbed2; --faint:#6f93aa; --amber:#ffb454; --green:#3ee0a8;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1100px 620px at 10% -10%, rgba(40,214,245,0.09), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(70,198,255,0.06), transparent 55%),
+      var(--bg);
+    color:var(--ink); font-family:'Hanken Grotesk','Inter',-apple-system,BlinkMacSystemFont,sans-serif; line-height:1.65;
+  }
+  h1,h2,h3,h4{font-family:'Sora','Poppins',sans-serif;}
+  a{color:var(--cyan-bright);}
+  .wrap{max-width:840px;margin:0 auto;padding:0 24px;}
+
+  header.top{position:sticky;top:0;z-index:20;padding:16px 24px;border-bottom:1px solid var(--border);background:rgba(4,16,27,0.85);backdrop-filter:blur(8px);}
+  header.top .inner{max-width:840px;margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:center;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;text-decoration:none;color:var(--ink);}
+  .logo .mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--border);display:flex;align-items:center;justify-content:center;}
+  .logo .mark svg{width:18px;height:18px;}
+  .logo .ai{color:var(--cyan);}
+  header.top nav a.navlink{font-size:0.85rem;color:var(--muted);text-decoration:none;margin-left:20px;}
+  header.top nav a.navcta{font-size:0.82rem;color:#04101b;text-decoration:none;margin-left:20px;background:linear-gradient(90deg,var(--cyan),var(--cyan-2));padding:8px 14px;border-radius:7px;font-weight:700;font-family:'Sora',sans-serif;}
+
+  .hero{text-align:center;padding:56px 24px 36px;border-bottom:1px solid var(--border);}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:0.72rem;letter-spacing:1.6px;text-transform:uppercase;color:var(--cyan-bright);background:rgba(40,214,245,0.08);border:1px solid rgba(40,214,245,0.35);border-radius:999px;padding:6px 14px;margin-bottom:22px;font-family:'Sora',sans-serif;font-weight:600;}
+  .hero h1{font-size:2.1rem;line-height:1.2;margin:0 0 14px;font-weight:800;background:linear-gradient(90deg,#fff,#cfe6f2 55%,var(--cyan-bright));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero .meta{color:var(--muted);font-size:0.92rem;font-family:'JetBrains Mono',monospace;}
+  .hero .meta strong{color:var(--ink);font-family:'Hanken Grotesk',sans-serif;}
+  .hero .sub{max-width:560px;margin:16px auto 0;color:var(--muted);font-size:0.95rem;}
+
+  section{padding:44px 24px;}
+  section.tight{padding-top:0;}
+  h2.section-title{font-size:1.35rem;margin:0 0 4px;display:flex;align-items:center;gap:10px;}
+  p.section-sub{color:var(--faint);font-size:0.85rem;margin:0 0 24px;font-style:italic;}
+
+  .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  @media (max-width:640px){.stat-grid{grid-template-columns:1fr 1fr;}}
+  .stat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px 14px;text-align:center;}
+  .stat .num{font-family:'Sora',sans-serif;font-weight:800;font-size:1.5rem;color:var(--cyan-bright);line-height:1.1;margin-bottom:6px;}
+  .stat .label{color:var(--muted);font-size:0.76rem;line-height:1.35;}
+  .stat.highlight .num{color:var(--green);}
+
+  .pp-table{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin-bottom:16px;}
+  .pp-table-title{font-family:'Sora',sans-serif;font-weight:700;font-size:0.95rem;color:var(--ink);margin-bottom:14px;}
+  .tiny{color:var(--faint);font-weight:400;font-size:0.75rem;font-style:italic;}
+  .pp-row{display:grid;grid-template-columns:64px 1fr auto;align-items:center;gap:10px;margin-bottom:8px;}
+  .pp-row.dim{opacity:0.6;}
+  .pp-label{font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--muted);}
+  .pp-bar-track{background:var(--panel-2);border:1px solid var(--border);border-radius:6px;height:14px;overflow:hidden;}
+  .pp-bar{background:linear-gradient(90deg,var(--cyan),var(--cyan-2));height:100%;border-radius:6px 0 0 6px;}
+  .pp-bar.alt{background:linear-gradient(90deg,var(--amber),#ff8a5c);}
+  .pp-figs{font-size:0.76rem;color:var(--muted);white-space:nowrap;}
+  .pp-figs strong{color:var(--cyan-bright);}
+
+  .cols-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media (max-width:700px){.cols-2{grid-template-columns:1fr;}}
+
+  .callout{background:var(--panel);border:1px solid rgba(255,180,84,0.3);border-radius:14px;padding:20px 22px;margin-bottom:14px;}
+  .callout h4{margin:0 0 8px;font-size:1rem;color:var(--amber);}
+  .callout p{margin:0;color:#dbe9f1;font-size:0.92rem;}
+
+  .outlook{background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--border);border-radius:14px;padding:24px 26px;color:#dbe9f1;font-size:0.92rem;}
+  .outlook strong{color:var(--cyan-bright);}
+
+  .cta{margin-top:20px;text-align:center;background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--border);border-radius:18px;padding:36px 30px;}
+  .cta h3{font-size:1.25rem;margin:0 0 10px;}
+  .cta p{color:var(--muted);max-width:440px;margin:0 auto 22px;font-size:0.94rem;}
+  .cta a.btn{display:inline-block;background:linear-gradient(90deg,var(--cyan),var(--cyan-2));color:#04101b;text-decoration:none;font-family:'Sora',sans-serif;font-weight:700;padding:13px 28px;border-radius:9px;font-size:0.95rem;}
+
+  footer{margin-top:20px;border-top:1px solid var(--border);padding:36px 24px 40px;text-align:center;}
+  footer .brand-foot{font-weight:700;letter-spacing:0.5px;margin-bottom:6px;font-family:'Sora',sans-serif;}
+  footer .brand-foot .ai{color:var(--cyan);}
+  footer .copyright{color:var(--faint);font-size:0.78rem;margin-top:6px;}
+  footer .legal{color:var(--faint);font-size:0.72rem;margin-top:14px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6;}
+  footer a{color:var(--faint);text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <a class="logo" href="https://start.tracksmartracing.com/">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="22" height="22" rx="6" stroke="#28d6f5" stroke-width="1.4"/>
+          <path d="M4 16l4.5-5 3.5 3 7-8" stroke="#5ce8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15.5 6H19v3.5" stroke="#5ce8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span>TrackSmart <span class="ai">AI</span></span>
+    </a>
+    <nav>
+      <a class="navlink" href="membership.html">Membership</a>
+      <a class="navcta" href="https://tracksmartai.substack.com">Become a Member</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <span class="eyebrow">Member Exclusive &middot; Track Profile</span>
+  <h1>Del Mar 2026 Meet: Track &amp; Post Position Bias Report</h1>
+  <p class="meta"><strong>Window:</strong> July 17 &ndash; August 9, 2026 &nbsp;&middot;&nbsp; <strong>15 Race Days</strong> &nbsp;&middot;&nbsp; <strong>142 Races</strong></p>
+  <p class="sub">A results-based read on how post position and early pace have played at Del Mar so far this meet &mdash; broken out by surface and distance so it's actually usable on a given card.</p>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <h2 class="section-title">📊 Meet at a Glance</h2>
+    <div class="stat-grid">
+      <div class="stat"><div class="num">142</div><div class="label">Races Analyzed</div></div>
+      <div class="stat"><div class="num">1,215</div><div class="label">Total Starters</div></div>
+      <div class="stat"><div class="num">8.6</div><div class="label">Avg. Field Size</div></div>
+      <div class="stat"><div class="num">15</div><div class="label">Race Days (7/17–8/9)</div></div>
+      <div class="stat"><div class="num">76 / 66</div><div class="label">Dirt / Turf Races</div></div>
+      <div class="stat"><div class="num">82 / 60</div><div class="label">Sprint / Route Races</div></div>
+      <div class="stat highlight"><div class="num">16.2%</div><div class="label">Winners That Led at 1st Call</div></div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">🎯 Overall Post Position Profile</h2>
+    <p class="section-sub">Every charted race, opening day through August 9, all surfaces and distances combined.</p>
+    
+    <div class="pp-table">
+      <div class="pp-table-title">All Races — Win % by Post Position</div>
+      
+      <div class="pp-row">
+        <div class="pp-label">Post 1</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:43%"></div></div>
+        <div class="pp-figs"><strong>11.3%</strong> win &middot; 36.6% ITM &middot; n=142</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 2</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:54%"></div></div>
+        <div class="pp-figs"><strong>14.1%</strong> win &middot; 38.7% ITM &middot; n=142</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 3</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:43%"></div></div>
+        <div class="pp-figs"><strong>11.3%</strong> win &middot; 37.3% ITM &middot; n=142</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 4</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:65%"></div></div>
+        <div class="pp-figs"><strong>16.9%</strong> win &middot; 41.5% ITM &middot; n=142</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 5</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:54%"></div></div>
+        <div class="pp-figs"><strong>14.1%</strong> win &middot; 40.1% ITM &middot; n=142</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 6</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:49%"></div></div>
+        <div class="pp-figs"><strong>12.7%</strong> win &middot; 31.3% ITM &middot; n=134</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 7</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:35%"></div></div>
+        <div class="pp-figs"><strong>9.1%</strong> win &middot; 33.1% ITM &middot; n=121</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 8</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:33%"></div></div>
+        <div class="pp-figs"><strong>8.5%</strong> win &middot; 31.1% ITM &middot; n=106</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 9+</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:24%"></div></div>
+        <div class="pp-figs"><strong>6.2%</strong> win &middot; 24.3% ITM &middot; n=144</div>
+      </div>
+    </div>
+    <div class="callout">
+      <h4>Inside/mid posts are doing the winning</h4>
+      <p>Posts 1&ndash;5 have combined for 68% of all wins this meet on 58% of the starts &mdash; a real edge, not just a numbers game. Post 4 is the standout single post at 16.9% wins and 41.5% in-the-money. Posts 9 and out fall off a cliff: just 9 winners from 144 starts (6.2%).</p>
+    </div>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">🏇 Surface Bias: Dirt vs. Turf</h2>
+    <p class="section-sub">The two surfaces are playing very differently &mdash; don't apply one bias read to both.</p>
+    <div class="cols-2">
+      
+    <div class="pp-table">
+      <div class="pp-table-title">Dirt — All Distances</div>
+      
+      <div class="pp-row">
+        <div class="pp-label">Post 1</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:30%"></div></div>
+        <div class="pp-figs"><strong>7.9%</strong> win &middot; 30.3% ITM &middot; n=76</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 2</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:56%"></div></div>
+        <div class="pp-figs"><strong>14.5%</strong> win &middot; 38.2% ITM &middot; n=76</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 3</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:35%"></div></div>
+        <div class="pp-figs"><strong>9.2%</strong> win &middot; 36.8% ITM &middot; n=76</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 4</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:56%"></div></div>
+        <div class="pp-figs"><strong>14.5%</strong> win &middot; 35.5% ITM &middot; n=76</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 5</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:51%"></div></div>
+        <div class="pp-figs"><strong>13.2%</strong> win &middot; 43.4% ITM &middot; n=76</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 6</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:49%"></div></div>
+        <div class="pp-figs"><strong>12.9%</strong> win &middot; 31.4% ITM &middot; n=70</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 7</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:49%"></div></div>
+        <div class="pp-figs"><strong>12.7%</strong> win &middot; 39.7% ITM &middot; n=63</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 8</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:56%"></div></div>
+        <div class="pp-figs"><strong>14.5%</strong> win &middot; 41.8% ITM &middot; n=55</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 9+</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:33%"></div></div>
+        <div class="pp-figs"><strong>8.6%</strong> win &middot; 25.7% ITM &middot; n=70</div>
+      </div>
+    </div>
+      
+    <div class="pp-table">
+      <div class="pp-table-title">Turf — All Distances</div>
+      
+      <div class="pp-row">
+        <div class="pp-label">Post 1</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:58%"></div></div>
+        <div class="pp-figs"><strong>15.2%</strong> win &middot; 43.9% ITM &middot; n=66</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 2</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:52%"></div></div>
+        <div class="pp-figs"><strong>13.6%</strong> win &middot; 39.4% ITM &middot; n=66</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 3</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:52%"></div></div>
+        <div class="pp-figs"><strong>13.6%</strong> win &middot; 37.9% ITM &middot; n=66</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 4</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:76%"></div></div>
+        <div class="pp-figs"><strong>19.7%</strong> win &middot; 48.5% ITM &middot; n=66</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 5</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:58%"></div></div>
+        <div class="pp-figs"><strong>15.2%</strong> win &middot; 36.4% ITM &middot; n=66</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 6</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:48%"></div></div>
+        <div class="pp-figs"><strong>12.5%</strong> win &middot; 31.2% ITM &middot; n=64</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 7</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:20%"></div></div>
+        <div class="pp-figs"><strong>5.2%</strong> win &middot; 25.9% ITM &middot; n=58</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 8</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:8%"></div></div>
+        <div class="pp-figs"><strong>2.0%</strong> win &middot; 19.6% ITM &middot; n=51</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 9+</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:16%"></div></div>
+        <div class="pp-figs"><strong>4.1%</strong> win &middot; 23.0% ITM &middot; n=74</div>
+      </div>
+    </div>
+    </div>
+    <div class="callout">
+      <h4>Dirt: no real rail bias &mdash; turf: definite inside-to-mid bias</h4>
+      <p>On the main track, the rail (post 1) has actually been the weakest inside post at 7.9%, while posts 2, 4 and 8 have all outperformed it. Dirt at Del Mar this meet is playing fair to slightly speed-favoring across a wide band of posts rather than punishing outside draws. Turf is a different story: post 4 (19.7% win, 48.5% ITM) and the rail (15.2% win, 43.9% ITM) have been the places to be, while posts 7 and out have combined for just 7 winners from 183 turf starts.</p>
+    </div>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">📏 Distance Bias: Sprints vs. Routes</h2>
+    <p class="section-sub">Post position bias compresses over ground &mdash; but not evenly.</p>
+    <div class="cols-2">
+      
+    <div class="pp-table">
+      <div class="pp-table-title">Sprints (Under 1 Mile)</div>
+      
+      <div class="pp-row">
+        <div class="pp-label">Post 1</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:47%"></div></div>
+        <div class="pp-figs"><strong>12.2%</strong> win &middot; 40.2% ITM &middot; n=82</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 2</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:52%"></div></div>
+        <div class="pp-figs"><strong>13.4%</strong> win &middot; 40.2% ITM &middot; n=82</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 3</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:47%"></div></div>
+        <div class="pp-figs"><strong>12.2%</strong> win &middot; 37.8% ITM &middot; n=82</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 4</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:52%"></div></div>
+        <div class="pp-figs"><strong>13.4%</strong> win &middot; 32.9% ITM &middot; n=82</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 5</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:75%"></div></div>
+        <div class="pp-figs"><strong>19.5%</strong> win &middot; 48.8% ITM &middot; n=82</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 6</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:30%"></div></div>
+        <div class="pp-figs"><strong>7.8%</strong> win &middot; 27.3% ITM &middot; n=77</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 7</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:43%"></div></div>
+        <div class="pp-figs"><strong>11.3%</strong> win &middot; 35.2% ITM &middot; n=71</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 8</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:38%"></div></div>
+        <div class="pp-figs"><strong>10.0%</strong> win &middot; 35.0% ITM &middot; n=60</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 9+</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:20%"></div></div>
+        <div class="pp-figs"><strong>5.2%</strong> win &middot; 19.5% ITM &middot; n=77</div>
+      </div>
+    </div>
+      
+    <div class="pp-table">
+      <div class="pp-table-title">Routes (1 Mile+)</div>
+      
+      <div class="pp-row">
+        <div class="pp-label">Post 1</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:38%"></div></div>
+        <div class="pp-figs"><strong>10.0%</strong> win &middot; 31.7% ITM &middot; n=60</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 2</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:58%"></div></div>
+        <div class="pp-figs"><strong>15.0%</strong> win &middot; 36.7% ITM &middot; n=60</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 3</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:38%"></div></div>
+        <div class="pp-figs"><strong>10.0%</strong> win &middot; 36.7% ITM &middot; n=60</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 4</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:83%"></div></div>
+        <div class="pp-figs"><strong>21.7%</strong> win &middot; 53.3% ITM &middot; n=60</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 5</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:26%"></div></div>
+        <div class="pp-figs"><strong>6.7%</strong> win &middot; 28.3% ITM &middot; n=60</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 6</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:74%"></div></div>
+        <div class="pp-figs"><strong>19.3%</strong> win &middot; 36.8% ITM &middot; n=57</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 7</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:23%"></div></div>
+        <div class="pp-figs"><strong>6.0%</strong> win &middot; 30.0% ITM &middot; n=50</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 8</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:25%"></div></div>
+        <div class="pp-figs"><strong>6.5%</strong> win &middot; 26.1% ITM &middot; n=46</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 9+</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:29%"></div></div>
+        <div class="pp-figs"><strong>7.5%</strong> win &middot; 29.9% ITM &middot; n=67</div>
+      </div>
+    </div>
+    </div>
+    <div class="callout">
+      <h4>Sprints and routes reward different posts</h4>
+      <p>Sprints have clearly favored post 5 (19.5% win, 48.8% ITM), with posts 2 and 4 next-best in a tie. Routes flip the advantage to post 4 (21.7% win, 53.3% ITM &mdash; the single best number on this page), with post 6 (19.3%) also standing out. In both distance categories, the far outside (post 9 and up) has been a clear drag on win chances.</p>
+    </div>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">🔎 Where It Matters Most: Surface &times; Distance</h2>
+    <p class="section-sub">The four combinations you'll actually be betting into. Sample sizes get smaller here, so treat the thinner rows as directional, not definitive.</p>
+    <div class="cols-2">
+      
+    <div class="pp-table">
+      <div class="pp-table-title">Dirt Sprints <span class="tiny">n=57 races</span></div>
+      
+      <div class="pp-row">
+        <div class="pp-label">Post 1</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:34%"></div></div>
+        <div class="pp-figs"><strong>8.8%</strong> win &middot; 31.6% ITM &middot; n=57</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 2</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:54%"></div></div>
+        <div class="pp-figs"><strong>14.0%</strong> win &middot; 36.8% ITM &middot; n=57</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 3</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:40%"></div></div>
+        <div class="pp-figs"><strong>10.5%</strong> win &middot; 35.1% ITM &middot; n=57</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 4</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:47%"></div></div>
+        <div class="pp-figs"><strong>12.3%</strong> win &middot; 31.6% ITM &middot; n=57</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 5</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:67%"></div></div>
+        <div class="pp-figs"><strong>17.5%</strong> win &middot; 50.9% ITM &middot; n=57</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 6</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:36%"></div></div>
+        <div class="pp-figs"><strong>9.3%</strong> win &middot; 25.9% ITM &middot; n=54</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 7</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:55%"></div></div>
+        <div class="pp-figs"><strong>14.3%</strong> win &middot; 38.8% ITM &middot; n=49</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 8</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:55%"></div></div>
+        <div class="pp-figs"><strong>14.3%</strong> win &middot; 45.2% ITM &middot; n=42</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 9+</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:20%"></div></div>
+        <div class="pp-figs"><strong>5.2%</strong> win &middot; 22.4% ITM &middot; n=58</div>
+      </div>
+    </div>
+      
+    <div class="pp-table">
+      <div class="pp-table-title">Dirt Routes <span class="tiny">n=19 races</span></div>
+      
+      <div class="pp-row">
+        <div class="pp-label">Post 1</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:20%"></div></div>
+        <div class="pp-figs"><strong>5.3%</strong> win &middot; 26.3% ITM &middot; n=19</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 2</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:61%"></div></div>
+        <div class="pp-figs"><strong>15.8%</strong> win &middot; 42.1% ITM &middot; n=19</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 3</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:20%"></div></div>
+        <div class="pp-figs"><strong>5.3%</strong> win &middot; 42.1% ITM &middot; n=19</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 4</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:81%"></div></div>
+        <div class="pp-figs"><strong>21.1%</strong> win &middot; 47.4% ITM &middot; n=19</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 5</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:0%"></div></div>
+        <div class="pp-figs"><strong>0.0%</strong> win &middot; 21.1% ITM &middot; n=19</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 6</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:96%"></div></div>
+        <div class="pp-figs"><strong>25.0%</strong> win &middot; 50.0% ITM &middot; n=16</div>
+      </div>
+      <div class="pp-row dim">
+        <div class="pp-label">Post 7</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:27%"></div></div>
+        <div class="pp-figs"><strong>7.1%</strong> win &middot; 42.9% ITM &middot; n=14 <span class="tiny">(small sample)</span></div>
+      </div>
+      <div class="pp-row dim">
+        <div class="pp-label">Post 8</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:59%"></div></div>
+        <div class="pp-figs"><strong>15.4%</strong> win &middot; 30.8% ITM &middot; n=13 <span class="tiny">(small sample)</span></div>
+      </div>
+      <div class="pp-row dim">
+        <div class="pp-label">Post 9+</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:96%"></div></div>
+        <div class="pp-figs"><strong>25.0%</strong> win &middot; 41.7% ITM &middot; n=12 <span class="tiny">(small sample)</span></div>
+      </div>
+    </div>
+    </div>
+    <div class="cols-2">
+      
+    <div class="pp-table">
+      <div class="pp-table-title">Turf Sprints <span class="tiny">n=25 races</span></div>
+      
+      <div class="pp-row">
+        <div class="pp-label">Post 1</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:77%"></div></div>
+        <div class="pp-figs"><strong>20.0%</strong> win &middot; 60.0% ITM &middot; n=25</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 2</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:46%"></div></div>
+        <div class="pp-figs"><strong>12.0%</strong> win &middot; 48.0% ITM &middot; n=25</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 3</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:62%"></div></div>
+        <div class="pp-figs"><strong>16.0%</strong> win &middot; 44.0% ITM &middot; n=25</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 4</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:62%"></div></div>
+        <div class="pp-figs"><strong>16.0%</strong> win &middot; 36.0% ITM &middot; n=25</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 5</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:92%"></div></div>
+        <div class="pp-figs"><strong>24.0%</strong> win &middot; 44.0% ITM &middot; n=25</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 6</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:17%"></div></div>
+        <div class="pp-figs"><strong>4.3%</strong> win &middot; 30.4% ITM &middot; n=23</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 7</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:17%"></div></div>
+        <div class="pp-figs"><strong>4.5%</strong> win &middot; 27.3% ITM &middot; n=22</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 8</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:0%"></div></div>
+        <div class="pp-figs"><strong>0.0%</strong> win &middot; 11.1% ITM &middot; n=18</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 9+</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:20%"></div></div>
+        <div class="pp-figs"><strong>5.3%</strong> win &middot; 10.5% ITM &middot; n=19</div>
+      </div>
+    </div>
+      
+    <div class="pp-table">
+      <div class="pp-table-title">Turf Routes <span class="tiny">n=41 races</span></div>
+      
+      <div class="pp-row">
+        <div class="pp-label">Post 1</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:47%"></div></div>
+        <div class="pp-figs"><strong>12.2%</strong> win &middot; 34.1% ITM &middot; n=41</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 2</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:56%"></div></div>
+        <div class="pp-figs"><strong>14.6%</strong> win &middot; 34.1% ITM &middot; n=41</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 3</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:47%"></div></div>
+        <div class="pp-figs"><strong>12.2%</strong> win &middot; 34.1% ITM &middot; n=41</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 4</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:84%"></div></div>
+        <div class="pp-figs"><strong>22.0%</strong> win &middot; 56.1% ITM &middot; n=41</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 5</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:38%"></div></div>
+        <div class="pp-figs"><strong>9.8%</strong> win &middot; 31.7% ITM &middot; n=41</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 6</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:66%"></div></div>
+        <div class="pp-figs"><strong>17.1%</strong> win &middot; 31.7% ITM &middot; n=41</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 7</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:21%"></div></div>
+        <div class="pp-figs"><strong>5.6%</strong> win &middot; 25.0% ITM &middot; n=36</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 8</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:12%"></div></div>
+        <div class="pp-figs"><strong>3.0%</strong> win &middot; 24.2% ITM &middot; n=33</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Post 9+</div>
+        <div class="pp-bar-track"><div class="pp-bar" style="width:14%"></div></div>
+        <div class="pp-figs"><strong>3.6%</strong> win &middot; 27.3% ITM &middot; n=55</div>
+      </div>
+    </div>
+    </div>
+    <div class="callout">
+      <h4>Turf routes reward patience, turf sprints reward the rail</h4>
+      <p>Turf routes have been the most post-sensitive slice of the meet: post 4 alone has produced 56.1% ITM, while outside posts (8 and up) have barely factored. Turf sprints flip the early speed math &mdash; the rail has hit the board 60.0% of the time, the best ITM rate of any single post on this page. On the main track, dirt routes are the thinnest sample (only 19 races) and post 6's 25.0% is worth watching rather than betting on outright until the sample grows.</p>
+    </div>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">⚡ Pace &amp; Speed Bias</h2>
+    <p class="section-sub">Post position is only half the picture &mdash; where a horse is running early matters just as much.</p>
+    
+    <div class="pp-table">
+      <div class="pp-table-title">Win % by Running Position at First Call</div>
+      
+      <div class="pp-row">
+        <div class="pp-label">Ran 1th</div>
+        <div class="pp-bar-track"><div class="pp-bar alt" style="width:63%"></div></div>
+        <div class="pp-figs"><strong>16.3%</strong> win &middot; n=141</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Ran 2nd</div>
+        <div class="pp-bar-track"><div class="pp-bar alt" style="width:85%"></div></div>
+        <div class="pp-figs"><strong>22.0%</strong> win &middot; n=141</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Ran 3rd</div>
+        <div class="pp-bar-track"><div class="pp-bar alt" style="width:46%"></div></div>
+        <div class="pp-figs"><strong>12.1%</strong> win &middot; n=141</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Ran 4th</div>
+        <div class="pp-bar-track"><div class="pp-bar alt" style="width:65%"></div></div>
+        <div class="pp-figs"><strong>17.0%</strong> win &middot; n=141</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Ran 5th</div>
+        <div class="pp-bar-track"><div class="pp-bar alt" style="width:30%"></div></div>
+        <div class="pp-figs"><strong>7.8%</strong> win &middot; n=141</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Ran 6th</div>
+        <div class="pp-bar-track"><div class="pp-bar alt" style="width:46%"></div></div>
+        <div class="pp-figs"><strong>11.9%</strong> win &middot; n=134</div>
+      </div>
+      <div class="pp-row">
+        <div class="pp-label">Ran 7+th</div>
+        <div class="pp-bar-track"><div class="pp-bar alt" style="width:20%"></div></div>
+        <div class="pp-figs"><strong>5.3%</strong> win &middot; n=376</div>
+      </div>
+    </div>
+    <div class="stat-grid" style="margin-top:16px;">
+      <div class="stat"><div class="num">18.4%</div><div class="label">Dirt: Winner Led at 1st Call</div></div>
+      <div class="stat"><div class="num">13.6%</div><div class="label">Turf: Winner Led at 1st Call</div></div>
+      <div class="stat"><div class="num">15.8%</div><div class="label">Dirt Sprints</div></div>
+      <div class="stat"><div class="num">26.3%</div><div class="label">Dirt Routes</div></div>
+      <div class="stat"><div class="num">24.0%</div><div class="label">Turf Sprints</div></div>
+      <div class="stat"><div class="num">7.3%</div><div class="label">Turf Routes</div></div>
+    </div>
+    <div class="callout">
+      <h4>Press, don't just speed</h4>
+      <p>Horses sitting just off the pace at the first call (running 2nd) have actually out-won the pure leaders this meet, 22.0% to 16.3%. Only 16.2% of winners meet-wide led wire-to-wire at the first call, and that number craters to 7.3% in turf routes &mdash; confirmation that the turf-route post bias toward the 4-hole is really a stalking-trip bias, not a speed bias. Dirt is the more speed-friendly surface: leaders and pressers combined account for a clear majority of dirt winners.</p>
+    </div>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">💡 Betting Angles</h2>
+    <div class="callout">
+      <h4>Respect the 4-hole, especially going long</h4>
+      <p>Post 4 is best or co-best in the overall, dirt, turf and route breakdowns &mdash; the one exception is sprints, where post 5 takes over. When a legitimate contender draws post 4 in a route race, treat it as a real positive, not noise.</p>
+    </div>
+    <div class="callout">
+      <h4>Turf outside posts are a real liability</h4>
+      <p>Posts 7&ndash;10 on the turf course have combined for almost no wins this meet. Discount outside-post turf horses a notch below their morning-line price, especially in routes.</p>
+    </div>
+    <div class="callout">
+      <h4>Don't assume the rail is dead on dirt</h4>
+      <p>Unlike a lot of dirt strips, Del Mar's main track hasn't punished the rail this meet &mdash; it's just been unremarkable rather than golden. The bias on dirt is spread across posts 2 through 8, so use trip and pace, not post alone, to separate dirt contenders.</p>
+    </div>
+    <div class="callout">
+      <h4>Turf sprints still favor speed and the rail together</h4>
+      <p>The rail's strong ITM rate in turf sprints lines up with this being the one category where a clean speed trip from an inside post is genuinely powerful.</p>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="outlook"><strong>TrackSmart AI Read:</strong> Del Mar's dirt is playing close to fair with a mild lean toward posts 2&ndash;5, while the turf course is showing a real inside/mid bias that punishes wide draws &mdash; sharpest in routes, where stalking trips from the 4-hole have dominated. Track profiles shift as a meet wears in and the rail gets chewed up; this report will be worth refreshing again in a few weeks.</div>
+  </section>
+
+  <section class="tight">
+    <div class="cta">
+      <h3>Get bias reads like this built into every card</h3>
+      <p>Members get race-by-race selections that already account for post and pace bias, alongside full performance transparency every day.</p>
+      <a class="btn" href="membership.html">See Membership Details</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand-foot">TrackSmart <span class="ai">AI</span></div>
+    <div class="copyright">&copy; 2026 TrackSmart AI &middot; <a href="https://www.tracksmartracing.com">tracksmartracing.com</a></div>
+    <div class="legal">Methodology: built from Equibase-format result charts for 15 Del Mar programs, July 17&ndash;August 9, 2026 (142 races, 1,215 starters). Post position (PP) is the assigned starting gate; win% and ITM% (top-3) are calculated per starting post across actual starters, not entries. Small-sample posts are flagged and should be weighted accordingly. Track bias evolves throughout a meet as the racing strip wears in &mdash; treat this as a current read, not a fixed rule. Past performance is not a guarantee of future results. For entertainment and informational purposes only &mdash; please wager responsibly.</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
