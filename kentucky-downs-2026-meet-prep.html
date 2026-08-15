@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kentucky Downs 2026 Meet Prep &mdash; TrackSmart AI</title>
+<meta name="description" content="TrackSmart AI's two-year data study of Kentucky Downs (2024-2025): post-position bias by distance, pace bias, the moving temporary rail, trainer/jockey angles, and breeding patterns of the winners.">
+<link rel="canonical" href="https://dslowrycpa.github.io/claudeai-creations/kentucky-downs-2026-meet-prep.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="TrackSmart AI">
+<meta property="og:url" content="https://dslowrycpa.github.io/claudeai-creations/kentucky-downs-2026-meet-prep.html">
+<meta property="og:title" content="Kentucky Downs 2026 Meet Prep &mdash; A Two-Year Handicapping Data Study">
+<meta property="og:description" content="Post-position bias, pace bias, the moving rail, trainer/jockey angles, and breeding patterns from 134 races across the 2024 and 2025 Kentucky Downs meets.">
+<meta property="og:image" content="https://dslowrycpa.github.io/claudeai-creations/og-performance-report.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kentucky Downs 2026 Meet Prep &mdash; TrackSmart AI">
+<meta name="twitter:description" content="Two years of Kentucky Downs result charts, broken down: post bias, pace bias, the moving rail, trainers, jockeys, and breeding of the winners.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#04101b;
+    --panel:#0a1b2a;
+    --panel-2:#0d2033;
+    --border:#1b3b54;
+    --cyan:#28d6f5;
+    --cyan-bright:#5ce8ff;
+    --cyan-2:#46c6ff;
+    --ink:#eef6fb;
+    --muted:#9fbed2;
+    --faint:#6f93aa;
+    --amber:#ffb454;
+    --green:#3ee0a8;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1100px 620px at 10% -10%, rgba(40,214,245,0.09), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(70,198,255,0.06), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Hanken Grotesk','Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    line-height:1.65;
+  }
+  h1,h2,h3,h4{font-family:'Sora','Poppins',sans-serif;}
+  a{color:var(--cyan-bright);}
+  .wrap{max-width:840px;margin:0 auto;padding:0 24px;}
+
+  header.top{
+    position:sticky;top:0;z-index:20;
+    padding:16px 24px;border-bottom:1px solid var(--border);
+    background:rgba(4,16,27,0.85);backdrop-filter:blur(8px);
+  }
+  header.top .inner{max-width:840px;margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:center;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;letter-spacing:0.2px;text-decoration:none;color:var(--ink);}
+  .logo .mark{
+    width:30px;height:30px;border-radius:8px;
+    background:linear-gradient(160deg,var(--panel-2),var(--panel));
+    border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .logo .mark svg{width:18px;height:18px;}
+  .logo .ai{color:var(--cyan);}
+  header.top nav a.navlink{font-size:0.85rem;color:var(--muted);text-decoration:none;margin-left:20px;}
+  header.top nav a.navlink:hover{color:var(--cyan-bright);}
+  header.top nav a.navcta{
+    font-size:0.82rem;color:#04101b;text-decoration:none;margin-left:20px;
+    background:linear-gradient(90deg,var(--cyan),var(--cyan-2));
+    padding:8px 14px;border-radius:7px;font-weight:700;font-family:'Sora',sans-serif;
+  }
+
+  .hero{text-align:center;padding:56px 24px 36px;border-bottom:1px solid var(--border);}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:0.72rem;letter-spacing:1.6px;text-transform:uppercase;
+    color:var(--cyan-bright);background:rgba(40,214,245,0.08);
+    border:1px solid rgba(40,214,245,0.35);border-radius:999px;
+    padding:6px 14px;margin-bottom:22px;font-family:'Sora',sans-serif;font-weight:600;
+  }
+  .hero h1{
+    font-size:2.1rem;line-height:1.2;margin:0 0 10px;font-weight:800;
+    background:linear-gradient(90deg,#fff,#cfe6f2 55%,var(--cyan-bright));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero .sub{color:var(--amber);font-family:'Sora',sans-serif;font-weight:600;font-size:1rem;margin-bottom:14px;}
+  .hero .meta{color:var(--muted);font-size:0.9rem;font-family:'JetBrains Mono',monospace;}
+  .hero .meta strong{color:var(--ink);font-family:'Hanken Grotesk',sans-serif;}
+
+  section{padding:44px 24px;}
+  section.tight{padding-top:0;}
+  h2.section-title{font-size:1.35rem;margin:0 0 4px;display:flex;align-items:center;gap:10px;}
+  h3.sub-title{font-size:1.05rem;margin:26px 0 10px;color:var(--cyan-bright);}
+  p.section-sub{color:var(--faint);font-size:0.85rem;margin:0 0 24px;font-style:italic;}
+  section p{color:#dbe9f1;font-size:0.95rem;}
+  section p.note{color:var(--muted);font-size:0.88rem;font-style:italic;}
+
+  .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  @media (max-width:640px){.stat-grid{grid-template-columns:1fr 1fr;}}
+  .stat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px 14px;text-align:center;}
+  .stat .num{font-family:'Sora',sans-serif;font-weight:800;font-size:1.55rem;color:var(--cyan-bright);line-height:1.1;margin-bottom:6px;}
+  .stat .label{color:var(--muted);font-size:0.76rem;line-height:1.35;}
+  .stat.highlight .num{color:var(--green);}
+  .stat.amber .num{color:var(--amber);}
+
+  table.data-table{width:100%;border-collapse:collapse;margin:14px 0 20px;font-size:0.88rem;}
+  table.data-table th{
+    background:var(--panel-2);color:var(--cyan-bright);text-align:left;
+    font-family:'Sora',sans-serif;font-weight:600;font-size:0.78rem;
+    text-transform:uppercase;letter-spacing:0.4px;padding:10px 12px;border:1px solid var(--border);
+  }
+  table.data-table td{padding:9px 12px;border:1px solid var(--border);color:#dbe9f1;}
+  table.data-table tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+  table.data-table td.num,table.data-table th.num{text-align:center;font-family:'JetBrains Mono',monospace;}
+
+  .track-block{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:14px;}
+  .track-block .head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
+  .track-block h4{margin:0;font-size:1.05rem;}
+  .track-block .rate{font-family:'JetBrains Mono',monospace;color:var(--cyan-bright);font-size:0.85rem;}
+  .track-block .rate strong{color:var(--green);}
+  .track-block p{margin:0;color:var(--muted);font-size:0.9rem;}
+
+  .feature{
+    background:linear-gradient(160deg,var(--panel-2),var(--panel));
+    border:1px solid rgba(40,214,245,0.35);border-radius:16px;padding:28px 26px;margin-bottom:6px;
+  }
+  .feature .flag{display:inline-block;background:rgba(255,180,84,0.12);border:1px solid rgba(255,180,84,0.4);color:var(--amber);font-family:'Sora',sans-serif;font-weight:700;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.6px;border-radius:999px;padding:5px 12px;margin-bottom:14px;}
+  .feature h3{margin:0 0 12px;font-size:1.2rem;color:var(--ink);}
+  .feature p{color:#dbe9f1;font-size:0.95rem;}
+
+  .learn{background:var(--panel);border:1px solid rgba(255,180,84,0.3);border-radius:14px;padding:20px 22px;margin-bottom:14px;}
+  .learn h4{margin:0 0 8px;font-size:1rem;color:var(--amber);}
+  .learn p{margin:0;color:#dbe9f1;font-size:0.92rem;}
+
+  ul.plain{margin:0 0 20px;padding-left:20px;color:#dbe9f1;font-size:0.92rem;}
+  ul.plain li{margin-bottom:10px;}
+  ul.plain li strong{color:var(--cyan-bright);}
+
+  .outlook{
+    background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--border);
+    border-radius:14px;padding:24px 26px;color:#dbe9f1;font-size:0.94rem;text-align:center;
+  }
+  .outlook strong{color:var(--cyan-bright);}
+
+  .cta{
+    margin-top:20px;text-align:center;background:linear-gradient(160deg,var(--panel-2),var(--panel));
+    border:1px solid var(--border);border-radius:18px;padding:36px 30px;
+  }
+  .cta h3{font-size:1.25rem;margin:0 0 10px;}
+  .cta p{color:var(--muted);max-width:460px;margin:0 auto 22px;font-size:0.94rem;}
+  .cta a.btn{
+    display:inline-block;background:linear-gradient(90deg,var(--cyan),var(--cyan-2));
+    color:#04101b;text-decoration:none;font-family:'Sora',sans-serif;font-weight:700;
+    padding:13px 28px;border-radius:9px;font-size:0.95rem;
+  }
+
+  .caveats{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px 24px;}
+  .caveats ul{margin:0;padding-left:18px;color:var(--faint);font-size:0.82rem;}
+  .caveats ul li{margin-bottom:8px;}
+
+  footer{margin-top:20px;border-top:1px solid var(--border);padding:36px 24px 40px;text-align:center;}
+  footer .brand-foot{font-weight:700;letter-spacing:0.5px;margin-bottom:6px;font-family:'Sora',sans-serif;}
+  footer .brand-foot .ai{color:var(--cyan);}
+  footer .copyright{color:var(--faint);font-size:0.78rem;margin-top:6px;}
+  footer .legal{color:var(--faint);font-size:0.72rem;margin-top:14px;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.6;}
+  footer a{color:var(--faint);text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <a class="logo" href="https://start.tracksmartracing.com/">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="22" height="22" rx="6" stroke="#28d6f5" stroke-width="1.4"/>
+          <path d="M4 16l4.5-5 3.5 3 7-8" stroke="#5ce8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15.5 6H19v3.5" stroke="#5ce8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span>TrackSmart <span class="ai">AI</span></span>
+    </a>
+    <nav>
+      <a class="navlink" href="membership.html">Membership</a>
+      <a class="navcta" href="https://tracksmartai.substack.com">Become a Member</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <span class="eyebrow">AI Research Report</span>
+  <h1>Kentucky Downs 2026 Meet Prep</h1>
+  <div class="sub">A Two-Year Handicapping Data Study (2024&ndash;2025)</div>
+  <p class="meta"><strong>Sample:</strong> 14 charted cards &nbsp;&middot;&nbsp; <strong>134 races</strong> &nbsp;&middot;&nbsp; <strong>1,458 starters</strong></p>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <h2 class="section-title">&#128202; Two-Meet Snapshot</h2>
+    <p class="section-sub">Every official Equibase result chart from both full Kentucky Downs meets &mdash; seven cards in 2024, seven in 2025 &mdash; broken down to find what actually predicted winners.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="num">134</div><div class="label">Races Analyzed</div></div>
+      <div class="stat"><div class="num">1,458</div><div class="label">Individual Starters</div></div>
+      <div class="stat highlight"><div class="num">35.8%</div><div class="label">Favorite Win Rate (near normal)</div></div>
+      <div class="stat amber"><div class="num">20.9%</div><div class="label">Winners at 10-1 or Higher</div></div>
+      <div class="stat highlight"><div class="num">42.7%</div><div class="label">Post 1&ndash;4 Win Share &mdash; Rail Out</div></div>
+      <div class="stat amber"><div class="num">23.7%</div><div class="label">Post 1&ndash;4 Win Share &mdash; Base Rail</div></div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">&#127942; The Course, Two Meets In</h2>
+    <p>Kentucky Downs' turf held firm for 13 of the 14 cards in this sample &mdash; including both days with showery weather &mdash; with only one "Good" rating across two years. The European-style drainage does what it's built to do: going/ground bias is rarely going to be a live factor here the way it is at a lot of U.S. turf courses.</p>
+    <p>The card is built from eight different distances, but two of them carry nearly two-thirds of the racing:</p>
+    <table class="data-table">
+      <tr><th>Distance</th><th class="num">Races (2024+2025)</th><th class="num">Share of Card</th></tr>
+      <tr><td>1 mile</td><td class="num">48</td><td class="num">36%</td></tr>
+      <tr><td>6.5 furlongs</td><td class="num">38</td><td class="num">28%</td></tr>
+      <tr><td>1-5/16 miles</td><td class="num">17</td><td class="num">13%</td></tr>
+      <tr><td>6 furlongs</td><td class="num">10</td><td class="num">7%</td></tr>
+      <tr><td>1.5 miles</td><td class="num">8</td><td class="num">6%</td></tr>
+      <tr><td>7 furlongs</td><td class="num">8</td><td class="num">6%</td></tr>
+      <tr><td>1 mile 70 yards</td><td class="num">3</td><td class="num">2%</td></tr>
+      <tr><td>2-1/16 miles</td><td class="num">2</td><td class="num">1%</td></tr>
+    </table>
+    <p class="note">A bias profile built for "Kentucky Downs" in general is less useful than one built for "Kentucky Downs at 6.5f" and "Kentucky Downs at 1 mile" specifically &mdash; those two configurations alone define most of the meet.</p>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">&#128204; Post-Position Bias by Distance</h2>
+    <p>Winning post position is one of the few fields in these charts with zero ambiguity, so this read is exact.</p>
+    <h3 class="sub-title">6.5 Furlongs (38 races) &mdash; the outside posts are surprisingly live</h3>
+    <table class="data-table">
+      <tr><th>Post</th><th class="num">Wins</th><th class="num">Starts</th><th class="num">Win%</th></tr>
+      <tr><td>10</td><td class="num">6</td><td class="num">32</td><td class="num">18.8%</td></tr>
+      <tr><td>11</td><td class="num">5</td><td class="num">25</td><td class="num">20.0%</td></tr>
+      <tr><td>5</td><td class="num">7</td><td class="num">38</td><td class="num">18.4%</td></tr>
+      <tr><td>1</td><td class="num">2</td><td class="num">38</td><td class="num">5.3%</td></tr>
+      <tr><td>9</td><td class="num">0</td><td class="num">36</td><td class="num">0.0%</td></tr>
+    </table>
+    <p>Posts 10 and 11 combined for 11 of 38 wins (29%) despite being only 2 of up to 12 gates. Post 9 went 0-for-36. This shows up both years, not just as a small-sample fluke.</p>
+    <h3 class="sub-title">1 Mile (48 races) &mdash; flatter, no post is a killer</h3>
+    <p>Wins were fairly evenly spread from post 1 through post 11 (roughly 6&ndash;15% each), with post 12+ clearly worse. Post bias matters far less here than pace and trip.</p>
+    <h3 class="sub-title">Routes &mdash; 1-5/16m, 1.5m, 2-1/16m (27 races combined)</h3>
+    <p>Samples get thin, but a consistent shape emerges: extreme inside posts (1&ndash;2) underperform, and posts 6&ndash;9 overrepresent. At 1.5 miles, posts 8 and 9 each won a third of their starts. Directional given the small sample, but it fits the idea that KY Downs' long, bending routes reward horses that aren't fighting the rail into the first turn.</p>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">&#127942; Pace / Running-Style Bias of Winners</h2>
+    <p>Running-style tags below are derived from each chart's plain-English trip narrative; about 63% of the 134 winners were confidently classified.</p>
+    <table class="data-table">
+      <tr><th>Style</th><th class="num">Winners</th><th class="num">Share</th></tr>
+      <tr><td>Presser (stalked/pressed the pace)</td><td class="num">31</td><td class="num">23.1%</td></tr>
+      <tr><td>Leader (wire-to-wire / uncontested)</td><td class="num">20</td><td class="num">14.9%</td></tr>
+      <tr><td>Mid-pack (rated, advanced late)</td><td class="num">18</td><td class="num">13.4%</td></tr>
+      <tr><td>Closer (off the pace, rallied)</td><td class="num">15</td><td class="num">11.2%</td></tr>
+      <tr><td>Unclassified (mixed trip)</td><td class="num">50</td><td class="num">37.3%</td></tr>
+    </table>
+    <p>Forwardly-placed winners (leader + presser) account for about 38% of the field of winners, versus roughly 11% for true off-the-pace closers &mdash; tactical position matters more here than a late kick, consistent with a course full of bends, blind turns and a false straight. At 6.5f specifically, true wire-to-wire winners jump to 21% (clear early speed rewarded in the sprint course). Past a mile, pure leaders fade and pressers take over &mdash; 41% of 1-5/16m winners were pressers.</p>
+  </section>
+
+  <div class="wrap" style="padding:0 0 24px;">
+    <div class="feature">
+      <span class="flag">Biggest Structural Finding</span>
+      <h3>The Moving Rail</h3>
+      <p>The temporary rail setting is published on 75 of the 134 charts as 50ft or 25ft out. On the remaining 59 races &mdash; the last three days of <em>both</em> the 2024 and 2025 meets, without exception &mdash; the "Temporary Rail" line disappears from the chart entirely. That's not a data gap; it's the rail settling to its base, non-temporary position as the course wears in. The pattern is identical both years:</p>
+      <table class="data-table">
+        <tr><th>Meet Day</th><th>2024 Dates</th><th>2025 Dates</th><th>Rail Setting</th></tr>
+        <tr><td>Days 1&ndash;2</td><td>Aug 29, Aug 31</td><td>Aug 28, (Aug 30)</td><td>50 ft out</td></tr>
+        <tr><td>Days 3&ndash;4</td><td>Sep 1, Sep 5</td><td>Aug 30&ndash;Sep 4</td><td>25 ft out</td></tr>
+        <tr><td>Days 5&ndash;7</td><td>Sep 7, 8, 11</td><td>Sep 6, 7, 10</td><td>Base rail (no temp rail)</td></tr>
+      </table>
+      <p>And the effect on where winners come from is large:</p>
+      <table class="data-table">
+        <tr><th>Rail Phase</th><th class="num">Races</th><th class="num">Avg. Winning Post</th><th class="num">Winners from Post 1&ndash;4</th></tr>
+        <tr><td>50ft out (early meet)</td><td class="num">26</td><td class="num">5.27</td><td class="num">42.3%</td></tr>
+        <tr><td>25ft out (mid meet)</td><td class="num">49</td><td class="num">5.41</td><td class="num">42.9%</td></tr>
+        <tr><td>Base rail (late meet)</td><td class="num">59</td><td class="num">6.98</td><td class="num">23.7%</td></tr>
+      </table>
+      <p>Early in the meet, with the rail moved off the hedge, inside posts win at nearly double the rate they do once the rail settles to base in the second half. Likely mechanism: the widened path protects fresh, ungrazed ground near the rail early on; by the back half of the meet that ground is chewed up and posts further out are running over fresher turf.</p>
+      <p><strong style="color:var(--green);">Actionable takeaway:</strong> build post-position bias as a function of meet day, not one static number for the whole meet &mdash; lean inside for days 1&ndash;4, lean outside for days 5&ndash;7.</p>
+    </div>
+  </div>
+
+  <section class="tight">
+    <h2 class="section-title">&#128101; First-Time-at-the-Course Angle</h2>
+    <p>Horses with no prior start at Kentucky Downs anywhere in this two-year sample won at an 8.8% clip (117 of 1,328 starts). Horses that had already run over the course at least once &mdash; even a bad race &mdash; won at 13.1% (17 of 130 starts), roughly 50% higher relative to the field. The repeat-starter sample is smaller and self-selects toward horses good enough to be brought back, so treat this as a moderate factor rather than a hard rule &mdash; but it fits the course's reputation: the blind turns, false straight, and undulations reward horses (and riders) who've seen it before.</p>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">&#128176; Favorites, Value &amp; Longshots</h2>
+    <p>Kentucky Downs has a reputation as a chaos track for bettors. The two-year data says: partly true. Favorites won 35.8% of races &mdash; close to a normal national average, not the vulnerable-favorite bloodbath the reputation implies. At the same time, 20.9% of winners paid 10-1 or higher, meaningfully above a typical U.S. turf-meet longshot rate &mdash; real overlay opportunity, just not automatic.</p>
+    <table class="data-table">
+      <tr><th>Distance</th><th class="num">Favorite Win%</th></tr>
+      <tr><td>1-5/16 miles</td><td class="num">47.1%</td></tr>
+      <tr><td>6 furlongs</td><td class="num">40.0%</td></tr>
+      <tr><td>1 mile</td><td class="num">39.6%</td></tr>
+      <tr><td>1.5 miles</td><td class="num">37.5%</td></tr>
+      <tr><td>6.5 furlongs</td><td class="num">34.2%</td></tr>
+      <tr><td>7 furlongs</td><td class="num">12.5%</td></tr>
+    </table>
+    <p>7-furlong races stand out &mdash; favorites won barely 1 in 8 there (small sample, 8 races, but consistent enough to flag). Treat well-supported horses at 7f with real skepticism; lean harder on the crowd's pick at 1-5/16m routes.</p>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">&#127942; Trainers to Watch</h2>
+    <p class="section-sub">Minimum 5 starters across the two-year sample, sorted by win total.</p>
+    <table class="data-table">
+      <tr><th>Trainer</th><th class="num">Wins</th><th class="num">Starts</th><th class="num">Win%</th></tr>
+      <tr><td>Cox, Brad</td><td class="num">10</td><td class="num">26</td><td class="num">38.5%</td></tr>
+      <tr><td>Sharp, Joe</td><td class="num">10</td><td class="num">58</td><td class="num">17.2%</td></tr>
+      <tr><td>Walsh, Brendan</td><td class="num">9</td><td class="num">63</td><td class="num">14.3%</td></tr>
+      <tr><td>Ward, Wesley</td><td class="num">6</td><td class="num">34</td><td class="num">17.6%</td></tr>
+      <tr><td>Arnold II, George</td><td class="num">6</td><td class="num">40</td><td class="num">15.0%</td></tr>
+      <tr><td>Asmussen, Steven</td><td class="num">6</td><td class="num">62</td><td class="num">9.7%</td></tr>
+      <tr><td>Maker, Michael</td><td class="num">6</td><td class="num">71</td><td class="num">8.5%</td></tr>
+      <tr><td>D'Angelo, Jose</td><td class="num">4</td><td class="num">13</td><td class="num">30.8%</td></tr>
+      <tr><td>Mott, William</td><td class="num">4</td><td class="num">26</td><td class="num">15.4%</td></tr>
+      <tr><td>Baltas, Richard</td><td class="num">2</td><td class="num">5</td><td class="num">40.0%</td></tr>
+    </table>
+    <p>Separate two groups: high-volume barns (Sharp, Walsh, Maker, Asmussen each sent 34&ndash;71 starters &mdash; they'll fill the entry box every card, at a middling strike rate that reflects volume as much as meet-specific form) versus efficiency plays (Cox at 38.5% off real volume, D'Angelo at 30.8%, Baltas at 40% off a tiny sample). Cox is the standout &mdash; nearly 3x the field's overall win rate on real volume.</p>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">&#127939; Jockeys to Watch</h2>
+    <p class="section-sub">Minimum 10 mounts.</p>
+    <table class="data-table">
+      <tr><th>Jockey</th><th class="num">Wins</th><th class="num">Mounts</th><th class="num">Win%</th></tr>
+      <tr><td>Ortiz Jr., Irad</td><td class="num">17</td><td class="num">70</td><td class="num">24.3%</td></tr>
+      <tr><td>Dettori, Lanfranco</td><td class="num">17</td><td class="num">81</td><td class="num">21.0%</td></tr>
+      <tr><td>Prat, Flavien</td><td class="num">11</td><td class="num">43</td><td class="num">25.6%</td></tr>
+      <tr><td>Ortiz, Jose</td><td class="num">12</td><td class="num">118</td><td class="num">10.2%</td></tr>
+      <tr><td>Gaffalione, Tyler</td><td class="num">10</td><td class="num">111</td><td class="num">9.0%</td></tr>
+      <tr><td>Geroux, Florent</td><td class="num">9</td><td class="num">52</td><td class="num">17.3%</td></tr>
+      <tr><td>Hernandez Jr., Brian</td><td class="num">7</td><td class="num">55</td><td class="num">12.7%</td></tr>
+    </table>
+    <p>Prat, Dettori and Ortiz Jr. all won at 21&ndash;26%, close to double the field average &mdash; riders who fly in specifically for Kentucky Downs' purses and produce at an elite clip once they're here. Jose Ortiz and Gaffalione ride a huge number of mounts at a more pedestrian rate &mdash; busy, not necessarily live.</p>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">&#129516; Breeding of the Winners</h2>
+    <p>75 different sires produced the 134 winners in this sample &mdash; a wide-open field overall, with one clear outlier. Twirling Candy sired 9 of the 134 winners (6.7% of the entire two-meet sample), roughly five times what an even distribution across 75 sires would predict. Those 9 wins came from 6 different trainers, 2 different distances, and both years &mdash; a genuine sire-line pattern, not one barn's success story.</p>
+    <table class="data-table">
+      <tr><th>Sire</th><th class="num">Winners</th></tr>
+      <tr><td>Twirling Candy</td><td class="num">9</td></tr>
+      <tr><td>War Front</td><td class="num">6</td></tr>
+      <tr><td>Not This Time</td><td class="num">5</td></tr>
+      <tr><td>Into Mischief</td><td class="num">5</td></tr>
+      <tr><td>Constitution</td><td class="num">5</td></tr>
+      <tr><td>Quality Road</td><td class="num">5</td></tr>
+      <tr><td>Justify</td><td class="num">3</td></tr>
+      <tr><td>American Pharoah</td><td class="num">3</td></tr>
+      <tr><td>Munnings</td><td class="num">3</td></tr>
+    </table>
+    <p>The damsire (broodmare sire) list is more European and turf-tilted:</p>
+    <table class="data-table">
+      <tr><th>Damsire</th><th class="num">Winner Appearances</th></tr>
+      <tr><td>Tapit</td><td class="num">7</td></tr>
+      <tr><td>Medaglia d'Oro</td><td class="num">7</td></tr>
+      <tr><td>Galileo (IRE)</td><td class="num">5</td></tr>
+      <tr><td>Street Cry (IRE)</td><td class="num">5</td></tr>
+      <tr><td>Kitten's Joy</td><td class="num">3</td></tr>
+      <tr><td>Dynaformer</td><td class="num">3</td></tr>
+    </table>
+    <p>Galileo, Street Cry and Kitten's Joy on the female side are all proven turf/stamina influences, and they show up more strongly on the damsire line than the sire line &mdash; a horse by a mostly dirt-oriented sire can still profile well here if the bottom half of the pedigree carries genuine turf blood. Useful tiebreaker for shippers with no Kentucky Downs form to lean on yet.</p>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title">&#129504; AI's Final Analysis &mdash; Building the 2026 Game Plan</h2>
+    <p class="section-sub">Six changes worth making to the approach for this year's meet.</p>
+    <div class="learn"><h4>1. Make post bias meet-day-aware</h4><p>Track the rail setting as it's published each card and shade inside early in the meet, outside from roughly day 5 on &mdash; the swing in winning post is too large (42% vs 24% of winners from posts 1&ndash;4) to ignore.</p></div>
+    <div class="learn"><h4>2. Weight running style by distance</h4><p>Lean harder on confirmed early speed at 6.5 furlongs specifically; lean on forward stalkers over pure pace-setters once races stretch past a mile, and don't count on deep closers anywhere on this course.</p></div>
+    <div class="learn"><h4>3. Add a course-experience flag</h4><p>Any horse with a prior Kentucky Downs start &mdash; even a poor one &mdash; gets a bump; the two-year win-rate gap (13.1% vs 8.8%) is large enough to matter in close calls, especially for maiden and allowance shippers.</p></div>
+    <div class="learn"><h4>4. Use the trainer/jockey lists as contender triggers</h4><p>Brad Cox and the flying-in jockey trio (Ortiz Jr., Dettori, Prat) should raise a horse's grade on sight; separate them from the high-volume barns whose numbers reflect quantity more than a hot hand.</p></div>
+    <div class="learn"><h4>5. Use pedigree as a tiebreaker for unproven shippers</h4><p>Twirling Candy on top, and Galileo / Street Cry / Kitten's Joy on the bottom, are the patterns worth a small bonus when there's no Kentucky Downs form to grade on.</p></div>
+    <div class="learn"><h4>6. Don't overcorrect toward longshots</h4><p>The favorite win rate (35.8%) is close to normal &mdash; this isn't a track to fade the chalk on principle. Use the longshot rate (20.9% of winners at 10-1+) as permission to give a legitimate contender a shot at a big price, not as a reason to bet against every favorite.</p></div>
+  </section>
+
+  <section class="tight">
+    <div class="outlook"><strong>Bottom line:</strong> none of this replaces race-by-race PP work &mdash; it's a set of course-specific adjustments layered on top of it, built from two full meets of actual results rather than reputation.</div>
+  </section>
+
+  <section class="tight">
+    <h2 class="section-title" style="font-size:1.05rem;color:var(--faint);">&#128203; Data Notes &amp; Caveats</h2>
+    <div class="caveats">
+      <ul>
+        <li>Source: official Equibase result charts for both full Kentucky Downs meets &mdash; 7 cards in 2024 (Aug 29&ndash;Sep 11) and 7 cards in 2025 (Aug 28&ndash;Sep 10). 134 races, 1,458 starters.</li>
+        <li>Winner identification, post position, trainer, owner, jockey, and pedigree fields are exact &mdash; cross-validated against two independent fields in every chart with a 134/134 match rate.</li>
+        <li>Running-style tags are approximate, derived from footnote trip language via keyword matching; about 63% of winners were confidently classified, the rest marked unclassified rather than guessed.</li>
+        <li>Small-sample distances (2-1/16 miles: 2 races; 1 mile 70 yards: 3 races) are noted where relevant but shouldn't be treated as settled patterns.</li>
+        <li>This is a two-meet (two-year) sample. Treat findings as a strong starting hypothesis for 2026, not a guarantee &mdash; especially the rail-progression pattern, which is very consistent but has only two years behind it.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="cta">
+      <h3>Get the full handicapping engine for the meet</h3>
+      <p>Members get fully handicapped Kentucky Downs cards throughout the meet, built on this data plus race-by-race past performances.</p>
+      <a class="btn" href="membership.html">See Membership Details</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand-foot">TrackSmart <span class="ai">AI</span></div>
+    <div class="copyright">&copy; 2026 TrackSmart AI &middot; <a href="https://www.tracksmartracing.com">tracksmartracing.com</a></div>
+    <div class="legal">Past performance is not a guarantee of future results. All statistics are derived from official Equibase result charts for the 2024 and 2025 Kentucky Downs meets. For entertainment and informational purposes only &mdash; please wager responsibly.</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
