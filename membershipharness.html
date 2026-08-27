@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Become a TrackSmart AI Harness Member — Fully Handicapped Race Cards, Every Day</title>
+<meta name="description" content="Join TrackSmart AI Harness for $40/month and get at least four fully handicapped harness race cards delivered to your email and the Substack app — every day. Request any harness track in North America.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://dslowrycpa.github.io/claudeai-creations/membership-harness.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TrackSmart AI">
+<meta property="og:url" content="https://dslowrycpa.github.io/claudeai-creations/membership-harness.html">
+<meta property="og:title" content="Become a TrackSmart AI Harness Member — Fully Handicapped Race Cards, Every Day">
+<meta property="og:description" content="$40/month gets you at least four fully handicapped harness race cards every day, delivered to your inbox and the Substack app. Any harness track in North America — just ask.">
+<meta property="og:image" content="https://dslowrycpa.github.io/claudeai-creations/og-membership-harness.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Become a TrackSmart AI Harness Member">
+<meta name="twitter:description" content="At least four fully handicapped harness race cards a day for $40/month. Any harness track, just ask.">
+
+<!--
+  NOTE FOR DAVID:
+  Fonts load from Google Fonts CDN (Sora / Hanken Grotesk / JetBrains Mono) rather
+  than your embedded base64 woff2s — swap in the real @font-face block from any
+  other page if you want this fully self-contained/offline like the rest of the repo.
+  og-membership-harness.png is a placeholder path — needs a real banner image.
+  The "Become a Member" buttons link to https://tracksmartaiharness.substack.com —
+  deep-link to the specific subscribe/paywall page if you have one.
+  Stats (82% Top 4, 56% Top 2, 507-race sample, $7.32 avg payout) are pulled from the
+  Cumulative Performance Report (Harness), reporting period Jan 20 – Feb 26, 2026.
+  Update these figures as the harness dataset grows.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#04101b;
+    --panel:#0a1b2a;
+    --panel-2:#0d2033;
+    --border:#1b3b54;
+    --cyan:#28d6f5;
+    --cyan-bright:#5ce8ff;
+    --cyan-2:#46c6ff;
+    --ink:#eef6fb;
+    --muted:#9fbed2;
+    --faint:#6f93aa;
+    --amber:#ffb454;
+    --green:#3ee0a8;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1200px 620px at 12% -10%, rgba(40,214,245,0.10), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(70,198,255,0.07), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Hanken Grotesk','Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3,h4{font-family:'Sora','Poppins',sans-serif;}
+  a{color:var(--cyan-bright);}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px;}
+
+  header.top{
+    position:sticky;top:0;z-index:20;
+    padding:16px 24px;border-bottom:1px solid var(--border);
+    background:rgba(4,16,27,0.85);backdrop-filter:blur(8px);
+  }
+  header.top .inner{max-width:880px;margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:center;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:1rem;letter-spacing:0.2px;text-decoration:none;color:var(--ink);}
+  .logo .mark{
+    width:30px;height:30px;border-radius:8px;
+    background:linear-gradient(160deg,var(--panel-2),var(--panel));
+    border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .logo .mark svg{width:18px;height:18px;}
+  .logo .ai{color:var(--cyan);}
+  header.top nav a.navlink{font-size:0.85rem;color:var(--muted);text-decoration:none;margin-left:20px;}
+  header.top nav a.navlink:hover{color:var(--cyan-bright);}
+  header.top nav a.navcta{
+    font-size:0.82rem;color:#04101b;text-decoration:none;margin-left:20px;
+    background:linear-gradient(90deg,var(--cyan),var(--cyan-2));
+    padding:8px 14px;border-radius:7px;font-weight:700;font-family:'Sora',sans-serif;
+  }
+
+  .hero{position:relative;text-align:center;padding:64px 24px 40px;border-bottom:1px solid var(--border);overflow:hidden;}
+  .hero .glow{
+    position:absolute;top:-120px;left:50%;transform:translateX(-50%);
+    width:700px;height:400px;background:radial-gradient(circle,rgba(40,214,245,0.18),transparent 70%);
+    pointer-events:none;
+  }
+  .hero .content{position:relative;z-index:1;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:0.72rem;letter-spacing:1.6px;text-transform:uppercase;
+    color:var(--cyan-bright);background:rgba(40,214,245,0.08);
+    border:1px solid rgba(40,214,245,0.35);border-radius:999px;
+    padding:6px 14px;margin-bottom:24px;font-family:'Sora',sans-serif;font-weight:600;
+  }
+  .hero h1{
+    font-size:2.6rem;line-height:1.15;margin:0 0 20px;font-weight:800;
+    background:linear-gradient(90deg,#fff,#cfe6f2 55%,var(--cyan-bright));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    letter-spacing:-0.01em;
+  }
+  .hero p.dek{font-size:1.1rem;color:var(--muted);max-width:600px;margin:0 auto 32px;line-height:1.6;}
+  .hero .proof{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;
+    color:var(--faint);font-size:0.85rem;font-family:'JetBrains Mono',monospace;
+  }
+  .hero .proof span{white-space:nowrap;}
+  .hero .proof strong{color:var(--cyan-bright);}
+
+  section{padding:56px 24px;}
+  section.tight{padding-top:0;}
+  .section-label{
+    font-size:0.72rem;letter-spacing:1.6px;text-transform:uppercase;color:var(--cyan);
+    font-weight:700;margin-bottom:8px;font-family:'Sora',sans-serif;text-align:center;
+  }
+  h2.section-title{font-size:1.7rem;margin:0 0 14px;text-align:center;}
+  p.section-desc{color:var(--muted);text-align:center;max-width:560px;margin:0 auto 40px;}
+
+  /* Pricing card */
+  .price-card{
+    max-width:440px;margin:0 auto;background:linear-gradient(160deg,var(--panel-2),var(--panel));
+    border:1px solid var(--border);border-radius:20px;padding:36px 34px;text-align:center;
+    box-shadow:0 20px 60px -20px rgba(40,214,245,0.15);
+  }
+  .price-card .plan{font-family:'Sora',sans-serif;font-weight:700;color:var(--cyan-bright);font-size:0.85rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;}
+  .price-card .amount{font-family:'Sora',sans-serif;font-weight:800;font-size:3.2rem;color:var(--ink);}
+  .price-card .amount span{font-size:1.1rem;color:var(--muted);font-weight:500;}
+  .price-card .sub{color:var(--muted);font-size:0.92rem;margin:10px 0 26px;}
+  .price-card ul{list-style:none;margin:0 0 28px;padding:0;text-align:left;}
+  .price-card li{
+    display:flex;gap:10px;align-items:flex-start;color:#dbe9f1;font-size:0.94rem;
+    padding:9px 0;border-top:1px solid var(--border);
+  }
+  .price-card li:first-child{border-top:none;}
+  .price-card li .check{color:var(--green);font-weight:700;flex:0 0 auto;}
+  .btn{
+    display:inline-block;background:linear-gradient(90deg,var(--cyan),var(--cyan-2));
+    color:#04101b;text-decoration:none;font-family:'Sora',sans-serif;font-weight:700;
+    padding:14px 30px;border-radius:9px;font-size:0.98rem;width:100%;
+  }
+  .btn:hover{filter:brightness(1.08);}
+  .price-card .fine{color:var(--faint);font-size:0.78rem;margin-top:14px;}
+  .value-line{
+    max-width:440px;margin:16px auto 0;text-align:center;color:var(--green);
+    font-size:0.86rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.2px;
+  }
+
+  /* Report anatomy */
+  .report-demo{
+    max-width:680px;margin:0 auto;background:linear-gradient(160deg,var(--panel-2),var(--panel));
+    border:1px solid var(--border);border-radius:16px;padding:26px 28px;
+  }
+  .report-demo .rd-row{padding:16px 0;border-top:1px solid var(--border);}
+  .report-demo .rd-row:first-child{border-top:none;padding-top:0;}
+  .report-demo .rd-label{
+    display:flex;align-items:center;flex-wrap:wrap;gap:8px;
+    font-family:'Sora',sans-serif;font-weight:700;font-size:0.92rem;color:var(--cyan-bright);margin-bottom:7px;
+  }
+  .report-demo .rd-label .dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);flex:0 0 auto;}
+  .report-demo .rd-body{color:#cfe1ec;font-size:0.92rem;margin:0;}
+  .report-demo .rd-body .horse{color:var(--amber);font-weight:600;font-family:'JetBrains Mono',monospace;}
+  .report-demo .rd-tag{
+    display:inline-block;font-size:0.68rem;font-family:'JetBrains Mono',monospace;
+    text-transform:uppercase;letter-spacing:0.8px;color:var(--amber);
+    border:1px solid rgba(255,180,84,0.45);background:rgba(255,180,84,0.08);border-radius:6px;padding:2px 8px;
+  }
+  .not-numbers{
+    text-align:center;font-family:'Sora',sans-serif;font-weight:800;font-size:1.3rem;
+    color:var(--amber);margin:26px auto 0;letter-spacing:-0.01em;
+  }
+
+  /* Feature grid */
+  .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media (max-width:640px){.feature-grid{grid-template-columns:1fr;}}
+  .feature{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px 22px;}
+  .feature .icon{
+    width:36px;height:36px;border-radius:9px;margin-bottom:14px;
+    background:rgba(40,214,245,0.1);border:1px solid rgba(40,214,245,0.35);
+    display:flex;align-items:center;justify-content:center;color:var(--cyan-bright);font-size:1.05rem;
+  }
+  .feature h4{margin:0 0 8px;font-size:1.02rem;}
+  .feature p{margin:0;color:var(--muted);font-size:0.92rem;}
+
+  /* Steps */
+  .steps{display:flex;flex-direction:column;gap:14px;max-width:640px;margin:0 auto;}
+  .step{display:flex;gap:16px;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:18px 20px;}
+  .step .n{
+    flex:0 0 auto;width:32px;height:32px;border-radius:50%;
+    background:rgba(40,214,245,0.10);border:1px solid rgba(40,214,245,0.4);
+    color:var(--cyan-bright);display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:0.92rem;font-family:'Sora',sans-serif;
+  }
+  .step h4{margin:0 0 6px;font-size:1rem;}
+  .step p{margin:0;color:var(--muted);font-size:0.92rem;}
+
+  /* Callout */
+  .callout{
+    max-width:640px;margin:0 auto;background:rgba(40,214,245,0.06);border:1px solid rgba(40,214,245,0.3);
+    border-radius:14px;padding:20px 24px;color:#d7f0f8;font-size:0.94rem;text-align:center;
+  }
+  .callout strong{color:var(--cyan-bright);}
+
+  /* FAQ */
+  .faq{max-width:680px;margin:0 auto;}
+  details{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:12px;}
+  summary{font-family:'Sora',sans-serif;font-weight:600;cursor:pointer;color:var(--ink);font-size:0.98rem;}
+  details p{color:var(--muted);margin:12px 0 0;font-size:0.92rem;}
+
+  .final-cta{
+    text-align:center;background:linear-gradient(160deg,var(--panel-2),var(--panel));
+    border:1px solid var(--border);border-radius:20px;padding:44px 30px;
+  }
+  .final-cta h3{font-size:1.5rem;margin:0 0 12px;}
+  .final-cta p{color:var(--muted);max-width:480px;margin:0 auto 26px;}
+  .final-cta a.btn{width:auto;padding:14px 36px;}
+
+  footer{margin-top:20px;border-top:1px solid var(--border);padding:36px 24px 40px;text-align:center;}
+  footer .brand-foot{font-weight:700;letter-spacing:0.5px;margin-bottom:6px;font-family:'Sora',sans-serif;}
+  footer .brand-foot .ai{color:var(--cyan);}
+  footer .copyright{color:var(--faint);font-size:0.78rem;margin-top:6px;}
+  footer .legal{color:var(--faint);font-size:0.72rem;margin-top:14px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.6;}
+  footer a{color:var(--faint);text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <a class="logo" href="https://start.tracksmartracing.com/">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="22" height="22" rx="6" stroke="#28d6f5" stroke-width="1.4"/>
+          <path d="M4 16l4.5-5 3.5 3 7-8" stroke="#5ce8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15.5 6H19v3.5" stroke="#5ce8ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span>TrackSmart <span class="ai">AI</span></span>
+    </a>
+    <nav>
+      <a class="navlink" href="https://start.tracksmartracing.com/">All Guides</a>
+      <a class="navcta" href="https://tracksmartaiharness.substack.com">Become a Member</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="glow"></div>
+  <div class="content">
+    <span class="eyebrow">TrackSmart AI Harness Membership</span>
+    <h1>The Card's Already Handicapped.</h1>
+    <p class="dek">Become a TrackSmart AI Harness member and get at least four fully handicapped harness race cards delivered straight to your inbox and the Substack app every single morning — from the big half-mile and five-eighths ovals to the small tracks the crowd overlooks. There are no fixed meets to wait on: we can handicap any harness track in North America, all on the same models proven across 500+ races.</p>
+    <div class="proof">
+      <span><strong>4+ cards</strong> every day, not just monthly</span>
+      <span><strong>82%</strong> of winners in the Top 4</span>
+      <span><strong>56%</strong> of winners in the Top 2</span>
+      <span><strong>$7.32</strong> average winning payout</span>
+    </div>
+    <p style="color:var(--faint);font-size:0.8rem;margin:16px auto 0;max-width:520px;line-height:1.6;">
+      Those numbers are a statistical average across a 507-race harness testing sample (Jan–Feb 2026) — not a promise for every single card, every single day. Some days run hotter than others.
+    </p>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section class="tight" style="padding-top:56px;">
+    <div class="price-card">
+      <div class="plan">Monthly Membership</div>
+      <div class="amount">$40<span>/month</span></div>
+      <div class="sub">That's 120+ handicapped harness cards a month — for one flat price. Manage or cancel anytime, right from Substack.</div>
+      <ul>
+        <li><span class="check">✓</span> At least 4 fully handicapped harness race cards every day</li>
+        <li><span class="check">✓</span> Delivered by email and the Substack app</li>
+        <li><span class="check">✓</span> Request <strong>any harness track in North America</strong> — half-mile bullring or mile oval, we'll do our best to include it</li>
+        <li><span class="check">✓</span> Pace projections, post-position leverage, and driver/trainer angles — not just a list of numbers</li>
+      </ul>
+      <a class="btn" href="https://tracksmartaiharness.substack.com">Become a Member</a>
+      <div class="fine">Subscriptions are handled securely through Substack at tracksmartaiharness.substack.com.</div>
+    </div>
+    <div class="value-line">✓ 4+ cards a day works out to about 33¢ a card — less than a losing $2 ticket.</div>
+  </section>
+
+  <section>
+    <div class="section-label">Why Join</div>
+    <h2 class="section-title">Skip the Grind. Keep the Edge.</h2>
+    <p class="section-desc">You get the finished report — the same shortlist system I use myself, on four or more harness cards, every single day.</p>
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="icon">⚡</div>
+        <h4>Fully Handicapped, Not Just Data</h4>
+        <p>Every card is a complete analysis — speed, class, pace, post-position leverage, and driver/trainer connections already broken down into a ranked shortlist, not a raw program page you still have to decode.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📬</div>
+        <h4>Delivered, Not Chased</h4>
+        <p>Your cards land in your email and the Substack app automatically. No logging in to check for updates — it comes to you before post time.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🌙</div>
+        <h4>Built for the Harness Grind</h4>
+        <p>Harness runs almost every night of the week. Wherever the cards are — Monticello, The Meadows, Saratoga, the Meadowlands, or a bullring most services skip — TrackSmart AI is built to handicap it.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🎯</div>
+        <h4>Any Track in North America</h4>
+        <p>There are no set meets to wait around for. Following a specific circuit, a half-mile oval, or a stakes night the big services ignore? Request it and we'll do our best to add it to your daily lineup.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Inside Every Report</div>
+    <h2 class="section-title">Not Just 4 Numbers on a Page</h2>
+    <p class="section-desc">Anyone can hand you four horses. Every TrackSmart AI harness report tells you how the race will actually unfold — who leaves, who lands the pocket, and who's set up to pounce when the pace tips over.</p>
+    <div class="report-demo">
+      <div class="rd-row">
+        <div class="rd-label"><span class="dot"></span>Projected Race Shape <span class="rd-tag">Speed Duel</span></div>
+        <p class="rd-body">A half-mile oval with two hard-leaving front-enders drawn inside means a contested opening quarter and a live pocket trip for anyone sitting the two-hole.</p>
+      </div>
+      <div class="rd-row">
+        <div class="rd-label"><span class="dot"></span>Early Speed / The Leavers</div>
+        <p class="rd-body"><span class="horse">#1 Rockin Rebel</span> and <span class="horse">#3 Southwind Ax</span> both need the top and will hook up through the first turn, softening each other up in a genuine early scramble.</p>
+      </div>
+      <div class="rd-row">
+        <div class="rd-label"><span class="dot"></span>Pocket / Live Trip</div>
+        <p class="rd-body"><span class="horse">#2 Bettors Delight N</span> tucks into the pocket off the speed duel and gets the perfect sit-and-pounce trip when the leaders back up in the lane.</p>
+      </div>
+      <div class="rd-row">
+        <div class="rd-label"><span class="dot"></span>Deep Flow Analysis</div>
+        <p class="rd-body">Both inside speed horses will gun for the lead off the gate and refuse to yield through a quick opening quarter. That pressure keeps the fractions honest and drains the leaders' reserves down the backstretch. The first-over flusher figures to grind but stall late, while the pocket-sitter enjoys cover the whole way. As the front pair empties out at the top of the lane, the pocket horse tips into the passing lane with fresh legs and sweeps by the tiring leaders in the final sixteenth.</p>
+      </div>
+    </div>
+    <div class="not-numbers">Not just 4 numbers on a page.</div>
+  </section>
+
+  <section>
+    <div class="section-label">Any Track, Any Night</div>
+    <h2 class="section-title">No Fixed Meets. That's the Point.</h2>
+    <p class="section-desc">Unlike the thoroughbred side, harness has no single marquee meet to build a season around — the action moves from oval to oval, night after night. So instead of locking you into a fixed track list, TrackSmart AI can handicap <strong>any harness track in North America</strong>. Each day's lineup follows the cards worth playing.</p>
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="icon">🏟️</div>
+        <h4>Half-Mile Bullrings</h4>
+        <p>Tight ovals where post position and a live pocket trip decide everything — exactly where the model's post-leverage read earns its keep.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🏁</div>
+        <h4>Five-Eighths &amp; Mile Ovals</h4>
+        <p>More room, more pace scenarios, more first-over pressure. The engine adjusts its pace projection to the geometry of each track.</p>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:24px;">
+      Have a track or a stakes night you want covered? TrackSmart AI can handicap <strong>any harness track in North America</strong>, so the small circuits most services ignore are always on the table. Just ask.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Beyond the Big Ovals</div>
+    <h2 class="section-title">Love the Small Tracks? So Do We.</h2>
+    <p class="section-desc">The whole harness game lives on variety — so the real value here is that TrackSmart AI can handicap <strong>any harness track in North America</strong>. Following a half-mile bullring, a county-fair circuit, or a specific stakes night the big services skip? Just ask — we'll do our best to work it into the daily lineup.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="n">1</div>
+        <div><h4>Send your request</h4><p>Reply to any card email or message us through Substack with the track and date you'd like handicapped.</p></div>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <div><h4>Ask a few days ahead</h4><p>Requests aren't guaranteed, but they're not a race against other members either — we just need time to plan. A few days' notice gives your request the best shot at making the daily lineup; same-day asks are much harder to fit in.</p></div>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <div><h4>Get your card</h4><p>If we're able to include it, your requested track's card is delivered the same way as your regular ones — email and the Substack app.</p></div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:24px;">
+      Track requests are always welcome, and we'll try to accommodate every one — but they're <strong>not guaranteed</strong>. A few days' advance notice is what lets us plan it in.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Questions</div>
+    <h2 class="section-title">Good to Know</h2>
+    <div class="faq">
+      <details>
+        <summary>How many cards do I get?</summary>
+        <p>At least four fully handicapped harness race cards every day — all for one flat $40/month membership. Because harness has no fixed marquee meets, the daily lineup follows the cards worth playing, and you can always request a specific track.</p>
+      </details>
+      <details>
+        <summary>Which tracks do you cover?</summary>
+        <p>There's no set track list — that's the point. TrackSmart AI can handicap any harness track in North America, big oval or small bullring. Each day's four-plus cards follow the best available action, and you can request any track you want covered.</p>
+      </details>
+      <details>
+        <summary>How will I receive my cards?</summary>
+        <p>Straight to your email and the Substack app — wherever you already read TrackSmart AI.</p>
+      </details>
+      <details>
+        <summary>Can I request a specific track?</summary>
+        <p>Yes — TrackSmart AI can handicap any harness track in North America, big circuit or small. Track requests are welcome, and we'll do our best to work yours into the daily lineup. It's not guaranteed, but asking a few days ahead gives us the best chance to plan it in, rather than the same day.</p>
+      </details>
+      <details>
+        <summary>Does the AI hit 82%/56% every single day?</summary>
+        <p>No — those figures are a statistical average across a 507-race harness testing sample (Jan–Feb 2026), not a guarantee for any individual card or day. Some days beat it, some fall short — that's the nature of handicapping.</p>
+      </details>
+      <details>
+        <summary>How is a card built?</summary>
+        <p>Every harness card runs through TrackSmart AI's handicapping models — pace projection, post-position leverage, class and form, driver/trainer angles — the same system behind our proven results, then gets a final pass before it's sent out.</p>
+      </details>
+      <details>
+        <summary>How do I manage or cancel my membership?</summary>
+        <p>Your subscription is handled entirely through Substack at tracksmartaiharness.substack.com, where you can manage or cancel it at any time.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="final-cta">
+      <h3>Ready for your first four cards?</h3>
+      <p>Join TrackSmart AI Harness for $40/month and let four-plus handicapped cards come to you every day.</p>
+      <a class="btn" href="https://tracksmartaiharness.substack.com">Become a Member</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand-foot">TrackSmart <span class="ai">AI</span></div>
+    <div class="copyright">© 2026 TrackSmart AI · <a href="https://www.tracksmartracing.com">tracksmartracing.com</a> · <a href="https://tracksmartaiharness.substack.com">tracksmartaiharness.substack.com</a></div>
+    <div class="legal">For entertainment and informational purposes only. No handicapping model, human or AI, guarantees winning results. Please wager responsibly.</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
