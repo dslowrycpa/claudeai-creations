@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why TrackSmart AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,600;0,700;1,500&family=Spline+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#04101b;
+    --navy:#0a1b2a;
+    --navy-light:#122943;
+    --cyan:#28d6f5;
+    --gold:#c9a24a;
+    --gold-bright:#e6c878;
+    --ink:#eaf3f8;
+    --ink-dim:#a9c0cf;
+    --line:rgba(40,214,245,0.18);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--navy-deep);
+    background-image:
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(40,214,245,0.10), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(201,162,74,0.08), transparent 60%);
+    color:var(--ink);
+    font-family:'Spline Sans', -apple-system, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  h1,h2,h3{font-family:'Bodoni Moda', Georgia, serif; margin:0; letter-spacing:0.01em;}
+  a{color:var(--cyan);}
+
+  /* Hero */
+  .hero{
+    padding:88px 0 64px;
+    text-align:center;
+    border-bottom:1px solid var(--line);
+  }
+  .kicker{
+    color:var(--gold-bright);
+    text-transform:uppercase;
+    font-size:13px;
+    letter-spacing:0.22em;
+    font-weight:600;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(32px,5vw,54px);
+    font-weight:700;
+    color:#fff;
+    max-width:820px;
+    margin:0 auto 20px;
+    line-height:1.15;
+  }
+  .hero h1 em{
+    font-style:italic;
+    background:linear-gradient(90deg,var(--cyan),var(--gold-bright));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero p.lede{
+    font-size:19px;
+    color:var(--ink-dim);
+    max-width:640px;
+    margin:0 auto 34px;
+  }
+  .stat-row{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:36px;
+    margin-top:28px;
+  }
+  .stat{text-align:center;}
+  .stat .num{
+    font-family:'Bodoni Moda',serif;
+    font-size:38px;
+    font-weight:700;
+    color:var(--cyan);
+    display:block;
+  }
+  .stat .lbl{font-size:13px;color:var(--ink-dim); letter-spacing:0.03em;}
+  .cta-row{display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:36px;}
+  .btn{
+    display:inline-block;
+    padding:14px 30px;
+    border-radius:3px;
+    font-weight:600;
+    font-size:15px;
+    text-decoration:none;
+    letter-spacing:0.02em;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(90deg,var(--cyan),#7fe9fb);
+    color:var(--navy-deep);
+    box-shadow:0 0 24px rgba(40,214,245,0.35);
+  }
+  .btn-primary:hover{transform:translateY(-1px);}
+  .btn-ghost{
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--line);
+  }
+
+  section{padding:72px 0;}
+  .section-head{text-align:center; max-width:680px; margin:0 auto 48px;}
+  .section-head .kicker{margin-bottom:12px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,36px); color:#fff; font-weight:700;}
+  .section-head p{color:var(--ink-dim); font-size:16px; margin-top:14px;}
+
+  /* Three paths */
+  .paths{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .path-card{
+    background:linear-gradient(180deg,var(--navy-light),var(--navy));
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:34px 28px;
+    position:relative;
+  }
+  .path-card.featured{border-color:rgba(201,162,74,0.5);}
+  .path-card.featured::before{
+    content:"MOST POPULAR";
+    position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+    background:var(--gold); color:var(--navy-deep);
+    font-size:11px; font-weight:700; letter-spacing:0.1em;
+    padding:4px 14px; border-radius:20px;
+  }
+  .path-card h3{color:#fff; font-size:22px; margin-bottom:6px;}
+  .price{
+    font-family:'Bodoni Moda',serif;
+    font-size:34px; font-weight:700; color:var(--cyan);
+    margin:14px 0 4px;
+  }
+  .price span{font-size:15px; color:var(--ink-dim); font-family:'Spline Sans',sans-serif; font-weight:400;}
+  .path-card p{color:var(--ink-dim); font-size:14.5px; margin:14px 0 18px;}
+  .path-card ul{margin:0 0 20px; padding-left:20px; color:var(--ink); font-size:14.5px;}
+  .path-card li{margin-bottom:8px;}
+  .path-card .btn{width:100%; text-align:center;}
+
+  /* Coverage */
+  .coverage-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  .cov-card{
+    background:var(--navy-light);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:24px 18px;
+    text-align:center;
+  }
+  .cov-card .icon{font-size:28px; margin-bottom:10px; display:block;}
+  .cov-card h4{font-family:'Spline Sans',sans-serif; color:#fff; font-size:16px; font-weight:600; margin-bottom:8px;}
+  .cov-card p{font-size:13.5px; color:var(--ink-dim); margin:0;}
+  .pp-line{
+    text-align:center; margin-top:36px; padding:20px; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    color:var(--ink-dim); font-size:15px;
+  }
+  .pp-line strong{color:var(--gold-bright); font-weight:600;}
+
+  /* Engines */
+  .engine-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  .engine-card{
+    background:linear-gradient(180deg, rgba(18,41,67,0.7), rgba(10,27,42,0.7));
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:22px;
+  }
+  .engine-num{
+    display:inline-block; font-family:'Bodoni Moda',serif; font-weight:700;
+    color:var(--navy-deep); background:var(--cyan);
+    width:26px; height:26px; line-height:26px; text-align:center; border-radius:50%;
+    font-size:13px; margin-bottom:12px;
+  }
+  .engine-card h4{color:#fff; font-size:16.5px; margin-bottom:6px; font-weight:600; font-family:'Spline Sans',sans-serif;}
+  .engine-card p{color:var(--ink-dim); font-size:13.5px; margin:0;}
+
+  /* Proof */
+  .proof{
+    background:var(--navy-light);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:44px;
+    display:flex;
+    gap:40px;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+  .proof .quote{flex:1; min-width:280px;}
+  .proof .quote p{font-size:19px; font-style:italic; color:#fff; font-family:'Bodoni Moda',serif; line-height:1.5;}
+  .proof .quote cite{color:var(--gold-bright); font-style:normal; font-size:14px; display:block; margin-top:14px;}
+  .proof .stats{display:flex; gap:32px; flex-wrap:wrap;}
+
+  /* Founder */
+  .founder{display:flex; gap:36px; align-items:center; flex-wrap:wrap;}
+  .founder .txt{flex:1; min-width:280px;}
+  .founder h3{color:#fff; font-size:24px; margin-bottom:14px;}
+  .founder p{color:var(--ink-dim); font-size:15.5px;}
+
+  /* Final CTA */
+  .final-cta{
+    text-align:center;
+    background:linear-gradient(180deg, rgba(40,214,245,0.08), transparent);
+    border-top:1px solid var(--line);
+    padding:80px 0;
+  }
+  .final-cta h2{color:#fff; font-size:clamp(26px,3.6vw,38px); margin-bottom:16px;}
+  .final-cta p{color:var(--ink-dim); font-size:17px; max-width:560px; margin:0 auto 32px;}
+
+  footer{
+    text-align:center; padding:32px 0; color:var(--ink-dim); font-size:13px;
+    border-top:1px solid var(--line);
+  }
+  footer a{color:var(--ink-dim); text-decoration:underline;}
+
+  @media(max-width:860px){
+    .paths{grid-template-columns:1fr;}
+    .coverage-grid{grid-template-columns:repeat(2,1fr);}
+    .engine-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:560px){
+    .engine-grid{grid-template-columns:1fr;}
+    .stat-row{gap:22px;}
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">TrackSmart AI</div>
+    <h1>The Only AI That <em>Thinks</em> Like a Handicapper</h1>
+    <p class="lede">Fifty years of handicapping instinct, distilled into an AI engine that reads a race the way a professional does — not a random number generator dressed up as a tip sheet.</p>
+    <div class="stat-row">
+      <div class="stat"><span class="num">80%</span><span class="lbl">of winners land in the Top&nbsp;4</span></div>
+      <div class="stat"><span class="num">50%</span><span class="lbl">of winners land in the Top&nbsp;2</span></div>
+      <div class="stat"><span class="num">2,800+</span><span class="lbl">races in the sample</span></div>
+      <div class="stat"><span class="num">9</span><span class="lbl">purpose-built engines</span></div>
+    </div>
+    <div class="cta-row">
+      <a href="https://www.tracksmartracing.com/shop" class="btn btn-primary">See the Shop</a>
+      <a href="https://tracksmartai.substack.com" class="btn btn-ghost">Start Your Membership</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Three Ways In</div>
+      <h2>However you play, there's a way to plug in</h2>
+      <p>No long-term commitment required to try it, and no ceiling on how deep you can go.</p>
+    </div>
+    <div class="paths">
+      <div class="path-card">
+        <h3>Daily Race Cards</h3>
+        <div class="price">$10 <span>/ card</span></div>
+        <p>The fastest way to see what TrackSmart AI can do. One request, one fully handicapped card, no subscription.</p>
+        <ul>
+          <li>Complete field analysis — speed, class, pace, form, connections</li>
+          <li>TPN power rankings for every horse in the race</li>
+          <li>Delivered same day, ready to bet</li>
+        </ul>
+        <a href="https://www.tracksmartracing.com/shop" class="btn btn-ghost">Order a Card</a>
+      </div>
+      <div class="path-card featured">
+        <h3>Full Membership</h3>
+        <div class="price">$40 <span>/ month</span></div>
+        <p>For the horseplayer who bets every day. Works out to roughly 33&cent; a card.</p>
+        <ul>
+          <li>At least 4 fully handicapped cards, every day</li>
+          <li>Saratoga, Belmont, Del Mar, Churchill, Keeneland &amp; the Gulfstream Championship Meet — always covered</li>
+          <li>Request any track in North America</li>
+        </ul>
+        <a href="https://tracksmartai.substack.com" class="btn btn-primary">Join Now</a>
+      </div>
+      <div class="path-card">
+        <h3>Own an Engine</h3>
+        <div class="price">From $584 <span>one-time</span></div>
+        <p>Run TrackSmart AI's handicapping logic yourself, unlimited, race after race, meet after meet.</p>
+        <ul>
+          <li>9 breed- and source-specific engines to choose from</li>
+          <li>Yours to run in Google Gemini, no subscription</li>
+          <li>Step-by-step setup guide included</li>
+        </ul>
+        <a href="https://www.tracksmartracing.com/shop" class="btn btn-ghost">Browse Engines</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Universal Coverage</div>
+      <h2>Any past performances. Any track. Any breed.</h2>
+      <p>Most handicapping tools lock you into one data source or one kind of racing. TrackSmart AI doesn't.</p>
+    </div>
+    <div class="coverage-grid">
+      <div class="cov-card">
+        <span class="icon">🏇</span>
+        <h4>Thoroughbred</h4>
+        <p>Brisnet, DRF, and Equibase — three dedicated engines built around each provider's own data.</p>
+      </div>
+      <div class="cov-card">
+        <span class="icon">🏆</span>
+        <h4>Quarter Horse</h4>
+        <p>Gate mechanics, wind normalization, and trial drops for the 220–440 sprint game.</p>
+      </div>
+      <div class="cov-card">
+        <span class="icon">🛞</span>
+        <h4>Standardbred</h4>
+        <p>Harness racing built on TrackMaster data, with driver and trainer ROI baked in.</p>
+      </div>
+      <div class="cov-card">
+        <span class="icon">🐕</span>
+        <h4>Greyhound</h4>
+        <p>Box draw, pace geometry, and trip trouble, purpose-built for the oval.</p>
+      </div>
+    </div>
+    <div class="pp-line">Plus international coverage through <strong>Sky Racing Global</strong> and <strong>Racing &amp; Sports Australia</strong> — because the best horse in a claiming race in Ohio and the best horse in a Group race in Sydney deserve the same rigor.</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">The Engine Room</div>
+      <h2>9 handicapping engines. Pick your game.</h2>
+      <p>Each one is a dedicated model tuned to its own data source, distances, and quirks — not a generic template stretched to fit.</p>
+    </div>
+    <div class="engine-grid">
+      <div class="engine-card"><span class="engine-num">1</span>
+        <h4>Brisnet Handicapping Engine</h4>
+        <p>The flagship thoroughbred analyzer — fifth-generation, built on BRIS past performances.</p>
+      </div>
+      <div class="engine-card"><span class="engine-num">2</span>
+        <h4>DRF Handicapping Engine</h4>
+        <p>Daily Racing Form data with Beyer figures and Timeform pace pars.</p>
+      </div>
+      <div class="engine-card"><span class="engine-num">3</span>
+        <h4>Equibase Handicapping Engine</h4>
+        <p>Built for Equibase's format, including 3-year-old date-math handling.</p>
+      </div>
+      <div class="engine-card"><span class="engine-num">4</span>
+        <h4>Harness Racing Engine</h4>
+        <p>Standardbred-specific, with track-geometry physics and driver/trainer ROI.</p>
+      </div>
+      <div class="engine-card"><span class="engine-num">5</span>
+        <h4>Quarter Horse Engine</h4>
+        <p>Sprint-distance specialist tuned for gate breaks and short fields.</p>
+      </div>
+      <div class="engine-card"><span class="engine-num">6</span>
+        <h4>Greyhound Racing Engine</h4>
+        <p>Box and pace forensics for the track oval.</p>
+      </div>
+      <div class="engine-card"><span class="engine-num">7</span>
+        <h4>Neural Physics Engine (v8.1)</h4>
+        <p>Dual-source international model for Racing &amp; Sports Global data.</p>
+      </div>
+      <div class="engine-card"><span class="engine-num">8</span>
+        <h4>Sky Racing Global Edition</h4>
+        <p>Built around Sky Racing's free data feeds for global East markets.</p>
+      </div>
+      <div class="engine-card"><span class="engine-num">9</span>
+        <h4>International Lite Engine</h4>
+        <p>UK and European racing, tuned to free ADW data sources.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="proof">
+      <div class="quote">
+        <p>"With TrackSmart AI, you don't just get picks — you get a teacher and a student in one."</p>
+        <cite>— TrackSmart AI</cite>
+      </div>
+      <div class="stats">
+        <div class="stat"><span class="num">80%</span><span class="lbl">Top 4 hit rate</span></div>
+        <div class="stat"><span class="num">2,800+</span><span class="lbl">races tracked</span></div>
+        <div class="stat"><span class="num">33&cent;</span><span class="lbl">per card on membership</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="founder">
+      <div class="txt">
+        <div class="kicker">Built By A Horseplayer, Not A Startup</div>
+        <h3>David Lowry, Founder</h3>
+        <p>Two years building the engine. Fifty-plus years reading a Racing Form — a lifetime that started with his father teaching him at the track, and continued through running racing syndicates across Kentucky, Ohio, Indiana, and Florida. TrackSmart AI isn't a black box guessing at patterns; it's five decades of handicapping judgment, encoded so it never has an off day, never gets tired on a 21-card Saturday, and never skips the horse buried on the also-eligible list.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="final-cta">
+  <div class="wrap">
+    <h2>Stop guessing. Start handicapping.</h2>
+    <p>Grab a single card, subscribe for daily coverage, or own the engine outright. Every path starts the same way — with an AI that actually thinks like a handicapper.</p>
+    <div class="cta-row">
+      <a href="https://www.tracksmartracing.com/shop" class="btn btn-primary">Get Started — $10 Race Card</a>
+      <a href="https://tracksmartai.substack.com" class="btn btn-ghost">Explore Membership</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    TrackSmart AI, LLC &middot; <a href="mailto:david@tracksmartracing.com">david@tracksmartracing.com</a> &middot; <a href="https://www.tracksmartracing.com">tracksmartracing.com</a>
+    <br>Please play responsibly. 21+ where applicable.
+  </div>
+</footer>
+
+</body>
+</html>
